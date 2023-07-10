@@ -1,0 +1,177 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.main_form_cart {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 90%;
+    height: fit-content;
+}
+
+/* background color */
+.body_cart {
+    background-color: white;
+}
+
+.quantity-button {
+    background-color: transparent;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: 1px solid black;
+    font-size: 18px;
+    margin: 0 15px;
+}
+
+.left_btn {
+    margin-left: 0;
+}
+.disclaimer{
+    font-size: 7px;
+}
+
+.error-message {
+    position: relative;
+    bottom: -10px;
+    z-index: 50;
+    font-size: 14px;
+    color: red;
+}
+
+.cart_items_card {
+    width: 60%;
+    margin-top: 7%;
+    margin-bottom: 7%;
+}
+
+.trashcan {
+    border: none;
+    cursor: pointer;
+    background: none;
+    margin-left: 30px;
+    /* font-size: 60x; */
+}
+
+
+/* EACH TICKET */
+.each-ticket {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 36px;
+    border-radius: 4px;
+    height: 240px;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 2rem;
+    /* box-shadow: .15rem .15rem 4px #000; */
+}
+
+.cart-title {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+}
+
+.link-title {
+    width: 200px;
+}
+
+.ticket-img {
+    width: 100%;
+    max-width: 200px;
+    max-height: 200px;
+}
+
+.ticket-price {
+    font-size: 1.1rem;
+    margin-bottom: 12px;
+}
+
+
+.ticket-text {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.number_input {
+    height: 40px;
+    border-radius: 6px;
+    text-indent: 12px;
+}
+
+.checkout_main_section_cart {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 18px 12px;
+    width: 25%;
+    height: fit-content;
+    border-radius: 12px;
+    margin-top: 7%;
+    margin-bottom: 7%;
+    right: 5%;
+    position: sticky;
+    border: 2px solid black;
+    box-shadow: .15rem .15rem 4px #000;
+}
+
+.mapped-cart {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mapped-tickets {
+    color: black;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+.scrollable_div {
+    padding-top: 25px;
+}
+
+.cart-summary-title {
+    color: black;
+    padding-bottom: 5px;
+}
+
+.scrollable-cart-body{
+    height: 200px;
+    overflow-y: scroll;
+}
+
+/* subtotal */
+.subtotal-container {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    /* margin-top: 50px; */
+}
+
+.checkout_subtotal {
+    color: #000;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+}
+
+.checkout_btn:active {
+    transform: translate(0rem, 0rem);
+    box-shadow: 0rem 0rem #000;
+}
+
+/* EMPTY */
+.empty-container {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
