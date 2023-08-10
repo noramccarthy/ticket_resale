@@ -1,22 +1,20 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { CartContext } from '../context/CartContext'
 import FilterBar from './FilterBar';
+import Ticket from './Ticket';
 import '../css/AllTickets.css'
+import Footer from './Footer';
 
 
 const AllTickets = () => {
-    const [searchInput, setSearchInput] = useState('');
     const [tickets, setTickets] = useState([]);
     const [filterTickets, setFilterTickets] = useState(tickets);
     const [categories, setCategories] = useState([]);
     const [states, setStates] = useState([]);
-    const [select, setSelect] = useState("");
     const { addToCart, cartItems} = useContext(CartContext);
 
-    
     const handleSearchChange = (searchInput) => {
         const filteredSearchTickets = tickets.filter(item => {
             return Object.values(item).join('').toLowerCase().includes(searchInput.toString().toLowerCase());
@@ -27,7 +25,7 @@ const AllTickets = () => {
 
     const handleCategoryChange = (category) => {
         const filteredCategoryTickets = tickets.filter(item => {
-            // ticket.category === category.categoryName
+            // ticket.category === category.seatgeekName
             if (item.category === category) {
                 return item;
             }
@@ -65,7 +63,7 @@ const AllTickets = () => {
     const stockReached = (ticket) => {
         if (!cartItems) return false;
         const ticketInCart = cartItems.find((item) => item._id === ticket._id);
-        return ticketInCart && ticketInCart.quantity >= ticket.stock - 1;
+        return ticketInCart && ticketInCart.quantity >= ticket.stock;
     }
 
     useEffect(() => {
@@ -73,7 +71,7 @@ const AllTickets = () => {
         .then((res) => {
             setTickets(res.data)
             setFilterTickets(res.data)
-            // console.log(res.data)
+            console.log(res.data)
         })
         .catch((err) => console.log(err))
     },[])
@@ -96,15 +94,10 @@ const AllTickets = () => {
         .catch((err) => console.log(err))
     },[])
 
-
     return (
         <>
         <section id="tickets-scroll" className='tickets-container'>
-            <div className='navbar-sticky'>
-                <Navbar/>
-            </div>
-
-            <h1 className='ticket-filter-title mt-5'> All tickets </h1>
+            <div className='navbar-sticky'><Navbar/></div>
         </section>
         
         {/* container */}
@@ -125,41 +118,25 @@ const AllTickets = () => {
             <div className='filtered-tickets-container'>
                 {filterTickets.map((ticket) => (
                     <div key={ticket._id} className='one-ticket'>
-                        <Link to={'/one/ticket/' + ticket._id}>
-                            <img className='ticket-image' src={ticket.image} alt="Placeholder"/>
-                        </Link>
-
-                        <div className='ticket-text'>
-                            <h6 className='ticket-title'>
-                                <Link to={'/one/ticket/' + ticket._id}>{ticket.artist}</Link>
-                            </h6>
-
-                            {ticket.onSale && ticket.discount > 0 ? (
-                                <div>
-                                    <h6 className='ticket-price-discount'>
-                                        <span className='onsale-ticket'>
-                                            ${ticket.price.toFixed(2)}
-                                        </span>
-                                            ${getDiscountPrice(ticket).toFixed(2)}
-                                    </h6>
-                                </div>
-                            ) : (
-                                <h6 className='ticket-price'>${ticket.price.toFixed(2)}</h6>
-                            )}
-
-                            <button className='ticket-addToCart' onClick={() => addToCartHandler(ticket)} disabled={stockReached(ticket)}>
-                                {stockReached(ticket) ? "No tickets left" : "Add to cart"}
-                            </button>
-
-                        </div>
+                        <Ticket 
+                            ticket = {ticket}
+                            discount = {getDiscountPrice}
+                            cart = {addToCartHandler}
+                            stock = {stockReached}
+                        />
                     </div>
                 ))}
 
             </div>
             ) : (
-                <p className='empty-category'>No Tickets</p>
+                // no tickets
+            <div className='filtered-tickets-container'>
+                    <p className='empty-category'>No Tickets</p>
+            </div>
             )}
         </div>
+
+        <Footer/>
         </>
     )
 }

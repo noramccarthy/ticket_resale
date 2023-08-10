@@ -1,0 +1,42 @@
+
+/* ABOUT PAGE CSS */
+.third-landing-page-container {
+    border-top: 3px solid black;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 6% 12%;
+    text-align: center;
+    height: 100vh;
+}
+
+.third-page-title {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    font-size: 6rem;
+    color: #869abc;
+}
+
+/* .landing_page_confident__title {
+    font-size: 4rem !important;
+    text-transform: uppercase;
+    color: rgb(0, 0, 0);
+    font-weight: 800;
+} */
+
+
+.third-page-text {
+    background-color: #f9d9b0;
+    opacity: 0.95;
+    border-radius: 12px;
+    border: none;
+    box-shadow: 2px 2px 12px #94afb5;
+    padding: 4%;
+    font-size: 1.4rem;
+    width: 100%;
+    margin-top: 50px;
+    line-height: 245%;
+}

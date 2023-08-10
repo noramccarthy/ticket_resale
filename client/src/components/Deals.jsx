@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { CartContext } from '../context/CartContext'
 import FilterBar from './FilterBar';
 import '../css/AllTickets.css'
+import Footer from './Footer';
 
 
 const Deals = () => {
@@ -101,8 +102,6 @@ const Deals = () => {
             <div className='navbar-sticky'>
                 <Navbar/>
             </div>
-
-            <h1 className='ticket-filter-title mt-5'> All tickets </h1>
         </section>
         
         {/* container */}
@@ -158,6 +157,7 @@ const Deals = () => {
                 <p className='empty-category'>No Tickets</p>
             )}
         </div>
+        <Footer/>
         </>
     )
 }

@@ -1,0 +1,51 @@
+/* price formats */
+.carousel-price {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 10px;
+    color: #000000;
+    font-weight: bold;
+    padding-left: 6px;
+}
+
+/* original price */
+.carousel-original-price {
+    color: #d63d3d;
+    text-decoration: line-through;
+    margin-right: 5px;
+}
+
+/* discounted price */
+.carousel-discount-price {
+    color: #000000;
+    font-weight: bold;
+    padding-left: 6px;
+}
+
+/* add to cart button */
+.carousel-btn {
+    width: 120px;
+    height: 38px;
+    font-size: 1rem;
+    border: solid .0625rem black;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border-radius: .25rem;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    margin-top: 20px;
+}
+
+/* artist image */
+.carousel-pic {
+    margin: 0 auto;
+    border-radius: 12px;
+    background-color: #ffffff;
+}
+
+.carousel-pic:hover {
+    animation: rotate-cart 0.6s infinite alternate;
+
+}

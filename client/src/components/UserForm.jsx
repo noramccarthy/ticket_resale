@@ -7,7 +7,7 @@ const UserForm = () => {
     const [userForm, setUserForm] = useState({
         email:"",
         password:"",
-        confirmPassword:""
+        confirmPassword:"",
     })
     const [error, setError] = useState({});
     const navigate = useNavigate();
@@ -21,13 +21,14 @@ const UserForm = () => {
 
         axios.post("http://localhost:8000/api/register", userForm, {withCredentials: true})
         .then(res => {
-            console.log(res)
+            console.log(res.data)
             // check this
-            setUserForm(res);
+            setUserForm(res.data);
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log(err.response.data.error.errors);
+            console.log("Error:", err.response.data.error.errors);
+            console.log(err)
             setError(err.response.data.error.errors);
         })
     }
@@ -72,6 +73,7 @@ const UserForm = () => {
                                         />
                                     </div>
 
+                                    {error.confirmPassword ? <p className='ticket_form_error_msg'>{error.confirmPassword.message}</p> : null}
                                     <div className="form-outline form-white mb-4">
                                         <label className="user-form-label" htmlFor="confirmPassword">Confirm Password</label>
                                         <input 

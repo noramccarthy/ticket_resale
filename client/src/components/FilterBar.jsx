@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState } from 'react';
 import '../css/FilterBar.css'
-
 
 const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStateFilter}) => {
     const [filters, setFilters] = useState({
@@ -10,7 +9,7 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
     })
 
     const handleFilter = (field) => (event) => {
-        const {value } = event.target;
+        const {value} = event.target;
 
         setFilters({
             ...filters,
@@ -68,7 +67,7 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
 
                         <option value="">Category</option>
                             {categories.map((category, index) => (
-                                <option key={index} value={category.categoryName}>
+                                <option key={index} value={category.seatgeekName}>
                                     {category.categoryName}
                                 </option>
                                 ))

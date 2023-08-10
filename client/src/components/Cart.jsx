@@ -7,6 +7,7 @@ import EmptyCart from '../assets/images/empty_cart.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import '../css/Cart.css'
+import Footer from './Footer';
 
 const Cart = ({cartDetails, setCartDetails}) => {
     const [errorMessage, setErrorMessage] = useState({});
@@ -193,7 +194,7 @@ const Cart = ({cartDetails, setCartDetails}) => {
             </div>
             }
         </form>
-        {/* <Footer className="Footerclass" /> */}
+        <Footer/>
         </div>
         </>
     )

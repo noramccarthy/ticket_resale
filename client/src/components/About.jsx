@@ -1,10 +1,11 @@
 import axios from 'axios';
-import '../css/LandingPage.css'
+import '../css/About.css'
 
 import NavBar from '../components/Navbar';
 import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
+import Footer from './Footer';
 
 const LandingPage = () => {
     const navigate = useNavigate;
@@ -32,6 +33,7 @@ const LandingPage = () => {
             </h6>
         </section>
         </div>
+        <Footer/>
         </>
     )
 }

@@ -49,7 +49,7 @@ const Navbar = ({searchInput, handleSearchChange}) => {
                     {/* CART */}
                     <div className="signup">
                         <li className="signup__primary" style={{ position: 'relative' }}>
-                            <Link className="a__primary" to={"/ticket/cart"}>
+                            <Link className="a__primary" to={"/cart"}>
                                 <ShoppingCartIcon color="primary"/>
 
                             </Link>

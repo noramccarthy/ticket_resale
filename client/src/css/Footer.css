@@ -1,0 +1,59 @@
+/* @font-face {
+    font-family: Mabry Pro;
+    src: url(../assets/fonts/19db990205089207b039.woff2);
+} */
+
+/* * {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: Mabry Pro;
+    scroll-behavior: smooth;
+} */
+
+.footer__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    margin: 0 auto;
+    width: 100vw;
+    height: 15vh;
+    background-color: #272d38;
+    /* padding-top: 20px; */
+    
+}
+
+.footer__links {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding-bottom: 40px;
+}
+
+.footer__links__color {
+    color: white;
+    transition: all 200ms ease-in-out;
+    font-size: 1.2rem;
+}
+
+.footer__links__color:hover {
+    font-size: 1.3rem;
+    padding-bottom: 4px;
+    border-bottom: 2px solid white;
+}
+
+.footer__logo {
+    display: flex;
+    justify-content: center;
+    /* padding-top: 20px; */
+    /* padding-bottom: 40px; */
+}
+
+.footer__bottom__info {
+    display: flex;
+    justify-content: center;
+    background-color: #151B27;
+    color: white;
+    padding: 8px;
+}

@@ -8,6 +8,8 @@ import AllTickets from './components/AllTickets'
 import About from './components/About'
 import Deals from './components/Deals'
 import Cart from './components/Cart'
+import SearchEvent from './components/SearchEvent'
+import UpdateTicket from './components/UpdateTicket'
 
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -27,12 +29,15 @@ function App() {
             <Route path="/about" element={<About/>}/>
             <Route path="/shop" element={<AllTickets/>}/>
             <Route path="/deals" element={<Deals/>}/>
-            <Route path="/ticket/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
+            <Route path="/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
             <Route path="/ticket/:id" element={<OneTicket/>}/>
             <Route path="/admin/login" element={<UserLogin authorized={authorized} setAuthorized={setAuthorized}/>}/>
             <Route path="/admin/register" element={<UserForm authorized={authorized} setAuthorized={setAuthorized}/>}/>
             <Route path="/admin/dashboard" element={<AdminDashboard authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/admin/create" element={<CreateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
+            <Route path="/admin/events" element={<SearchEvent authorized={authorized} setAuthorized={setAuthorized}/>}/>
+            <Route path="/admin/create/:id" element={<CreateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
+            <Route path="/admin/update/:id" element={<UpdateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
+
           </Route>
         </Routes>
       </BrowserRouter>

@@ -38,7 +38,7 @@ const UserLogin = props => {
 
         <section className="vh-100 bg-image">
             <div className="login-container py-5 h-100">
-                <div className="row d-flex justify-content-center align-items-center h-100">
+                <div className="d-flex justify-content-center align-items-center">
                     <div className="col-12 col-md-8 col-lg-6 col-xl-5">
                         <div className="card bg-dark text-white">
                             <div className="card-body p-5 text-center">
@@ -49,7 +49,7 @@ const UserLogin = props => {
 
                                 <form onSubmit={handleUserLogin} className='create-user-form'>
                                     <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
-                                    <p className="text-white-50 mb-5">Please enter your login and password!</p>
+                                    <p className="text-white-50 mb-5">enter email and password</p>
 
                                     <div className="form-outline form-white mb-4">
                                         <label className="user-form-label" htmlFor="email">Email address</label>
@@ -73,8 +73,6 @@ const UserLogin = props => {
                                             onChange={onChangeHandler}
                                         />
                                     </div>
-
-                                    <p className="small mb-5 pb-lg-2"><a className="text-white-50" href="#!">Forgot password?</a></p>
 
                                     <button className="btn btn-outline-light btn-lg px-5" type="submit">Login</button>
 
