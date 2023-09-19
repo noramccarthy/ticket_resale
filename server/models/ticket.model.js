@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const User = require('./user.model');
 
 const TicketSchema = new mongoose.Schema({
+    // reference
     postedBy: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
@@ -23,16 +24,19 @@ const TicketSchema = new mongoose.Schema({
         type: String,
         required: [true, "State is required."]
     },
+    category: {
+        type: String,
+        required: [true, "Category is required."]
+    },
+    image: {
+        type: String,
+    },
     price: {
         type: Number,
         required: [true, "Price is required."],
         min:[0.01, "Ticket price must be greater than 0"],
         // get: v => Math.floor(v * 100)/100,
         // set: v => Math.floor(parseFloat(v)*100)/100
-    },
-    category: {
-        type: String,
-        required: [true, "Category is required."]
     },
     stock: {
         type: Number,
@@ -43,9 +47,6 @@ const TicketSchema = new mongoose.Schema({
             message: "Quantity must be a whole number."
         }
     },
-    image: {
-        type: String,
-    },
     onSale: {
         type: Boolean,
         default: false
@@ -53,7 +54,7 @@ const TicketSchema = new mongoose.Schema({
     discount: {
         type: Number,
         default: 0,
-        // min: [0.0, "Ticket must be discounted at least 0"]
+        min: [0.0, "Ticket must be discounted at least 0"]
     }
 }, {timestamps: true});
 

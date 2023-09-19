@@ -9,4 +9,5 @@ module.exports = (app) => {
     app.get("/api/category", CategoryController.findAllCategories);
     app.post("/api/category/create", CategoryController.createCategory);
     app.get("/api/category/:id", CategoryController.findOneCategory);
+    app.delete("/api/category/delete/:id", CategoryController.deleteCategory);
 }

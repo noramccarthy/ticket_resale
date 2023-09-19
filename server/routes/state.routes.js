@@ -9,4 +9,6 @@ module.exports = (app) => {
     app.get("/api/state", StateController.findAllStates);
     app.post("/api/state/create", StateController.createState);
     app.get("/api/state/:id", StateController.findOneState);
+    app.put("/api/state/update/:id", StateController.updateState);
+    app.delete("/api/state/delete/:id", StateController.deleteState);
 }

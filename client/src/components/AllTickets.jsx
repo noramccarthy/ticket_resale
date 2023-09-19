@@ -25,7 +25,7 @@ const AllTickets = () => {
 
     const handleCategoryChange = (category) => {
         const filteredCategoryTickets = tickets.filter(item => {
-            // ticket.category === category.seatgeekName
+            // ticket.category === category.categoryName
             if (item.category === category) {
                 return item;
             }

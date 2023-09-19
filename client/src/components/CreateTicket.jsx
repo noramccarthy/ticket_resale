@@ -24,7 +24,7 @@ const CreateTicket = props => {
         axios.get("https://api.seatgeek.com/2/events/" + id + "?client_id=MjkzNzI3MDF8MTY4OTAyMjc0MC40MTAxMDc2")
         .then(res => {
             console.log("Data:", res.data)
-            setCategory(res.data.type)
+            setCategory(res.data.taxonomies[0].name)
             setArtist(res.data.title)
             
             const date = new Date(res.data.datetime_local);

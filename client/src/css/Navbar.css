@@ -42,8 +42,8 @@
 } */
 
 .logo_img {
-    width: 40px;
-    height: 40px;
+    width: 50px;
+    height: 50px;
     display: inline-block;
 }
 
@@ -51,8 +51,8 @@
     font-weight: lighter;
     position: relative;
     overflow: hidden;
-    max-height: 50px;
-    max-width: 100px;
+    max-height: 100px;
+    max-width: 200px;
 }
 
 .link-btn{
@@ -84,7 +84,7 @@ li {
 a {
     text-decoration: none;
     color: black;
-    font-size: 25px;
+    font-size: 30px;
 }
 
 

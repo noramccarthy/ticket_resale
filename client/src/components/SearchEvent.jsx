@@ -16,10 +16,10 @@ const SearchEvent = props => {
         
         async function fetchEvent() {
 
-            const newSearchInput = searchInput.replace(/\s/g, '-');
+            const newSearchInput = searchInput.replace(/\s/g, '+');
 
             const response = await fetch(
-                "https://api.seatgeek.com/2/events?client_id=MjkzNzI3MDF8MTY4OTAyMjc0MC40MTAxMDc2&per_page=25&performers.slug=" + newSearchInput
+                "https://api.seatgeek.com/2/events?client_id=MjkzNzI3MDF8MTY4OTAyMjc0MC40MTAxMDc2&per_page=25&q=" + newSearchInput
             )
 
             const data = await response.json()

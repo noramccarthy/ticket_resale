@@ -29,5 +29,16 @@ module.exports = {
                 message:"Something went wrong with getOneCategory()",
                 error: err
             }))
+    },
+
+    deleteCategory:(req, res) => {
+        Category.findByIdAndDelete(req.params.id)
+            .then(deletedCategory => {
+                console.log(deletedCategory)
+                res.json(deletedCategory)
+            })
+            .catch((err) => res.status(400).status({
+                error:err
+            }))
     }
 }

@@ -14,11 +14,7 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required."],
         minlength: [8, "Password must be at least 8 characters."]
-    },
-    listings: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: "Ticket"
-    }]
+    }
 }, {timestamps: true});
 
 // Confirm PW
@@ -35,7 +31,7 @@ UserSchema.pre("validate", function(next) {
     if (this.password !== this.confirmPassword) {
         this.invalidate("confirmPassword", "Passwords must match.");
     } else {
-        next()
+        next();
     }
 });
 

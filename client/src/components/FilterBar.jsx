@@ -54,7 +54,7 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
                         onChange={handleFilter("searchInput")}
                     />
                 </div>
-        
+
                 <div className="col-sm-12 my-2">
                     <label htmlFor="category">Category</label>
 

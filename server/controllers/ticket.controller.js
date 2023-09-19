@@ -81,6 +81,42 @@ module.exports = {
             }))
     },
 
+    findAllConcerts: (req, res) => {
+        Ticket.find({category: "concert"})
+            .then(tickets => {
+                console.log(tickets)
+                res.json(tickets)
+            })
+            .catch((err) => res.status(400).json({
+                message: "Something went wrong with findAllConcerts",
+                error: err
+            }))
+    },
+
+    findAllSports: (req, res) => {
+        Ticket.find({category: "sports"})
+            .then(tickets => {
+                console.log(tickets)
+                res.json(tickets)
+            })
+            .catch((err) => res.status(400).json({
+                message: "Something went wrong with findAllSports",
+                error: err
+            }))
+    },
+
+    findAllTheater: (req, res) => {
+        Ticket.find({category: "theater"})
+            .then(tickets => {
+                console.log(tickets)
+                res.json(tickets)
+            })
+            .catch((err) => res.status(400).json({
+                message: "Something went wrong with findAllTheater",
+                error: err
+            }))
+    },
+
     updateTicket: (req, res) => {
         Ticket.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true})
             .then(updatedTicket => {
@@ -100,7 +136,7 @@ module.exports = {
                 res.json(deletedTicket)
             })
             .catch((err) => res.status(400).json({
-                message: "Something went wrong with findOneTicket()",
+                message: "Something went wrong with deleteTicket()",
                 error: err
             }))
     },
@@ -111,6 +147,35 @@ module.exports = {
         Ticket.findByIdAndUpdate(id, {stock: quantity}, {new:true, runValidators:true})
             .then((updatedTicket) => res.json({updatedTicket}))
             .catch((err) => res.status(400).json(err));
+    },
+
+    uploadFile: (req, res) => {
+        try {
+            if (!req.files) {
+                res.send({
+                    status: "Failed",
+                    message: "No file uploaded",
+                })
+            } else {
+                let file = req.files.file;
+                console.log(req.files);
+
+                file.mv("./uploads/" + file.name);
+
+                res.send({
+                    status: "Success",
+                    message: "File successfully uploaded",
+                    data: {
+                        name: file.name,
+                        mimetype: file.mimetype,
+                        size: file.size,
+                    }
+                })
+            }
+        }
+        catch (err) {
+            res.status(500).json(err);
+        }
     }
 
 };

@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 // we can use this middleware anywhere to make sure a user is logged in when performing any type of CRUD
 
 // retrieve the values from .env
-const secret = process.env.SECRET_KEY;
+const secret = process.env.REACT_APP_SECRET_KEY;
 
 module.exports.secret = secret;
 

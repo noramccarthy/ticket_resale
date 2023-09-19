@@ -19,7 +19,7 @@ module.exports = {
             .then(newUser => {
                 const userToken = jwt.sign({
                     id: newUser._id
-                }, process.env.SECRET_KEY);
+                }, process.env.REACT_APP_SECRET_KEY);
                 res
                     .cookie("usertoken", userToken, {httpOnly:true})
                     .json({message: "Successful registration", user: newUser})
@@ -41,7 +41,7 @@ module.exports = {
         // create token
         const userToken = jwt.sign({
             id: user._id,
-        }, process.env.SECRET_KEY);
+        }, process.env.REACT_APP_SECRET_KEY);
 
         console.log(userToken);
 

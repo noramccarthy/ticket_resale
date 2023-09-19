@@ -11,7 +11,10 @@ import '../css/LandingPage.css'
 
 const LandingPage = () => {
     const navigate = useNavigate;
-    const [tickets, setTickets] = useState([]);
+    const [concerts, setConcerts] = useState([]);
+    const [sports, setSports] = useState([]);
+        const [theater, setTheater] = useState([]);
+
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
 
@@ -26,9 +29,28 @@ const LandingPage = () => {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket")
+        axios.get("http://localhost:8000/api/ticket/concerts")
         .then((res) => {
-            setTickets(res.data)
+            setConcerts(res.data)
+            console.log("Concerts:", concerts)
+        })
+        .catch((err) => console.log(err))
+    }, []);
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/ticket/sports")
+        .then((res) => {
+            setSports(res.data)
+            console.log("Sports:", sports)
+        })
+        .catch((err) => console.log(err))
+    }, []);
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/ticket/theater")
+        .then((res) => {
+            setTheater(res.data)
+            console.log("Theater:", theater)
         })
         .catch((err) => console.log(err))
     }, []);
@@ -52,21 +74,52 @@ const LandingPage = () => {
     
             <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
                 <div className="carousel-container">
-                    <h1 className='category-title'> Shop discounted tickets</h1>
+                    <h1 className='category-title'> Shop Concerts</h1>
                         <Slider {...settings}>
-                            {tickets.map((ticket, index) => (
-                                <div className='carousel-body' key={index}>
-                                    <Carousel
-                                        ticket={ticket}
-                                        addToCart={addToCart}
-                                        isInStock={isInStock}
-                                    />
-                            </div>
-                        ))}
+                            {concerts.map((ticket, index) => (
+                                    <div className='carousel-body' key={index}>
+                                        <Carousel
+                                            ticket={ticket}
+                                            addToCart={addToCart}
+                                            isInStock={isInStock}
+                                        />
+                                </div>
+                            ))}
                         </Slider>
-                        <Link className='deals' to={"/deals"}><button className='deals-button'>Find Deals</button> </Link> 
+                </div>
+                
+
+                <div className="carousel-container">
+                    <h1 className='category-title'> Shop Sports</h1>
+                        <Slider {...settings}>
+                            {sports.map((ticket, index) => (
+                                    <div className='carousel-body' key={index}>
+                                        <Carousel
+                                            ticket={ticket}
+                                            addToCart={addToCart}
+                                            isInStock={isInStock}
+                                        />
+                                </div>
+                            ))}
+                        </Slider>
+                </div>
+
+                <div className="carousel-container">
+                    <h1 className='category-title'> Shop Theater</h1>
+                        <Slider {...settings}>
+                            {theater.map((ticket, index) => (
+                                    <div className='carousel-body' key={index}>
+                                        <Carousel
+                                            ticket={ticket}
+                                            addToCart={addToCart}
+                                            isInStock={isInStock}
+                                        />
+                                </div>
+                            ))}
+                        </Slider>
                 </div>
             </section>
+            
         </div>
         <Footer/>
         </>

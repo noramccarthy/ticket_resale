@@ -11,7 +11,7 @@ const Carousel = ({ticket, addToCart, isInStock}) => {
                 <Link className='link_image_carasoul' to={`/ticket/${ticket._id}`}>
                         <img className="carousel-pic" src={ticket.image} alt={ticket.artist} />
                 </Link>
-    
+
                 <h6 className='ticket-title'>
                     <Link to={`/ticket/${ticket._id}`}>{ticket.artist}</Link>
                 </h6>
