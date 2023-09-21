@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../css/LoginRegistration.css'
 
 const UserForm = () => {
@@ -22,7 +22,6 @@ const UserForm = () => {
         axios.post("http://localhost:8000/api/register", userForm, {withCredentials: true})
         .then(res => {
             console.log(res.data)
-            // check this
             setUserForm(res.data);
             navigate('/admin/dashboard')
         })

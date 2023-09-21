@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/TicketForm.css'
 
 const TicketForm = (props) => {
-    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount} = props;
+    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, error} = props;
 
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
@@ -25,13 +25,10 @@ const TicketForm = (props) => {
 
                                 <div className="mb-md-5 mt-md-4 pb-5">
 
-                                {/* ERRORS HERE */}
-
                                 <form onSubmit={onSubmitHandler} className='create-ticket-form'>
                                     <p className="text-white-50 mb-5">List your tickets</p>
 
                                     <div className="form-outline form-white mb-4">
-                                        {/* <label className="ticket-form-label" htmlFor="category">Category</label> */}
                                         <input 
                                             type="hidden"
                                             name="category"
@@ -80,7 +77,7 @@ const TicketForm = (props) => {
                                         />
                                     </div>
 
-                                    {/* {error.price ? <p className='ticket_form_error_msg'>{error.price.message}</p> : ""} */}
+                                    {error.price ? <p className='ticket_form_error_msg'>{error.price.message}</p> : ""}
 
                                     <div className="form-outline form-white mb-4">
                                         <label className="ticket-form-label" htmlFor="price">Price</label>
@@ -94,7 +91,7 @@ const TicketForm = (props) => {
                                         />
                                     </div>
 
-                                    {/* {error.stock ? <p className='ticket_form_error_msg'>{error.stock.message}</p> : ""} */}
+                                    {error.stock ? <p className='ticket_form_error_msg'>{error.stock.message}</p> : ""}
 
                                     <div className="form-outline form-white mb-4">
                                         <label className="ticket-form-label" htmlFor="stock">Stock</label>
@@ -118,10 +115,11 @@ const TicketForm = (props) => {
                                     </div>
 
                                     <div className="form-outline form-white mb-4">
-                                        <label className="ticket-form-label" htmlFor="onSale">On sale?</label>
+                                        <label className="ticket-form-label" htmlFor="onSale">On sale?</label> 
                                         <input
                                             type="checkbox"
                                             name="onSale"
+                                            placeholder={newOnSale}
                                             checked={onSale}
                                             onChange={(e) => {setOnSale(!onSale)}}
                                         />

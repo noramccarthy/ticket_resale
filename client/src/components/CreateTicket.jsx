@@ -49,8 +49,8 @@ const CreateTicket = props => {
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log(err);
-            setError(err.response);
+            console.log(err.response.data.errors);
+            setError(err.response.data.errors);
         })
     }
 
@@ -70,6 +70,7 @@ const CreateTicket = props => {
                 newStock={stock}
                 newOnSale={onSale}
                 newDiscount={discount}
+                error={error}
             />
         </div>
 

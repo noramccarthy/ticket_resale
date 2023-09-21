@@ -13,7 +13,7 @@ const LandingPage = () => {
     const navigate = useNavigate;
     const [concerts, setConcerts] = useState([]);
     const [sports, setSports] = useState([]);
-        const [theater, setTheater] = useState([]);
+    const [theater, setTheater] = useState([]);
 
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
@@ -86,6 +86,7 @@ const LandingPage = () => {
                                 </div>
                             ))}
                         </Slider>
+                        
                 </div>
                 
 

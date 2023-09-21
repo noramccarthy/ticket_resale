@@ -1,4 +1,4 @@
-// contains all our functionality of our API
+4// contains all our functionality of our API
 // how we will interact with the DB
 
 const Ticket = require('../models/ticket.model');

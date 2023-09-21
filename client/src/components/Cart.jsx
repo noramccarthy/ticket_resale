@@ -14,7 +14,6 @@ import Footer from './Footer';
 const PAYPAL_API = "AUXYLTAsvHFThBeI28d4bNu7sYxbtCo1RFiiYZs6L-_wWmJwAkej4vSFV7si14s1ozlo-SxZDntQI9xI";
 // const {REACT_APP_CLIENT_ID} = process.env
 
-
 const Cart = ({cartDetails, setCartDetails}) => {
     const [errorMessage, setErrorMessage] = useState({});
     const { cartItems, removeFromCart, updateCartItemQuantity, clearCart } = useContext(CartContext);

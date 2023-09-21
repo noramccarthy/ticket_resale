@@ -1,16 +1,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
-
 import '../css/AdminDashboard.css'
 import YourTicket from './YourTicket';
 import Footer from './Footer';
 
-const AdminDashboard = ({authorized, setAuthorized}) => {
+const AdminDashboard = (props) => {
     const [adminTickets, setAdminTickets] = useState([]);
-
-    // const [error, setError] = useState("");
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axios.get("http://localhost:8000/api/admin/yourtickets", {withCredentials:true})
@@ -19,6 +17,8 @@ const AdminDashboard = ({authorized, setAuthorized}) => {
             console.log(res.data)
         })
         .catch((err) => {
+            props.setAuthorized("Please Login!")
+            navigate("/admin/login")
             console.log(err);
         })
     },[])

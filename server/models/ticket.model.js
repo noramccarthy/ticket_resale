@@ -34,14 +34,14 @@ const TicketSchema = new mongoose.Schema({
     price: {
         type: Number,
         required: [true, "Price is required."],
-        min:[0.01, "Ticket price must be greater than 0"],
+        min:[1.00, "Price must be greater than $1.00"],
         // get: v => Math.floor(v * 100)/100,
         // set: v => Math.floor(parseFloat(v)*100)/100
     },
     stock: {
         type: Number,
         required: [true, "How many tickets are you selling?"],
-        min: [1, "You must sell at least one ticket."],
+        min: [1, "How many tickets are you selling?"],
         validate: {
             validator: Number.isInteger,
             message: "Quantity must be a whole number."

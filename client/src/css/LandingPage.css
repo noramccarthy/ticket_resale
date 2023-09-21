@@ -143,17 +143,18 @@
 
 .slick-prev:before {
     color: black !important;
-    font-size: 24px !important;
+    font-size: 26px !important;
     opacity: 100% !important;
+    margin-right: 5px;
 }
 
 .slick-next {
-    margin-right: 3px;
+    margin-right: 5px;
 }
 
 .slick-next::before {
     color: black !important;
-    font-size: 24px !important;
+    font-size: 26px !important;
     margin-right: 20px !important;
     opacity: 100% !important;
 }

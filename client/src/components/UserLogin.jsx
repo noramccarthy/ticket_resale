@@ -22,12 +22,11 @@ const UserLogin = props => {
         axios.post("http://localhost:8000/api/login", userLogin, {withCredentials: true})
         .then(res => {
             console.log(res.data)
-            // check this
             setUserLogin(res.data);
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log(err.response.data);
+            console.log("Error:", err.response.data);
             setError(err.response.data);
         })
     }
@@ -43,11 +42,13 @@ const UserLogin = props => {
 
                                 <div className="mb-md-5 mt-md-4 pb-5">
 
+                                <h3 className='text-danger' style={{display:"inline"}}>{props.authorized}</h3>
+
                                 <form onSubmit={handleUserLogin} className='create-user-form'>
                                     <h2 className="fw-bold mb-2 text-uppercase">Login</h2>
                                     <p className="text-white-50 mb-5">Please login with your email and password</p>
 
-                                    {error.email ? <p className='ticket_form_error_msg'>{error.email.message}</p> : null}
+                                    {error ? <p className='ticket_form_error_msg'>{error.message}</p> : null}
 
                                     <div class="form-outline form-white mb-4">
                                         <label className="user-form-label" htmlFor="email">Email address</label>
@@ -60,7 +61,6 @@ const UserLogin = props => {
                                         />
                                     </div>
 
-                                    {error.password ? <p className='ticket_form_error_msg'>{error.password.message}</p> : null}
                                     <div className="form-outline form-white mb-4">
                                         <label className="user-form-label" htmlFor="password">Password</label>
                                         <input 

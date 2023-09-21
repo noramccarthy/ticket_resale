@@ -11,7 +11,6 @@ const CartProvider = ({ children }) => {
         return cartCountFromStorage ? JSON.parse(cartCountFromStorage) : 0;
     });
 
-
     // items in the card
     const [cartItems, setCartItems] = useState(() => {
         const cartItemsFromStorage = localStorage.getItem('cartItems');

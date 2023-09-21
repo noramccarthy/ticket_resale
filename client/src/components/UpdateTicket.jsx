@@ -40,8 +40,8 @@ const UpdateTicket = props => {
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log(err);
-            setError(err.response);
+            console.log(err.response.data.error.errors);
+            setError(err.response.data.error.errors);
         })
     }
 
@@ -61,6 +61,7 @@ const UpdateTicket = props => {
                 newStock={ticket.stock}
                 newOnSale={ticket.onSale}
                 newDiscount={ticket.discount}
+                error={error}
             />
         </div>
 
