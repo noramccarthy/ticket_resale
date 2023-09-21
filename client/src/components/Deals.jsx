@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { CartContext } from '../context/CartContext'
 import FilterBar from './FilterBar';
+import Ticket from './Ticket';
 import '../css/AllTickets.css'
 import Footer from './Footer';
 
@@ -99,13 +100,10 @@ const Deals = () => {
     return (
         <>
         <section id="tickets-scroll" className='tickets-container'>
-            <div className='navbar-sticky'>
-                <Navbar/>
-            </div>
+            <Navbar/>
         </section>
         
-        {/* container */}
-        <div className='all-tickets-body-container'>
+        <div className='body-container'>
             {/* filter bar */}
             <div className='filter-bar'>
                 <FilterBar
@@ -122,39 +120,21 @@ const Deals = () => {
             <div className='filtered-tickets-container'>
                 {filterTickets.map((ticket) => (
                     <div key={ticket._id} className='one-ticket'>
-                        <Link to={'/one/ticket/' + ticket._id}>
-                            <img className='ticket-image' src={ticket.image} alt="Placeholder"/>
-                        </Link>
-
-                        <div className='ticket-text'>
-                            <h6 className='ticket-title'>
-                                <Link to={'/one/ticket/' + ticket._id}>{ticket.artist}</Link>
-                            </h6>
-
-                            {ticket.onSale && ticket.discount > 0 ? (
-                                <div>
-                                    <h6 className='ticket-price-discount'>
-                                        <span className='onsale-ticket'>
-                                            ${ticket.price.toFixed(2)}
-                                        </span>
-                                            ${getDiscountPrice(ticket).toFixed(2)}
-                                    </h6>
-                                </div>
-                            ) : (
-                                <h6 className='ticket-price'>${ticket.price.toFixed(2)}</h6>
-                            )}
-
-                            <button className='ticket-addToCart' onClick={() => addToCartHandler(ticket)} disabled={stockReached(ticket)}>
-                                {stockReached(ticket) ? "No tickets left" : "Add to cart"}
-                            </button>
-
-                        </div>
+                        <Ticket 
+                            ticket = {ticket}
+                            discount = {getDiscountPrice}
+                            cart = {addToCartHandler}
+                            stock = {stockReached}
+                        />
                     </div>
                 ))}
 
             </div>
             ) : (
-                <p className='empty-category'>No Tickets</p>
+                // no tickets
+            <div className='filtered-tickets-container'>
+                    <p className='empty-category'>No Tickets</p>
+            </div>
             )}
         </div>
         <Footer/>

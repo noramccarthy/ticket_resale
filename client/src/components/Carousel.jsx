@@ -8,35 +8,36 @@ const Carousel = ({ticket, addToCart, isInStock}) => {
 
         return (
             <>
-                <Link className='link_image_carasoul' to={`/ticket/${ticket._id}`}>
-                        <img className="carousel-pic" src={ticket.image} alt={ticket.artist} />
-                </Link>
+                <div className="one-container">
+                    <Link className='carousel-pic' to={`/ticket/${ticket._id}`}>
+                            <img className="carousel-pic" src={ticket.image} alt={ticket.artist} />
+                    </Link>
 
-                <h6 className='ticket-title'>
-                    <Link to={`/ticket/${ticket._id}`}>{ticket.artist}</Link>
-                </h6>
-
-                {ticket.onSale && ticket.discount > 0 ? (
-                    <div>
-                        <div className='carousel-price'>
-                            <h6 className="carousel-original-price">${ticket.price} </h6>
-                            <h6 className="carousel-discount-price">
-                                ${(ticket.price - ticket.discount).toFixed(2)}
-                            </h6>
-                        </div>
-
+                    <div className='ticket-title-container'>
+                        <Link to={`/ticket/${ticket._id}`} className="ticket-artist">{ticket.artist}</Link>
                     </div>
-                ) : (
-                    <h6 className="carousel-discount-price">{`$${ticket.price}`} </h6>
-                )}
 
-                <button
-                    className='carousel-btn'
-                    onClick={() => addToCart(ticket)}
-                    disabled={isInStock(ticket)}>
-                    {isInStock(ticket) ? "Out of Stock" : "Add to Cart"}
-                </button>
-            
+                    <div className="prices">
+                        {ticket.onSale && ticket.discount > 0 ? (
+                                <div className='carousel-price'>
+                                    <h6 className="carousel-original-price">${ticket.price} </h6>
+                                    <h6 className="carousel-discount-price">
+                                        ${(ticket.price - ticket.discount).toFixed(2)}
+                                    </h6>
+                                </div>
+                        ) : (
+                            <h6 className="carousel-discount-price">{`$${ticket.price}`} </h6>
+                        )}
+                    </div>
+
+                    <button
+                        className='carousel-btn'
+                        onClick={() => addToCart(ticket)}
+                        disabled={isInStock(ticket)}>
+                        {isInStock(ticket) ? "Out of Stock" : "Add to Cart"}
+                    </button>
+
+                </div>
             </>
         )
 }

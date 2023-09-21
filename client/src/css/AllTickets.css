@@ -1,23 +1,23 @@
-.all-tickets-body-container {
-    display: flex;
+.body-container {
+    display: block;
+    margin: auto;
 }
 
 .filter-bar {
-    width: 20%;
-    justify-content: center;
-    margin-left: 9px;
+    width: 90%;
+    margin: auto;
 }
 
 /* filtered tickets */
 .filtered-tickets-container{
     display:inline-flex;
     flex-wrap: wrap;
-    width: 100%;
+    width: 90%;
 }
 
 /* each ticket */
 .one-ticket {
-    width: 30%;
+    width: 25%;
     margin: 3rem 0 auto;
     display: flex;
     flex-direction: column;
@@ -26,14 +26,6 @@
     /* text-align: center; */
     position: relative;
 }
-
-/* category selector
-.select {
-    width: 200px;
-    height: 50px;
-    border: 1px solid black;
-    border-radius: 6px;
-} */
 
 /* no tickets */
 .empty-category {

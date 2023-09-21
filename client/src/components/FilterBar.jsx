@@ -38,46 +38,30 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
 
     return (
         <>
+
         <div className='filter-bar-container'>
-            <div className="row my-5">
+            <div className='row my-5'>
                 <div className="col">
                     <h4 className="border-bottom">Filters</h4>
                 </div>
-                <div className="col-sm-12 my-2">
+            </div>
+
+            <div className="row line-2">
+                <div className="col">
                     <label htmlFor="name">Search</label>
+
                     <input
                         type="text"
                         className="form-control"
-                        placeholder="Artist, event, team"
+                        placeholder="Artist, event, team..."
                         id="searchbar"
                         value={filters.searchInput}
                         onChange={handleFilter("searchInput")}
                     />
                 </div>
 
-                <div className="col-sm-12 my-2">
-                    <label htmlFor="category">Category</label>
-
-
-                    <select 
-                        className="form-control"
-                        id="category"
-                        onChange={handleFilter("category")}
-                    >
-
-                        <option value="">Category</option>
-                            {categories.map((category, index) => (
-                                <option key={index} value={category.seatgeekName}>
-                                    {category.categoryName}
-                                </option>
-                                ))
-                            }
-                    </select>
-                </div>
-
-                <div className="col-sm-12 my-2">
+                <div className="col">
                     <label htmlFor="state">State</label>
-
 
                     <select 
                         className="form-control"
@@ -85,10 +69,29 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
                         onChange={handleFilter("state")}
                     >
 
-                        <option value="">States</option>
+                        <option value="" disabled selected>States</option>
                             {states.map((state, index) => (
                                 <option key={index} value={state.stateName}>
                                     {state.stateName}
+                                </option>
+                                ))
+                            }
+                    </select>
+                </div>
+
+                <div className="col">
+                    <label htmlFor="category">Category</label>
+
+                    <select 
+                        className="form-control"
+                        id="category"
+                        onChange={handleFilter("category")}
+                    >
+
+                        <option value="" disabled selected>Category</option>
+                            {categories.map((category, index) => (
+                                <option key={index} value={category.seatgeekName}>
+                                    {category.categoryName}
                                 </option>
                                 ))
                             }

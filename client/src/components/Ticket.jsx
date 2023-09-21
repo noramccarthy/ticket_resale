@@ -9,7 +9,7 @@ const Ticket = ({ticket, discount, cart, stock}) => {
     const day = date.toLocaleDateString('en-US', {day: '2-digit'})
     const year = date.getFullYear();
 
-    const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
+    // const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
 
 
     return (

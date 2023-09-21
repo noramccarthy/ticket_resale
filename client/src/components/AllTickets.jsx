@@ -97,11 +97,10 @@ const AllTickets = () => {
     return (
         <>
         <section id="tickets-scroll" className='tickets-container'>
-            <div className='navbar-sticky'><Navbar/></div>
+            <Navbar/>
         </section>
         
-        {/* container */}
-        <div className='all-tickets-body-container'>
+        <div className='body-container'>
             {/* filter bar */}
             <div className='filter-bar'>
                 <FilterBar

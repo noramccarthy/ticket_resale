@@ -1,5 +1,4 @@
 import NavBar from '../components/Navbar';
-import { useNavigate, Link } from 'react-router-dom';
 import Footer from './Footer';
 import '../css/About.css'
 
@@ -7,13 +6,12 @@ const About = () => {
     return (
         <>
         <div className="main-body">
-            <span className='empty_body_span'></span>
 
             <NavBar/>
 
-            <section className="third-landing-page-container">
-                <h1 className="third-page-title">What we offer</h1>
-                <h6 className='third-page-text'>
+            <section className="about-page-container">
+                <h1 className="about-page-title">What we offer</h1>
+                <h6 className='about-page-text'>
                     
                     <p>Change of plans? Sell your tickets at face value or at a discount.</p>
 

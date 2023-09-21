@@ -1,5 +1,6 @@
 import '../css/AdminDashboard.css'
 import { Link } from 'react-router-dom';
+import '../css/YourTicket.css'
 
 const YourTicket = ({ticket}) => {
 

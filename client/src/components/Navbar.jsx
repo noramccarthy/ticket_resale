@@ -13,20 +13,20 @@ const Navbar = () => {
 
     return (
         <>
-        <nav className="nav-container">
+        <nav className="nav">
             <div className="nav-row">
 
                 <div span="6" className='nav-col'>
                     {/* LOGO */}
                     <div className="logo">
-                        <Link to={"/"}> <img className='logo_img' require src={tfLogo} alt="Logo pic" /> Ticket Forum</Link>
+                        <Link to={"/"}> <img className='logo-img' require src={tfLogo} alt="Logo pic" /> Ticket Forum</Link>
                     </div>
                 </div>
 
                 <div span="6" className='nav-col-end'>
                     {/* LINKS */}
                     <div>
-                        <ul className="nav_links">
+                        <ul className="nav-links">
                             <Link className="link-btn" to={"/about"}>About</Link>
                             <Link className="link-btn" to={'/shop'}>Shop</Link>
                             <Link className="link-btn" to={"/deals"}>Deals</Link>

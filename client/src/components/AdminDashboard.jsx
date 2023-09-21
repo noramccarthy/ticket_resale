@@ -28,7 +28,7 @@ const AdminDashboard = (props) => {
         <AdminNavbar/>
 
         <section class="listings-container">
-            <h1 className='your-listings'>Your Listings</h1>
+            <h1 className='your-listings-title'>Your Listings</h1>
 
             {adminTickets.length > 0 ? (
                 <div className='listings-body'>

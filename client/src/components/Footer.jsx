@@ -5,27 +5,30 @@ import '../css/Footer.css'
 const Footer = () => {
 
     return (
-        <div className="footer__container">
-                <div div className='footer__links'>
+        <div className="footer-container">
+            <div div className='footer-links'>
                 <div className="divide">
-                <Link className='footer__links__color' to={'/shop'}>Shop</Link>
+                    <Link className='footer-links-color' to={'/shop'}>Shop</Link>
                 </div>
+
                 <div className="divide">
-                <Link className='footer__links__color' to={'/deals'}>Deals</Link>
+                    <Link className='footer-links-color' to={'/deals'}>Deals</Link>
                 </div>
+
+                <div className="footer-logo">
+                    <a href="/"><img className='logo-img' require src={tfLogo} alt="companyLogo" /></a>
+                </div>
+                
                 <div className="divide">
+                    <Link className="footer-links-color" to={"/about"}>About Us</Link>
                 </div>
+
                 <div className="divide">
-                <Link className="footer__links__color" to={"/about"}>About Us</Link>
+                    <Link className='footer-links-color' to={'/cart'}>Cart</Link>
                 </div>
-                <div className="divide">
-                <Link className='footer__links__color' to={'/cart'}>Cart</Link>
-                </div>
-                </div>
-            <div className="footer__logo">
-                {/* <a href="/"><img className='logo_img' require src={tfLogo} alt="companyLogo" /></a> */}
             </div>
-            <div className='footer__bottom__info'>
+
+            <div className='footer-info'>
                 <p>© 2023 Ticket Forum</p>
             </div>
         </div>

@@ -1,6 +1,6 @@
 
 /* ABOUT PAGE CSS */
-.third-landing-page-container {
+.about-page-container {
     border-top: 3px solid black;
     background-position: center;
     background-size: cover;
@@ -13,23 +13,16 @@
     height: 100vh;
 }
 
-.third-page-title {
+.about-page-title {
     margin-top: 0 !important;
     padding-top: 0 !important;
     font-size: 6rem;
     color: #869abc;
 }
 
-/* .landing_page_confident__title {
-    font-size: 4rem !important;
-    text-transform: uppercase;
-    color: rgb(0, 0, 0);
-    font-weight: 800;
-} */
-
-
-.third-page-text {
-    background-color: #f9d9b0;
+.about-page-text {
+    /* background-color: #f9d9b0; */
+    background-color: #dce7f9;
     opacity: 0.95;
     border-radius: 12px;
     border: none;

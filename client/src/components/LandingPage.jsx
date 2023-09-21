@@ -18,7 +18,7 @@ const LandingPage = () => {
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
 
-    const settings = { dots: true, infinite: true, speed: 500, slidesToShow: 3,  slidesToScroll: 1 ,responsive: [ {breakpoint: 1400, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1300, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
+    const settings = { dots: true, infinite: true, speed: 500, slidesToShow: 4,  slidesToScroll: 1 ,responsive: [ {breakpoint: 1400, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1300, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
 
     // check if ticket is in stock
     const isInStock = (ticket) => {
@@ -58,17 +58,18 @@ const LandingPage = () => {
     return (
         <>
         <div className="main-body">
-            <span className='empty_body_span'></span>
             <NavBar/>
             
             <div className='body'>
-                <div className="container-header">
-                    <div className='containerLink'>
-                        <h6 className='title'> A marketplace</h6>
-                        <h6 className='title'> where fans buy and sell </h6>
-                        <h6 className='title'> tickets at a reasonable price</h6>
+                <div className='opaque'>
+                    <div className="container-header">
+                        <div className='containerLink'>
+                            <p className='title'> A marketplace</p>
+                            <p className='title'> where fans buy and sell </p>
+                            <p className='title'> tickets at a reasonable price</p>
+                        </div>
+                        <Link className='link_to_deals' to={"/shop"}><button className='shop-button'>Shop Tickets</button> </Link> 
                     </div>
-                    <Link className='link_to_deals' to={"/shop"}><button className='shop-button'>Shop Tickets</button> </Link> 
                 </div>
             </div>
     
@@ -77,12 +78,12 @@ const LandingPage = () => {
                     <h1 className='category-title'> Shop Concerts</h1>
                         <Slider {...settings}>
                             {concerts.map((ticket, index) => (
-                                    <div className='carousel-body' key={index}>
-                                        <Carousel
-                                            ticket={ticket}
-                                            addToCart={addToCart}
-                                            isInStock={isInStock}
-                                        />
+                                <div className='carousel-body' key={index}>
+                                    <Carousel
+                                        ticket={ticket}
+                                        addToCart={addToCart}
+                                        isInStock={isInStock}
+                                    />
                                 </div>
                             ))}
                         </Slider>
@@ -94,12 +95,12 @@ const LandingPage = () => {
                     <h1 className='category-title'> Shop Sports</h1>
                         <Slider {...settings}>
                             {sports.map((ticket, index) => (
-                                    <div className='carousel-body' key={index}>
-                                        <Carousel
-                                            ticket={ticket}
-                                            addToCart={addToCart}
-                                            isInStock={isInStock}
-                                        />
+                                <div className='carousel-body' key={index}>
+                                    <Carousel
+                                        ticket={ticket}
+                                        addToCart={addToCart}
+                                        isInStock={isInStock}
+                                    />
                                 </div>
                             ))}
                         </Slider>
@@ -109,12 +110,12 @@ const LandingPage = () => {
                     <h1 className='category-title'> Shop Theater</h1>
                         <Slider {...settings}>
                             {theater.map((ticket, index) => (
-                                    <div className='carousel-body' key={index}>
-                                        <Carousel
-                                            ticket={ticket}
-                                            addToCart={addToCart}
-                                            isInStock={isInStock}
-                                        />
+                                <div className='carousel-body' key={index}>
+                                    <Carousel
+                                        ticket={ticket}
+                                        addToCart={addToCart}
+                                        isInStock={isInStock}
+                                    />
                                 </div>
                             ))}
                         </Slider>
