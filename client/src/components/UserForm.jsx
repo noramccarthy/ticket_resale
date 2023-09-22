@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../css/LoginRegistration.css'
+import tfLogo from '../assets/images/tfLogo.png'
 
 const UserForm = () => {
     const [userForm, setUserForm] = useState({
@@ -34,22 +35,20 @@ const UserForm = () => {
 
     return (
         <>
-        <section className="vh-100 bg-image">
+        <section className="vh-100 bg-color">
             <div className="login-container py-5 h-100">
-                <div className="row d-flex justify-content-center align-items-center h-100">
-                    <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-                        <div className="ticket-card bg-dark text-white">
-                            <div className="card-body p-5 text-center">
+                <div className="card-container">
+                    <div className="ticket-card bg-white text-black">
+                        <div className="card-body p-5">
+                            <div className='mb-md-5 mt-md-4 pb-5'>
 
-                                <div className="mb-md-5 mt-md-4 pb-5">
-
+                            <a href="/"><img className='logo-img mb-3' require src={tfLogo} alt="companyLogo" /></a>
+                                
                                 <form onSubmit={handleUserForm} className='create-user-form'>
-                                    <h2 className="fw-bold mb-2 text-uppercase">Sign up</h2>
-                                    <p className="text-white-50 mb-5">Please create your login and password</p>
-
+                                    <h2 className="fw-bold mb-5 text-uppercase">Welcome</h2>
                                     {error.email ? <p className='ticket_form_error_msg'>{error.email.message}</p> : null}
 
-                                    <div class="form-outline form-white mb-4">
+                                    <div class="form-outline form-black mb-4">
                                         <label className="user-form-label" htmlFor="email">Email address</label>
                                         <input 
                                             type="email"
@@ -61,7 +60,7 @@ const UserForm = () => {
                                     </div>
 
                                     {error.password ? <p className='ticket_form_error_msg'>{error.password.message}</p> : null}
-                                    <div className="form-outline form-white mb-4">
+                                    <div className="form-outline form-black mb-4">
                                         <label className="user-form-label" htmlFor="password">Password</label>
                                         <input 
                                             type="password"
@@ -73,7 +72,7 @@ const UserForm = () => {
                                     </div>
 
                                     {error.confirmPassword ? <p className='ticket_form_error_msg'>{error.confirmPassword.message}</p> : null}
-                                    <div className="form-outline form-white mb-4">
+                                    <div className="form-outline form-black mb-4">
                                         <label className="user-form-label" htmlFor="confirmPassword">Confirm Password</label>
                                         <input 
                                             type="password"
@@ -84,12 +83,11 @@ const UserForm = () => {
                                         />
                                     </div>
 
-                                    <button className="btn btn-outline-light btn-lg px-5" type="submit">Sign up</button>
-
-                                    <div>
-                                        <p className="mb-0 mt-5">Already have an account? <a href="/admin/login" className="text-white-50 fw-bold">Login</a></p>
-                                    </div>
+                                    <button className="btn btn-outline-dark btn-lg px-4" type="submit">Sign up</button>
                                 </form>
+
+                                <div>
+                                    <p className="mb-0 mt-5">Already have an account? <a href="/admin/login" className="redirect">Login</a></p>
                                 </div>
                             </div>
                         </div>

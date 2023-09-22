@@ -144,5 +144,6 @@
 
 /* dots */
 .slick-dots {
-    bottom: -30px;
+    /* bottom: -30px; */
+    visibility: hidden;
 }

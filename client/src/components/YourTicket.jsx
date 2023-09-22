@@ -13,7 +13,7 @@ const YourTicket = ({ticket}) => {
 
     return (
         <>
-        <section class="single-card">
+        <div class="single-card">
             <div class="row">
                 <article class="card fl-left">
                     <section class="date">
@@ -46,7 +46,7 @@ const YourTicket = ({ticket}) => {
                     </section>
                 </article>
             </div>
-            </section>
+        </div>
         </>
     )
 }

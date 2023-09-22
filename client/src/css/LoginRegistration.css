@@ -1,19 +1,38 @@
-/* .bg-image {
-    height: 500px;
-} */
 
-.card {
-    border-radius: 1rem;
+.bg-color {
+    background-color: #e8e6e6;
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.unauthorized {
+    display: inline;
+    font-size: 25px;
+    color: red;
+}
+
+.card-body {
+    margin-top: 4px;
+    text-align: center;
 }
 
 .ticket-card {
     display: table-row;
     width: 100%;
-    background-color: #fff;
-    color: #989898;
     margin-bottom: 15px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     border-radius: 4px;
     position: c;
+}
+
+.redirect {
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    text-decoration: underline;
 }

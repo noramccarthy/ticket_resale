@@ -17,7 +17,7 @@ const AdminDashboard = (props) => {
             console.log(res.data)
         })
         .catch((err) => {
-            props.setAuthorized("Please Login!")
+            props.setAuthorized("Please Login First")
             navigate("/admin/login")
             console.log(err);
         })
