@@ -6,7 +6,7 @@
     width: 60%;
     margin: 5% auto;
     border: 2px solid black;
-    box-shadow: .15rem .15rem 4px #000;
+    box-shadow: 2px 2px 4px #000;
     border-radius: 10px;
     background-color: rgb(247, 246, 246);
     padding: 3%;
@@ -36,28 +36,28 @@
 }
 
 .receipt_th_1 {
-    background-color:  rgb(162, 180, 195);
+    background-color: #dce7f9;
     width: 50%;
     padding: 5px;
     border-collapse: collapse;
 }
 
 .receipt_th_2 {
-    background-color:  rgb(162, 180, 195);
+    background-color: #dce7f9;
     width: 15%;
     padding: 5px;
     border-collapse: collapse;
 }
 
 .receipt_th_3 {
-    background-color:  rgb(162, 180, 195);
+    background-color: #dce7f9;
     width: 15%;
     padding: 5px;
     border-collapse: collapse;
 }
 
 .receipt_th_4 {
-    background-color:  rgb(162, 180, 195);
+    background-color: #dce7f9;
     width: 20%;
     padding: 5px;
     border-collapse: collapse;

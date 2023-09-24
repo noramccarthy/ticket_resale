@@ -112,12 +112,11 @@ const Receipt = (props) => {
                     </div>
                     {/* recepit container */}
                     <div className="receipt_container">
-                        <h1>RECEIPT</h1>
+                        <h2>YOUR RECEIPT</h2>
                         <hr className="spacer"/>
                         <div className="flex">
                             {/* left upper section */}
                             <div className="left">
-                                <img className='logo_img' require src={CompanyLogo} alt="Ticket-Forum" />
                                 <h5 className="push_left">Invoice #: N/A</h5>
                             </div>
                             {/* right upper section */}
@@ -135,7 +134,7 @@ const Receipt = (props) => {
                                     <tr className="receipt_row">
                                         <th className="receipt_th_1">Item Desc.</th>
                                         <th className="receipt_th_2">Qty</th>
-                                        <th className="receipt_th_3">Each</th>
+                                        <th className="receipt_th_3"></th>
                                         <th className="receipt_th_4">Total</th>
                                     </tr>
                                 </thead>
@@ -156,12 +155,12 @@ const Receipt = (props) => {
                                         <td className="receipt_td"></td>
                                         <td className="receipt_td"></td>
                                         <td className="receipt_td">Total:</td>
-                                        <td className="receipt_td"><h3>$0.00</h3> </td>
+                                        <td className="receipt_td"><h4>$0.00</h4> </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <h2 className="thanks" >Thanks for shopping with Ticket Forum</h2>
+                        <h2 className="thanks" >Thanks for shopping with Ticket Forum!</h2>
                     </div>
 
                     <Footer/>

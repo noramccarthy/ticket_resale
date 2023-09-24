@@ -19,11 +19,13 @@
 
 .quantity-button {
     background-color: transparent;
-    padding: 4px 8px;
     cursor: pointer;
     border: 1px solid black;
-    font-size: 18px;
+    border-radius: 50px;
+    font-size: 16px;
     margin: 0 15px;
+    height: 30px;
+    width: 30px;
 }
 
 .left_btn {
@@ -110,7 +112,7 @@
     /* justify-content: center; */
     /* text-align: center; */
     padding: 16px 10px;
-    width: 26%;
+    width: 30%;
     height: fit-content;
     border-radius: 12px;
     margin-top: 7%;
@@ -132,7 +134,18 @@
     color: black;
     font-weight: 300;
     font-size: 18px;
-    margin-top: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: start;
+}
+
+.mapped-price {
+    color: black;
+    font-weight: 300;
+    font-size: 18px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: end;
 }
 
 .scrollable_div {
@@ -154,7 +167,7 @@
 .subtotal-container {
     display: flex;
     justify-content: space-between;
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     margin-bottom: 15px;
     /* margin-top: 50px; */
@@ -164,6 +177,14 @@
     color: #000;
     font-weight: 400;
     letter-spacing: 1.2px;
+    text-align: start;
+}
+
+.checkout_subtotal_price {
+    color: #000;
+    font-weight: 400;
+    letter-spacing: 1.2px;
+    text-align: end;
 }
 
 .checkout_btn:active {

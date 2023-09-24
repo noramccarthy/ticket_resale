@@ -88,7 +88,6 @@ const Cart = ({cartDetails, setCartDetails}) => {
 
 
     return (
-
         <>
             <div className='body_cart'>
                 <Navbar/>
@@ -134,18 +133,17 @@ const Cart = ({cartDetails, setCartDetails}) => {
                             <div className="checkout_main_section_cart">
                                 <h3 className='cart-summary-title'>Cart Summary</h3>
                                     <div className="scrollable-cart-body">
-                                {updatedCart.map((ticket) => (
-                                        <div key={ticket._id} className='mapped-cart'>
-                                            <h4 className='mapped-tickets'>{ticket.artist}</h4>
-                                        
-                                            <h4 className='mapped-tickets'>${ticket.totalCost.toFixed(2)}</h4>
-                                        </div>
-                                    ))}
-                                </div>
+                                        {updatedCart.map((ticket) => (
+                                                <div key={ticket._id} className='mapped-cart'>
+                                                    <h4 className='mapped-tickets'>{ticket.artist}</h4>
+                                                    <h4 className='mapped-price'>${ticket.totalCost.toFixed(2)}</h4>
+                                                </div>
+                                        ))}
+                                    </div>
 
                                 <div className="subtotal-container">
                                     <h4 className='checkout_subtotal'> Subtotal</h4>
-                                    <h4 className='checkout_subtotal'>${cartSubtotal().toFixed(2)}</h4>
+                                    <h4 className='checkout_subtotal_price'>${cartSubtotal().toFixed(2)}</h4>
                                 </div>
 
                                 <div className="paypal_container">
