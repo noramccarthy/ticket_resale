@@ -18,7 +18,14 @@ const LandingPage = () => {
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
 
-    const settings = { dots: true, infinite: true, speed: 500, slidesToShow: 4,  slidesToScroll: 1 ,responsive: [ {breakpoint: 1400, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1300, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
+    const settings = { 
+        dots: true, 
+        infinite: true, 
+        speed: 500, 
+        slidesToShow: 4,  
+        slidesToScroll: 1,
+        responsive: [ {breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1000, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
+        
 
     // check if ticket is in stock
     const isInStock = (ticket) => {

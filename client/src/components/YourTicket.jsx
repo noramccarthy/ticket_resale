@@ -13,40 +13,35 @@ const YourTicket = ({ticket}) => {
 
     return (
         <>
-        <div class="single-card">
-            <div class="row">
-                <article class="card fl-left">
-                    <section class="date">
-                        <time datetime="23th feb">
-                        <span>{day}</span><span>{month}</span>
-                        </time>
-                    </section>
+        <div class="your-ticket-container">
+            <article class="your-ticket-card">
+                <section className='your-ticket-date'>
+                    <span>{day}</span><span>{month}</span>
+                </section>
 
-                    <section class="card-cont">
+                <section class="your-ticket-info">
+                    <div className='your-ticket-artist'>
                         <h3>{ticket.artist}</h3>
 
-                        <div class="event-date">
-                            {/* <i class="fa fa-calendar"></i> */}
+                    </div>
+
+                    <div class="your-ticket-dates">
+                        {/* <i class="fa fa-calendar"></i> */}
                             <time>
                                 <span>{month} {day}, {year}</span>
                                 <span>{time}</span>
-
                             </time>
-                        </div>
-
-                        <div class="event-info">
-                            {/* <i class="fa fa-map-marker"></i> */}
-                            <p>
-                                {ticket.location}
-                            </p>
-                        </div>
-
-                        <Link className='link' to={`/admin/update/${ticket._id}`}> Update</Link>
-
-                    </section>
-                </article>
-            </div>
+                    </div>
+                    <div class="your-ticket-location">
+                        {/* <i class="fa fa-map-marker"></i> */}
+                        {ticket.location}
+                    </div>
+                    <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>
+                </section>
+            </article>
         </div>
+
+
         </>
     )
 }
