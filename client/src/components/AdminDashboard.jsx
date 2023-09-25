@@ -27,26 +27,31 @@ const AdminDashboard = (props) => {
         <>
         <AdminNavbar/>
 
-        <section class="listings-container">
+        <div className='admin-dashboard'>
             <h1 className='your-listings-title'>Your Listings</h1>
 
-            {adminTickets.length > 0 ? (
-                <div className='listings-body'>
-
-                    {adminTickets.map((ticket) => (
-                        <div key= {ticket._id}>
-                            <YourTicket 
-                                ticket={ticket}
-                            />
+            <div class="admin-container">
+                <section className='your-listings-container'>
+                    {adminTickets.length > 0 ? (
+                        <div className='your-listings-body'>
+                            {adminTickets.map((ticket) => (
+                                <div key= {ticket._id}>
+                                    <YourTicket 
+                                        ticket={ticket}
+                                    />
+                                </div>
+                            ))}
                         </div>
-                    ))}
-                </div>
-                ) : ( 
-                    null
-                )}
-        </section>
+                        ) : ( 
+                            null
+                        )}
+                </section>
+            </div>
+            <Footer/>
 
-        <Footer/>
+
+        </div>
+
         </>
     )
 }

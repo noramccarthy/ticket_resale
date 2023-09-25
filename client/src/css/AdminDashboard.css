@@ -1,22 +1,41 @@
 
-.listings-container {
+.admin-container {
     background-color: #dce7f9;
     font-family: arial;
-    display: flex;
-    flex-direction: column;
-    min-height: 100;
+    /* display: flex; */
+    /* flex-direction: column; */
+
+    column-count: 2;
+    column-gap: 2px;
+
     padding: 10px;
+
+}
+
+.your-listings-container {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 5px;
+
+}
+
+.your-listings-body {
+    width: 100%;
 }
 
 .your-listings-title {
     text-transform: uppercase;
-    font-weight: 900;
-    /* border-left: 10px solid #fec500; */
-    padding-left: 10px;
-    margin-top: 30px;
-    margin-bottom: 30px
+    font-weight: 600;
+    background-color: #dce7f9;
+    margin: 0 auto;
+    font-size: 2.5rem;
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.listings-body {
-    width: 100%;
+.admin-dashboard {
+    display: block;
 }

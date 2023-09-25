@@ -21,16 +21,14 @@ const YourTicket = ({ticket}) => {
 
                 <section class="your-ticket-info">
                     <div className='your-ticket-artist'>
-                        <h3>{ticket.artist}</h3>
+                        <div>{ticket.artist}</div>
 
                     </div>
 
                     <div class="your-ticket-dates">
                         {/* <i class="fa fa-calendar"></i> */}
-                            <time>
-                                <span>{month} {day}, {year}</span>
-                                <span>{time}</span>
-                            </time>
+                            <div>{month} {day}, {year}</div>
+                            <div>{time}</div>
                     </div>
                     <div class="your-ticket-location">
                         {/* <i class="fa fa-map-marker"></i> */}
