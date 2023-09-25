@@ -16,22 +16,21 @@ const YourTicket = ({ticket}) => {
         <div class="your-ticket-container">
             <article class="your-ticket-card">
                 <section className='your-ticket-date'>
-                    <span>{day}</span><span>{month}</span>
+                    <div className='your-ticket-time'>
+                        <span>{day}</span><span>{month}</span>
+                    </div>
                 </section>
 
                 <section class="your-ticket-info">
                     <div className='your-ticket-artist'>
                         <div>{ticket.artist}</div>
-
                     </div>
 
                     <div class="your-ticket-dates">
-                        {/* <i class="fa fa-calendar"></i> */}
                             <div>{month} {day}, {year}</div>
                             <div>{time}</div>
                     </div>
                     <div class="your-ticket-location">
-                        {/* <i class="fa fa-map-marker"></i> */}
                         {ticket.location}
                     </div>
                     <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>

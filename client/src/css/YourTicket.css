@@ -4,16 +4,16 @@
     overflow: hidden;
     width: 100%;
     justify-content: center;
-
 }
 
 .your-ticket-card {
     display: flex;
-    width: 80%;
-    height: 20vh;
+    width: 90%;
+    height: 17vh;
     background-color: #fff;
     color: #989898;
-    margin-bottom: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
     border-radius: 4px;
@@ -22,52 +22,60 @@
 
 .your-ticket-date {
     border-right: 2px dashed #dadde6;
-    width: 25%;
+    width: 20%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.your-ticket-time {
+    display: block;
+    position: absolute;
     margin: auto;
 }
 
-.your-ticket-date span {
+.your-ticket-time span {
     display: block;
 }
 
-.your-ticket-date span:first-child {
+.your-ticket-time span:first-child {
     color: #2b2b2b;
     font-weight: 600;
     font-size: 200%
 }
 
-.date span:last-child {
+.your-ticket-time span:last-child {
     text-transform: uppercase;
     font-weight: 600;
-    /* margin-top: 10px */
 }
 
 .your-ticket-info{
     display: flex;
     flex-direction: column;
-    text-align: center;
+    text-align: start;
     justify-content: space-between;
-    align-items: center;
+    align-items: start;
 
-    width: 70%;
-    padding: 20px 10px 40px 20px
+    width: 80%;
+    padding: 20px 30px 30px 40px
 }
 
 .your-ticket-artist {
-    font-size: 100%;
-    font-weight: 800;
+    font-size: 18px;
+    font-weight: 600;
     color: black;
+    margin-bottom: 5px;
 }
 
 .your-ticket-dates {
-    font-size: 80%;
+    font-size: 16px;
 }
 
 .your-ticket-location {
-    font-size: 80%;
-    /* margin-bottom: 10px; */
+    font-size: 16px;
 }
-
 
 .update-link {
     font-size: 10px;
@@ -85,23 +93,24 @@
     bottom: 10px
 }
 
-
-
-/* .your-ticket-date:before, .your-ticket-date:after {
+/* circles */
+.your-ticket-date:before, .your-ticket-date:after {
     content: "";
     display: block;
+    
     width: 30px;
     height: 30px;
-    background-color: #3c5b8e;
+    background-color: #dce7f9;
     position: absolute;
     top: -15px;
-    right: -15px;
+    left: 17%;
     border-radius: 50%
 }
 
+
 .your-ticket-date:after {
     top: auto;
-    bottom: -15px
-} */
+    bottom: -8%;
+}
 
 
