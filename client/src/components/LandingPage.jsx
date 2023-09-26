@@ -8,6 +8,8 @@ import NavBar from '../components/Navbar';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import '../css/LandingPage.css'
+import { Slide } from '@mui/material';
+import SlideShow from './SlideShow';
 
 const LandingPage = () => {
     const navigate = useNavigate;
@@ -66,54 +68,8 @@ const LandingPage = () => {
         <>
         <div className="main-body">
             <NavBar/>
-            
-            <div className='body'>
-                <div className="container-header">
-                    <div class="slider">
-                            <div class="slide">
-                                <div className='title-container'>
-                                    <p className='title'> A marketplace</p>
-                                    <p className='title'> where fans buy and sell </p>
-                                    <p className='title'> tickets at a reasonable price</p>
-                                </div>
-                            </div>
 
-                            <div class="slide">
-                                <div className='title-container'>
-                                    <p className='title'> A marketplace</p>
-                                    <p className='title'> where fans buy and sell </p>
-                                    <p className='title'> tickets at a reasonable price</p>
-                                </div>
-                            </div>
-
-                            <div class="slide">
-                                <div className='title-container'>
-                                    <p className='title'> A marketplace</p>
-                                    <p className='title'> where fans buy and sell </p>
-                                    <p className='title'> tickets at a reasonable price</p>
-                                </div>
-                            </div>
-
-                            <div class="slide">
-                                <div className='title-container'>
-                                    <p className='title'> A marketplace</p>
-                                    <p className='title'> where fans buy and sell </p>
-                                    <p className='title'> tickets at a reasonable price</p>
-                                </div>
-                            </div>
-
-                            <div class="slide">
-                                <div className='title-container'>
-                                    <p className='title'> A marketplace</p>
-                                    <p className='title'> where fans buy and sell </p>
-                                    <p className='title'> tickets at a reasonable price</p>
-                                </div>
-                            </div>
-
-                        {/* <Link className='link_to_deals' to={"/shop"}><button className='shop-button'>Shop Tickets</button> </Link>  */}
-                    </div>
-                </div>
-            </div>
+            <SlideShow/>
     
             <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
                 <div className="carousel-container">
