@@ -4,34 +4,89 @@
     border: 0px;
     vertical-align: baseline;
 }
-
 .body {
-    background-image: url(../assets/images/cover.jpg);
-    background-repeat: no-repeat;
-    background-position: center;
+    /* background-image: url(../assets/images/cover.jpg); */
+    /* background-repeat: no-repeat; */
+    /* background-position: center; */
     /* width, height */
-    background-size: 100%, contain;
-    height: 50vh;
+    /* background-size: 100%, contain; */
+    height: 40vh;
     display: flex;
     flex-direction: column;
 }
 
-.opaque {
-    background: rgba(255, 248, 248, 0.118); 
-    height: 50vh;
+/* SLIDER */
+.slider {
+    overflow: hidden;
+    width: 100%;
+    height: 40vh;
+    position: absolute;
+}
+
+.container-header {
+    position: relative;
+}
+
+.slider .slide {
+    position: absolute;
+    /* top: 5; */
+    /* left: 0; */
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center top;
+    animation: slide 50s infinite;
+    opacity: 0.5;
+}
+
+.slider .slide:nth-child(1) {
+    background-image: url('../assets//images/TS.webp');
+    animation-delay: -10s;
+}
+
+.slider .slide:nth-child(2) {
+background-image: url('../assets/images/JM.webp');
+animation-delay: -20s;
+}
+
+.slider .slide:nth-child(3) {
+background-image: url('../assets/images/CS.webp');
+animation-delay: -30s;
+}
+
+.slider .slide:nth-child(4) {
+background-image: url('../assets/images/JT.jpg');
+animation-delay: -40s;
+}
+
+.slider .slide:nth-child(5) {
+background-image: url('../assets/images/KS.jpg');
+animation-delay: -50s;
+}
+
+@keyframes slide {
+    0%, 15%, 100% {
+        transform: translateX(0);
+        animation-timing-function: ease;
+    }
+    20% {
+        transform: translateX(-100%);
+        animation-timing-function: step-end;
+    }
+    95% {
+        transform: translateX(100%);
+        animation-timing-function: ease;
+    }
 }
 
 /* description container */
-.container-header {
-    margin-top: 3%;
+.title-container {
+    display: block;
+    justify-content: center;
+    margin-top: 5%;
+    margin-left: 8%;
 }
 
-.containerLink {
-    margin-left: 8%;
-    z-index: 10;
-    color: #ffffff;
-    text-transform: uppercase;
-}
 
 /* description words */
 .title {

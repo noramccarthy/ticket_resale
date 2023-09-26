@@ -68,14 +68,49 @@ const LandingPage = () => {
             <NavBar/>
             
             <div className='body'>
-                <div className='opaque'>
-                    <div className="container-header">
-                        <div className='containerLink'>
-                            <p className='title'> A marketplace</p>
-                            <p className='title'> where fans buy and sell </p>
-                            <p className='title'> tickets at a reasonable price</p>
-                        </div>
-                        <Link className='link_to_deals' to={"/shop"}><button className='shop-button'>Shop Tickets</button> </Link> 
+                <div className="container-header">
+                    <div class="slider">
+                            <div class="slide">
+                                <div className='title-container'>
+                                    <p className='title'> A marketplace</p>
+                                    <p className='title'> where fans buy and sell </p>
+                                    <p className='title'> tickets at a reasonable price</p>
+                                </div>
+                            </div>
+
+                            <div class="slide">
+                                <div className='title-container'>
+                                    <p className='title'> A marketplace</p>
+                                    <p className='title'> where fans buy and sell </p>
+                                    <p className='title'> tickets at a reasonable price</p>
+                                </div>
+                            </div>
+
+                            <div class="slide">
+                                <div className='title-container'>
+                                    <p className='title'> A marketplace</p>
+                                    <p className='title'> where fans buy and sell </p>
+                                    <p className='title'> tickets at a reasonable price</p>
+                                </div>
+                            </div>
+
+                            <div class="slide">
+                                <div className='title-container'>
+                                    <p className='title'> A marketplace</p>
+                                    <p className='title'> where fans buy and sell </p>
+                                    <p className='title'> tickets at a reasonable price</p>
+                                </div>
+                            </div>
+
+                            <div class="slide">
+                                <div className='title-container'>
+                                    <p className='title'> A marketplace</p>
+                                    <p className='title'> where fans buy and sell </p>
+                                    <p className='title'> tickets at a reasonable price</p>
+                                </div>
+                            </div>
+
+                        {/* <Link className='link_to_deals' to={"/shop"}><button className='shop-button'>Shop Tickets</button> </Link>  */}
                     </div>
                 </div>
             </div>

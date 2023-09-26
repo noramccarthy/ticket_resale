@@ -1,0 +1,143 @@
+
+.one-ticket-container {
+    margin: auto;
+    background-color: #f1efef;
+
+    /* border-top: 3px solid black; */
+    width: 100%;
+    padding: 6% 10%;
+    text-align: center;
+    height: 100vh;
+}
+
+.one-ticket-body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.one-ticket-card {
+    display: flex;
+    
+    width: 80%;
+    height: 35vh;
+    background-color: #fff;
+    color: #989898;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    border-radius: 4px;
+    position: relative;
+}
+
+.one-ticket-img {
+    /* border-right: 2px dashed #dadde6; */
+    /* width: 50%; */
+    margin: auto;
+    height: 100%;
+
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.artist-picture {
+    height: 50vh;
+    width: 50%;
+}
+
+/* .one-ticket-date {
+    border-right: 2px dashed #dadde6;
+    width: 20%;
+    margin: auto;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+} */
+
+.one-ticket-time {
+    display: block;
+    position: absolute;
+    margin: auto;
+}
+
+.one-ticket-time span {
+    display: block;
+}
+
+.one-ticket-time span:first-child {
+    color: #2b2b2b;
+    font-weight: 600;
+    font-size: 200%
+}
+
+.one-ticket-time span:last-child {
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.one-ticket-info{
+    display: flex;
+    flex-direction: column;
+    text-align: start;
+    justify-content: space-between;
+    align-items: start;
+
+    width: 80%;
+    padding: 20px 30px 30px 40px
+}
+
+.one-ticket-artist {
+    font-size: 18px;
+    font-weight: 600;
+    color: black;
+    margin-bottom: 5px;
+}
+
+.one-ticket-dates {
+    font-size: 16px;
+}
+
+.your-ticket-location {
+    font-size: 16px;
+}
+
+.update-link {
+    font-size: 10px;
+    display: block;
+    text-decoration: none;
+    font-size: 15px;
+    width: 70px;
+    height: 20px;
+    background-color: #D8DDE0;
+    color: black;
+    text-align: center;
+    border-radius: 2px;
+    position: absolute;
+    right: 10px;
+    bottom: 10px
+}
+
+/* circles */
+.one-ticket-date:before, .one-ticket-date:after {
+    content: "";
+    display: block;
+    
+    width: 30px;
+    height: 30px;
+    background-color: #f1efef;
+    position: absolute;
+    top: -15px;
+    left: 17%;
+    border-radius: 50%
+}
+
+
+.one-ticket-date:after {
+    top: auto;
+    bottom: -8%;
+}
+
+

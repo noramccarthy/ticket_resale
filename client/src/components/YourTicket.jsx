@@ -37,8 +37,6 @@ const YourTicket = ({ticket}) => {
                 </section>
             </article>
         </div>
-
-
         </>
     )
 }
