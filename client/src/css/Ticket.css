@@ -25,7 +25,7 @@
 
 .ticket-image {
     width: 100%;
-    border-radius: 15px;
+    /* border-radius: 15px; */
     cursor: pointer;
 }
 

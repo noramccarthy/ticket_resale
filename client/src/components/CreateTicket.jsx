@@ -17,6 +17,8 @@ const CreateTicket = props => {
     const [location, setLocation] = useState("");
     const [state, setState] = useState("");
     const [image, setImage] = useState("");
+    const [lon, setLon] = useState("");
+    const [lat, setLat] = useState("");
     const [error, setError] = useState({});
     const navigate = useNavigate();
 
@@ -35,6 +37,13 @@ const CreateTicket = props => {
             setLocation(res.data.venue.name)
             setState(res.data.venue.state)
             setImage(res.data.performers[0].image)
+
+            setLon(res.data.venue.location.lon)
+            console.log("Lon:", res.data.venue.location.lon)
+
+            setLat(res.data.venue.location.lat)
+            console.log("Lat:", res.data.venue.location.lat)
+            
         })
         .catch(err => {
             console.log("Error:", err)
@@ -70,6 +79,8 @@ const CreateTicket = props => {
                 newStock={stock}
                 newOnSale={onSale}
                 newDiscount={discount}
+                lat={lat}
+                lon={lon}
                 error={error}
             />
         </div>

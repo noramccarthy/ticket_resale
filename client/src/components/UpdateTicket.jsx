@@ -61,6 +61,8 @@ const UpdateTicket = props => {
                 newStock={ticket.stock}
                 newOnSale={ticket.onSale}
                 newDiscount={ticket.discount}
+                lat={ticket.lat}
+                lon={ticket.lon}
                 error={error}
             />
         </div>

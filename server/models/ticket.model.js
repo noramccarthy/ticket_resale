@@ -8,6 +8,14 @@ const TicketSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "User"
     },
+    lon: {
+        type: Number,
+        required: [true]
+    },
+    lat: {
+        type: Number,
+        required: [true]
+    },
     artist: {
         type: String,
         required: [ true, "Artist is required."]

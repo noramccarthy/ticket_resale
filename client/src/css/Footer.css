@@ -33,6 +33,7 @@
 .footer-logo {
     display: flex;
     justify-content: center;
+    border-radius: 15px;
 }
 
 .footer-info {

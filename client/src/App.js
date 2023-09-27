@@ -14,6 +14,7 @@ import Receipt from './components/Receipt'
 
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { Wrapper } from "@googlemaps/react-wrapper";
 
 import './App.css';
 
@@ -23,26 +24,27 @@ function App() {
 
   return (
     <div className="App">
-      <BrowserRouter>
-        <Routes>
-          <Route>
-            <Route path="/" element={<LandingPage cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
-            <Route path="/about" element={<About/>}/>
-            <Route path="/shop" element={<AllTickets/>}/>
-            <Route path="/deals" element={<Deals/>}/>
-            <Route path="/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
-            <Route path="/ticket/:id" element={<OneTicket/>}/>
-            <Route path="/admin/login" element={<UserLogin authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/admin/register" element={<UserForm authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/admin/dashboard" element={<AdminDashboard authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/admin/events" element={<SearchEvent authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/admin/create/:id" element={<CreateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/admin/update/:id" element={<UpdateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
-            <Route path="/receipt" element={<Receipt cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
-
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <Wrapper apiKey={"AIzaSyA3e3qht-meGsln-PEY2RUhRdRzi0yk4UI"}>
+        <BrowserRouter>
+          <Routes>
+            <Route>
+              <Route path="/" element={<LandingPage cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
+              <Route path="/about" element={<About/>}/>
+              <Route path="/shop" element={<AllTickets/>}/>
+              <Route path="/deals" element={<Deals/>}/>
+              <Route path="/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
+              <Route path="/ticket/:id" element={<OneTicket/>}/>
+              <Route path="/admin/login" element={<UserLogin authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/register" element={<UserForm authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/dashboard" element={<AdminDashboard authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/events" element={<SearchEvent authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/create/:id" element={<CreateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/update/:id" element={<UpdateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/receipt" element={<Receipt cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Wrapper>
     </div>
   );
 }

@@ -5,7 +5,7 @@ import { CartContext } from '../context/CartContext'
 import '../css/OneTicket.css';
 import Navbar from '../components/Navbar';
 import Footer from './Footer';
-
+import Map from '../components/Map';
 
 const OneTicket = () => {
     const {id} = useParams();
@@ -30,8 +30,7 @@ const OneTicket = () => {
             setYear(date.getFullYear())
 
             setTime(new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(date))
-
-
+            
         })
         .catch((err) => console.log(err))
     },[id])
@@ -65,12 +64,6 @@ const OneTicket = () => {
                         <img classname="artist-picture" src={ticket.image} alt={ticket.artist} />
                     </section>
 
-                    {/* <section className='one-ticket-date'>
-                        <div className='one-ticket-time'>
-                            <span>{day}</span><span>{month}</span>
-                        </div>
-                    </section> */}
-
                     <section class="one-ticket-info">
                         <div className='your-ticket-artist'>
                             <div>{ticket.artist}</div>
@@ -86,6 +79,12 @@ const OneTicket = () => {
                         <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>
                     </section>
                 </article>
+
+                <Map
+                    longitude={ticket.lon}
+                    latitude={ticket.lat}
+                    location={ticket.location}
+                />
             </div>
         </div>
 

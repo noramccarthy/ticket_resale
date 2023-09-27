@@ -2,32 +2,29 @@
 .one-ticket-container {
     margin: auto;
     background-color: #f1efef;
-
-    /* border-top: 3px solid black; */
     width: 100%;
-    padding: 6% 10%;
-    text-align: center;
+    padding: 6% 6%;
     height: 100vh;
 }
 
 .one-ticket-body {
+    /* display: flex; */
+    /* justify-content: center; */
+    /* align-items: center; */
+
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
 }
 
 .one-ticket-card {
     display: flex;
     
     width: 80%;
-    height: 35vh;
+    height: 30vh;
     background-color: #fff;
     color: #989898;
-    margin-top: 20px;
-    margin-bottom: 20px;
     font-family: 'Oswald', sans-serif;
     text-transform: uppercase;
-    border-radius: 4px;
     position: relative;
 }
 

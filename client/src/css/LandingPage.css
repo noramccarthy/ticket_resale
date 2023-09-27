@@ -87,7 +87,6 @@ animation-delay: -50s;
 
 .section-one {
     height: auto;
-    /* border-top: 3px solid black; */
     padding-bottom: 60px;
 }
 
@@ -97,14 +96,14 @@ animation-delay: -50s;
     font-weight: 600;
     text-transform: uppercase;
     color: black;
-    margin-left: 20px;
+    margin-left: 30px;
     margin-top: 5px;
 }
 
 .carousel-container {
-    width: 90%;
+    width: 95%;
     margin: auto auto;
-    margin-top: 4rem
+    margin-top: 3rem
 }
 
 .carousel-body {
@@ -115,10 +114,6 @@ animation-delay: -50s;
 /* Shop button */
 .shop-button {
     margin-top: 30px;
-}
-
-/* Find Deals and Shop button */
-.deals-button, .shop-button {
     width: 200px;
     height: 50px;
     font-size: 1.3rem;
@@ -128,21 +123,6 @@ animation-delay: -50s;
     border-radius: .25rem;
     cursor: pointer;
     transition: all .14s ease-out;
-}
-
-/* Find Deals button */
-.deals-button:hover {
-    transform: translate(-.25rem, -.25rem);
-    box-shadow: .25rem .25rem #000;
-    background-color: #ff90e8;
-}
-
-.deals-button:active {
-    transform: translate(0rem, 0rem);
-    box-shadow: 0rem 0rem #000;
-}
-.deals-button {
-    margin-top: 50px;
 }
 
 @keyframes rotate-cart {

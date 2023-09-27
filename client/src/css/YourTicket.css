@@ -1,11 +1,16 @@
 
 .your-ticket-container {
+    margin: 0px;
+    padding: 0px;
+    border: 0px;
+    vertical-align: baseline;
+}
+.your-ticket-body {
     display: flex;
     overflow: hidden;
     width: 100%;
     justify-content: center;
 }
-
 .your-ticket-card {
     display: flex;
     width: 90%;
@@ -63,7 +68,7 @@
 }
 
 .your-ticket-artist {
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     color: black;
     margin-bottom: 5px;
@@ -75,6 +80,7 @@
 
 .your-ticket-location {
     font-size: 16px;
+    margin-bottom: 5px;
 }
 
 .update-link {

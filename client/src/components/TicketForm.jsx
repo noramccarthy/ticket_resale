@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/TicketForm.css'
 
 const TicketForm = (props) => {
-    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, error} = props;
+    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, error} = props;
 
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
@@ -11,7 +11,7 @@ const TicketForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        onSubmitProp({category, artist, date, location, state, image, price, stock, onSale, discount});
+        onSubmitProp({category, artist, date, location, state, image, price, stock, onSale, discount, lat, lon});
     }
 
     return (
@@ -27,6 +27,22 @@ const TicketForm = (props) => {
 
                                 <form onSubmit={onSubmitHandler} className='create-ticket-form'>
                                     <p className="text-white-50 mb-5">List your tickets</p>
+
+                                    <div className="form-outline form-white mb-4">
+                                        <input 
+                                            type="hidden"
+                                            name="lat"
+                                            value={lat}
+                                        />
+                                    </div>
+
+                                    <div className="form-outline form-white mb-4">
+                                        <input 
+                                            type="hidden"
+                                            name="lon"
+                                            value={lon}
+                                        />
+                                    </div>
 
                                     <div className="form-outline form-white mb-4">
                                         <input 

@@ -44,7 +44,7 @@ const SlideShow = () => {
                                 <img src={slide.image} alt="slide" className="image" />
                                 <div className="content">
                                     <h2>{slide.desc}</h2>
-                                    <h5>{slide.heading}</h5>
+                                    <h6>{slide.heading}</h6>
                                 </div>
                             </div>
                         )}

@@ -14,28 +14,31 @@ const YourTicket = ({ticket}) => {
     return (
         <>
         <div class="your-ticket-container">
-            <article class="your-ticket-card">
-                <section className='your-ticket-date'>
-                    <div className='your-ticket-time'>
-                        <span>{day}</span><span>{month}</span>
-                    </div>
-                </section>
+            <div className='your-ticket-body'>
+                <article class="your-ticket-card">
+                    <section className='your-ticket-date'>
+                        <div className='your-ticket-time'>
+                            <span>{day}</span><span>{month}</span>
+                        </div>
+                    </section>
 
-                <section class="your-ticket-info">
-                    <div className='your-ticket-artist'>
-                        <div>{ticket.artist}</div>
-                    </div>
+                    <section class="your-ticket-info">
+                        <div className='your-ticket-artist'>
+                            <div>{ticket.artist}</div>
+                        </div>
 
-                    <div class="your-ticket-dates">
-                            <div>{month} {day}, {year}</div>
-                            <div>{time}</div>
-                    </div>
-                    <div class="your-ticket-location">
-                        {ticket.location}
-                    </div>
-                    <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>
-                </section>
-            </article>
+                        <div class="your-ticket-dates">
+                                <div>{month} {day}, {year}</div>
+                                <div>{time}</div>
+                        </div>
+                        <div class="your-ticket-location">
+                            {ticket.location}
+                        </div>
+                        <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>
+                    </section>
+                </article>
+
+            </div>
         </div>
         </>
     )
