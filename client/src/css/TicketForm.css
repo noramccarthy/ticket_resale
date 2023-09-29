@@ -1,3 +1,9 @@
 .ticket_form_error_msg {
     color: red;
 }
+
+.ticket-form-container {
+    background-image: url(../assets/images/searchEvent.avif);
+    background-size: cover;
+    background-position: center;
+}

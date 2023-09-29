@@ -6,7 +6,6 @@
     width: 80%;
     display: flex;
     flex-direction: column;
-    /* justify-content: flex-start; */
 }
 
 .ticket-artist {
@@ -14,18 +13,26 @@
     width: 100%;
     display: flex;
     justify-content: start;
+    color: black;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 18px;
 }
 
-.ticket-date, .ticket-stock {
-    font-size: 1rem;
+.ticket-date, .ticket-cost {
+    font-size: 15px;
     font-weight: 500;
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
+}
+
+.ticket-cost {
+    padding-top: 10px;
 }
 
 .ticket-image {
     width: 100%;
-    /* border-radius: 15px; */
+    border-radius: 15px;
     cursor: pointer;
 }
 
@@ -34,34 +41,30 @@
 }
 
 .ticket-original-price, .ticket-price-discount {
-    font-size: 1rem;
+    font-size: 15px;
     width: 100%;
     font-weight: 500;
-    display: flex;
-    justify-content: start;
+    /* display: flex; */
+    /* justify-content: start; */
 }
 
 .onsale-ticket {
     color: red;
+    font-size: 15px;
     text-decoration: line-through;
-}
-
-.ticket-addToCart-container {
-    display: flex;
-    justify-content: start;
 }
 
 /* add to cart */
 .addToCart-button {
-    margin-top: 10px;
+    /* margin-top: 10px; */
     padding: 4px;
     border-radius: 8px;
-    font-size: 0.9rem;
+    font-size: 10px;
     cursor: pointer;
-    border: 2px solid black;
+    border: 1px solid black;
     background-color: transparent;
     transition: all .14s ease-out;
-    width: 50%;
+    width: 25%;
 }
 
 .ticket-addToCart:hover {

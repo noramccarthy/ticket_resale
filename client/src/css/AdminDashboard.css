@@ -4,20 +4,15 @@
     font-family: arial;
     /* display: flex; */
     /* flex-direction: column; */
-
     column-count: 2;
     column-gap: 2px;
-
     padding: 10px;
-
 }
 
 .your-listings-container {
     display: flex;
     justify-content: center;
-
     margin-bottom: 5px;
-
 }
 
 .your-listings-body {

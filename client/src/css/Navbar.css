@@ -9,7 +9,7 @@
     z-index: 100;
     top: 0;
     padding: 15px 5%;
-    background-color: white;
+    background-color: #1C2431;
 }
 
 .nav-row {
@@ -54,7 +54,7 @@
 
 .link-btn:hover{
     transform: scale(1.1);
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
     padding-bottom: 2px;
 }
 
@@ -73,12 +73,12 @@ li {
 
 a {
     text-decoration: none;
-    color: black;
-    font-size: 30px;
+    color: white;
+    font-size: 25px;
 }
 
 .fa-cart-shopping {
-    color: black;
+    color: white;
     content: "1";
     transition: transform 0.2s;
     font-size: 50px;

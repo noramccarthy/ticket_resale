@@ -28,6 +28,90 @@
     font-weight: 800;
 }
 
+.section-one {
+    height: auto;
+    padding-bottom: 10vh;
+}
+
+.category-title {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: black;
+    margin-left: 30px;
+}
+
+.carousel-container {
+    width: 90%;
+    margin: auto auto;
+    margin-top: 3rem
+}
+
+.carousel-body {
+    display: flex;
+    justify-content: center;
+}
+
+/* Shop button */
+.shop-button {
+    margin-top: 30px;
+    width: 200px;
+    height: 50px;
+    font-size: 1.3rem;
+    border: solid .0625rem black;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border-radius: .25rem;
+    cursor: pointer;
+    transition: all .14s ease-out;
+}
+
+@keyframes rotate-cart {
+    from {
+        transform: rotate(-3deg);
+    }
+    
+    to {
+        transform: rotate(3deg);
+    }
+}
+
+.slick-prev:before {
+    color: black !important;
+    font-size: 26px !important;
+    opacity: 100% !important;
+    margin-right: 5px;
+    line-height: 0;
+    position: absolute;
+    top: 50%;
+    display: block;
+    width: 20px;
+    height: 30px;
+    padding: 0;
+    transform: translate(0, -50%);
+    border: none;
+    outline: none;
+    background: transparent;
+}
+
+.slick-next {
+    margin-right: 5px;
+}
+
+.slick-next::before {
+    color: black !important;
+    font-size: 26px !important;
+    margin-right: 20px !important;
+    opacity: 100% !important;
+}
+
+/* dots */
+.slick-dots {
+    /* bottom: -30px; */
+    visibility: hidden;
+}
+
 /* .slider {
     overflow: hidden;
     width: 100%;
@@ -83,90 +167,3 @@ animation-delay: -50s;
         animation-timing-function: ease;
     }
 } */
-
-
-.section-one {
-    height: auto;
-    padding-bottom: 60px;
-}
-
-.category-title {
-    text-align: left;
-    font-size: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: black;
-    margin-left: 30px;
-    margin-top: 5px;
-}
-
-.carousel-container {
-    width: 95%;
-    margin: auto auto;
-    margin-top: 3rem
-}
-
-.carousel-body {
-    display: flex;
-    justify-content: center;
-}
-
-/* Shop button */
-.shop-button {
-    margin-top: 30px;
-    width: 200px;
-    height: 50px;
-    font-size: 1.3rem;
-    border: solid .0625rem black;
-    color: rgb(255, 255, 255);
-    background-color: black;
-    border-radius: .25rem;
-    cursor: pointer;
-    transition: all .14s ease-out;
-}
-
-@keyframes rotate-cart {
-    from {
-        transform: rotate(-3deg);
-    }
-
-    to {
-        transform: rotate(3deg);
-    }
-}
-
-.slick-prev:before {
-    color: black !important;
-    font-size: 26px !important;
-    opacity: 100% !important;
-    margin-right: 5px;
-
-    line-height: 0;
-    position: absolute;
-    top: 50%;
-    display: block;
-    width: 20px;
-    height: 30px;
-    padding: 0;
-    transform: translate(0, -50%);
-    border: none;
-    outline: none;
-    background: transparent;
-}
-
-.slick-next {
-    margin-right: 5px;
-}
-
-.slick-next::before {
-    color: black !important;
-    font-size: 26px !important;
-    margin-right: 20px !important;
-    opacity: 100% !important;
-}
-
-/* dots */
-.slick-dots {
-    /* bottom: -30px; */
-    visibility: hidden;
-}

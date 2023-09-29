@@ -1,18 +1,14 @@
-// import ScrollTrigger from 'react-scroll-trigger';
 import React, { useState, useEffect, useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import axios from 'axios';
 import Slider from 'react-slick'
 import NavBar from '../components/Navbar';
 import Footer from './Footer';
 import Carousel from './Carousel';
-import '../css/LandingPage.css'
-import { Slide } from '@mui/material';
 import SlideShow from './SlideShow';
+import '../css/LandingPage.css'
 
 const LandingPage = () => {
-    const navigate = useNavigate;
     const [concerts, setConcerts] = useState([]);
     const [sports, setSports] = useState([]);
     const [theater, setTheater] = useState([]);
@@ -28,7 +24,6 @@ const LandingPage = () => {
         slidesToScroll: 1,
         responsive: [ {breakpoint: 1200, settings: { slidesToShow: 2, slidesToScroll: 1,},},{breakpoint: 1000, settings: { slidesToShow: 1, slidesToScroll: 1,},},],};
         
-
     // check if ticket is in stock
     const isInStock = (ticket) => {
         if (!cartItems) return false;
@@ -68,7 +63,6 @@ const LandingPage = () => {
         <>
         <div className="main-body">
             <NavBar/>
-
             <SlideShow/>
     
             <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
@@ -85,10 +79,7 @@ const LandingPage = () => {
                                 </div>
                             ))}
                         </Slider>
-                        
                 </div>
-                
-
                 <div className="carousel-container">
                     <h1 className='category-title'> Shop Sports</h1>
                         <Slider {...settings}>
@@ -103,7 +94,6 @@ const LandingPage = () => {
                             ))}
                         </Slider>
                 </div>
-
                 <div className="carousel-container">
                     <h1 className='category-title'> Shop Theater</h1>
                         <Slider {...settings}>

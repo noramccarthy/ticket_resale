@@ -8,20 +8,39 @@ import Ticket from './Ticket';
 import '../css/AllTickets.css'
 import Footer from './Footer';
 
+const PAGE_SIZE = 20;
 
 const Deals = () => {
     const [tickets, setTickets] = useState([]);
     const [filterTickets, setFilterTickets] = useState(tickets);
     const [categories, setCategories] = useState([]);
     const [states, setStates] = useState([]);
+    const [select, setSelect] = useState("");
+    const [currentPage, setCurrentPage] = useState(0);
     const { addToCart, cartItems} = useContext(CartContext);
 
+    // pagination
+    const totalPages = Math.ceil(
+        filterTickets.filter((ticket) => !select || ticket.includes(select)).length /
+        PAGE_SIZE
+    );
+    const pages = Array.from(Array(totalPages).keys());
     
+    // changePage
+    const changePage = (pageNumber) => {
+        setCurrentPage(pageNumber);
+        window.scrollTo(0, 800);
+    }
+
+    // get list of paginated events
+    const paginatedTickets = [...filterTickets]
+        .filter((ticket) => !select || ticket.artist.includes(select))
+        .slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
+
     const handleSearchChange = (searchInput) => {
         const filteredSearchTickets = tickets.filter(item => {
             return Object.values(item).join('').toLowerCase().includes(searchInput.toString().toLowerCase());
         })
-    
         setFilterTickets(filteredSearchTickets)
     }
 
@@ -32,7 +51,6 @@ const Deals = () => {
                 return item;
             }
         })
-
         setFilterTickets(filteredCategoryTickets)
     }
 
@@ -43,7 +61,6 @@ const Deals = () => {
                 return item;
             }
         })
-
         setFilterTickets(filteredStateTickets)
     }
 
@@ -116,25 +133,34 @@ const Deals = () => {
             </div>
 
             {/* tickets */}
-            {filterTickets.length > 0 ? (
-            <div className='filtered-tickets-container'>
-                {filterTickets.map((ticket) => (
-                    <div key={ticket._id} className='one-ticket'>
-                        <Ticket 
-                            ticket = {ticket}
-                            discount = {getDiscountPrice}
-                            cart = {addToCartHandler}
-                            stock = {stockReached}
-                        />
+            {paginatedTickets.length > 0 ? (
+                <div> 
+                    <div className='filtered-tickets-container'>
+                        {paginatedTickets.map((ticket) => (
+                            <div key={ticket._id} className='one-ticket'>
+                                <Ticket 
+                                    ticket = {ticket}
+                                    discount = {getDiscountPrice}
+                                    cart = {addToCartHandler}
+                                    stock = {stockReached}
+                                />
+                            </div>
+                        ))}
                     </div>
-                ))}
 
-            </div>
-            ) : (
+                    <div className="pagination">
+                        {pages.map((pageNumber) => (
+                        <button key={pageNumber} className={`page-number${pageNumber === currentPage ? ' active' : ''}`} onClick={() => changePage(pageNumber)}>
+                            {pageNumber + 1}
+                        </button>
+                        ))}
+                    </div>
+                </div>
+                ) : (
                 // no tickets
-            <div className='filtered-tickets-container'>
-                    <p className='empty-category'>No Tickets</p>
-            </div>
+                <div className='filtered-tickets-container'>
+                        <p className='empty-category'>No Tickets</p>
+                </div>
             )}
         </div>
         <Footer/>

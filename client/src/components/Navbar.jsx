@@ -1,11 +1,9 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { Badge } from "@mui/material";
-
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import tfLogo from '../assets/images/tfLogo.png';
-
 import '../css/Navbar.css';
 
 const Navbar = () => {
@@ -15,9 +13,7 @@ const Navbar = () => {
         <>
         <nav className="nav">
             <div className="nav-row">
-
                 <div span="6" className='nav-col'>
-                    {/* LOGO */}
                     <div className="logo">
                         <Link to={"/"}> <img className='logo-img' require src={tfLogo} alt="Logo pic" /> Ticket Forum</Link>
                     </div>
@@ -44,15 +40,11 @@ const Navbar = () => {
                             </Link>
                         </li>
                     </div>
-
                 </div>
-                
             </div>
         </nav>
-
         </>
     )
-
 }
 
 export default Navbar;

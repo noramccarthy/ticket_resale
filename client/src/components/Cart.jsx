@@ -99,7 +99,7 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                     <div key={ticket._id} className="each-ticket">
                                         <div className="ticket-text">
                                             <h6 className="cart-title">
-                                            <Link className="link-title" to={`/one/ticket/${ticket._id}`}>{ticket.artist}</Link>
+                                                {ticket.artist}
                                             </h6>
                                             <h6 className="ticket-price">${ticket.totalCost.toFixed(2)}</h6>
                                             <div className="quantity-control">
@@ -118,14 +118,14 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                             <div className="error-message">{errorMessage[ticket._id]}</div>
                                             )}
                                         </div>
-                                    {/* <Link to={`/ticket/${ticket._id}`}> */}
-                                    <Link to={`/ticket/` + ticket._id}>
-                                        <img
-                                        className="ticket-img"
-                                        src={ticket.image}
-                                        alt={ticket.artist}
-                                        />
-                                    </Link>
+
+                                        <Link to={`/ticket/` + ticket._id}>
+                                            <img
+                                            className="cart-ticket-img"
+                                            src={ticket.image}
+                                            alt={ticket.artist}
+                                            />
+                                        </Link>
                                     </div>
                                 ))}
                             </div>

@@ -52,6 +52,12 @@ const OneTicket = () => {
         }
     }
 
+    // addToCart function
+    const addToCartHandler = (ticket) => {
+        addToCart(ticket);
+    }
+
+
     return (
         <>
         <Navbar/>
@@ -76,8 +82,11 @@ const OneTicket = () => {
                         <div class="one-ticket-location">
                             {ticket.location}
                         </div>
-                        <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>
                     </section>
+
+                    <button className='addToCart-button' onClick={() => addToCartHandler(ticket)} disabled={isInStock(ticket)}>
+                        {isInStock(ticket) ? "No tickets left" : "Add to cart"}
+                    </button>
                 </article>
 
                 <Map

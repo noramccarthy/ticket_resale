@@ -65,24 +65,25 @@ const CreateTicket = props => {
 
     return (
         <>
-
-        <div>
-            <TicketForm
-                onSubmitProp={createTicket}
-                category={category}
-                artist={artist}
-                date={date}
-                location={location}
-                state={state}
-                image={image}
-                newPrice={price}
-                newStock={stock}
-                newOnSale={onSale}
-                newDiscount={discount}
-                lat={lat}
-                lon={lon}
-                error={error}
-            />
+        <div className='ticket-form-container'>
+            <div>
+                <TicketForm
+                    onSubmitProp={createTicket}
+                    category={category}
+                    artist={artist}
+                    date={date}
+                    location={location}
+                    state={state}
+                    image={image}
+                    newPrice={price}
+                    newStock={stock}
+                    newOnSale={onSale}
+                    newDiscount={discount}
+                    lat={lat}
+                    lon={lon}
+                    error={error}
+                />
+            </div>
         </div>
 
         </>

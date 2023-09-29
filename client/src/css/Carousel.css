@@ -1,4 +1,4 @@
-.one-container {
+.one-carousel-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,30 +16,34 @@
     display: flex;
 }
 
-.ticket-artist {
+.carousel-ticket-artist {
     font-size: 18px;
     position: relative;
+    color: black;
+    padding-top: 10px;
+    padding-bottom: 10px;
     /* white-space: nowrap; */
 }
 
-/* price formats */
 .carousel-price {
     display: flex;
     justify-content: center;
     align-items: center;
     color: #000000;
-    padding-left: 6px;
+    /* padding-left: 6px; */
 }
 
-.prices {
+.carousel-info {
     margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
 
 /* original price */
 .carousel-original-price {
     color: #d63d3d;
     text-decoration: line-through;
-    margin-right: 5px;
+    padding-right: 5px;
 }
 
 /* discounted price */
@@ -63,7 +67,6 @@
     margin-top: 10px;
     /* margin-bottom: 10px; */
 }
-
 
 .carousel-pic:hover {
     animation: rotate-cart 0.6s infinite alternate;

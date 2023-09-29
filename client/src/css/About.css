@@ -1,7 +1,7 @@
 
 /* ABOUT PAGE CSS */
 .about-page-container {
-    border-top: 3px solid black;
+    /* border-top: 3px solid black; */
     background-position: center;
     background-size: cover;
     display: flex;

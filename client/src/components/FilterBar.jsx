@@ -40,15 +40,15 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
         <>
 
         <div className='filter-bar-container'>
-            <div className='row my-5'>
+            <div className='row mb-3 mt-5'>
                 <div className="col">
                     <h4 className="border-bottom">Filters</h4>
                 </div>
             </div>
 
-            <div className="row line-2">
+            <div className="row mb-5">
                 <div className="col">
-                    <label htmlFor="name">Search</label>
+                    {/* <label htmlFor="name">Search</label> */}
 
                     <input
                         type="text"
@@ -61,7 +61,7 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
                 </div>
 
                 <div className="col">
-                    <label htmlFor="state">State</label>
+                    {/* <label htmlFor="state">State</label> */}
 
                     <select 
                         className="form-control"
@@ -80,7 +80,7 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
                 </div>
 
                 <div className="col">
-                    <label htmlFor="category">Category</label>
+                    {/* <label htmlFor="category">Category</label> */}
 
                     <select 
                         className="form-control"
