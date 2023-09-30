@@ -16,6 +16,14 @@ const TicketSchema = new mongoose.Schema({
         type: Number,
         required: [true]
     },
+    address: {
+        type: String,
+        required: [ true, "Address is required."]
+    },
+    city: {
+        type: String,
+        required: [ true, "City is required."]
+    },
     artist: {
         type: String,
         required: [ true, "Artist is required."]

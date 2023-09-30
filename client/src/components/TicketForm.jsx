@@ -2,7 +2,7 @@ import { useState } from 'react';
 import '../css/TicketForm.css'
 
 const TicketForm = (props) => {
-    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, error} = props;
+    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, address, city, error} = props;
 
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
@@ -11,7 +11,7 @@ const TicketForm = (props) => {
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        onSubmitProp({category, artist, date, location, state, image, price, stock, onSale, discount, lat, lon});
+        onSubmitProp({category, artist, date, location, state, image, price, stock, onSale, discount, lat, lon, address, city});
     }
 
     return (
@@ -28,7 +28,7 @@ const TicketForm = (props) => {
                                 <form onSubmit={onSubmitHandler} className='create-ticket-form'>
                                     <p className="text-white-50 mb-5">List your tickets</p>
 
-                                    <div className="form-outline form-white mb-4">
+                                    <div className="form-outline">
                                         <input 
                                             type="hidden"
                                             name="lat"
@@ -36,7 +36,7 @@ const TicketForm = (props) => {
                                         />
                                     </div>
 
-                                    <div className="form-outline form-white mb-4">
+                                    <div className="form-outline">
                                         <input 
                                             type="hidden"
                                             name="lon"
@@ -44,11 +44,26 @@ const TicketForm = (props) => {
                                         />
                                     </div>
 
-                                    <div className="form-outline form-white mb-4">
+                                    <div className="form-outline">
+                                        <input 
+                                            type="hidden"
+                                            name="address"
+                                            value={address}
+                                        />
+                                    </div>
+
+                                    <div className="form-outline">
+                                        <input 
+                                            type="hidden"
+                                            name="city"
+                                            value={city}
+                                        />
+                                    </div>
+
+                                    <div className="form-outline">
                                         <input 
                                             type="hidden"
                                             name="category"
-                                            className="form-control form-control-lg"
                                             value={category}
                                         />
                                     </div>

@@ -18,7 +18,6 @@ const UpdateTicket = props => {
         .then(res => {
 
             console.log("Data:", res.data)
-
             setTicket(res.data)
 
             const date = new Date(res.data.date);
@@ -63,6 +62,8 @@ const UpdateTicket = props => {
                     newDiscount={ticket.discount}
                     lat={ticket.lat}
                     lon={ticket.lon}
+                    address={ticket.address}
+                    city={ticket.city}
                     error={error}
                 />
             </div>

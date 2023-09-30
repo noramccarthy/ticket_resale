@@ -1,140 +1,167 @@
 
 .one-ticket-container {
-    margin: auto;
-    background-color: #f1efef;
-    width: 100%;
-    padding: 6% 6%;
-    height: 100vh;
-}
-
-.one-ticket-body {
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-
-    display: flex;
-    justify-content: space-between;
-}
-
-.one-ticket-card {
-    display: flex;
-    
-    width: 80%;
-    height: 30vh;
-    background-color: #fff;
-    color: #989898;
-    font-family: 'Oswald', sans-serif;
-    text-transform: uppercase;
-    position: relative;
-}
-
-.one-ticket-img {
-    /* border-right: 2px dashed #dadde6; */
-    /* width: 50%; */
-    margin: auto;
     height: 100%;
-
-    /* display: flex; */
-    /* justify-content: center; */
-    /* align-items: center; */
-}
-
-.artist-picture {
-    height: 50vh;
-    width: 50%;
-}
-
-/* .one-ticket-date {
-    border-right: 2px dashed #dadde6;
-    width: 20%;
-    margin: auto;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-} */
-
-.one-ticket-time {
-    display: block;
-    position: absolute;
-    margin: auto;
-}
-
-.one-ticket-time span {
-    display: block;
-}
-
-.one-ticket-time span:first-child {
-    color: #2b2b2b;
-    font-weight: 600;
-    font-size: 200%
-}
-
-.one-ticket-time span:last-child {
-    text-transform: uppercase;
-    font-weight: 600;
-}
-
-.one-ticket-info{
+    width: 100vw;
     display: flex;
     flex-direction: column;
-    text-align: start;
-    justify-content: space-between;
-    align-items: start;
+}
 
-    width: 80%;
-    padding: 20px 30px 30px 40px
+.main-ticket-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 95%;
+    margin: 0 auto;
+    margin-top: 50px;
+    height: 40vh;
+}
+
+.one-ticket-image-container {
+    text-align: center;
+    width: 30%;
+    margin-top: 50px;
+}
+
+.one-artist-picture {
+    border-radius: 15px;
+    width: 40%;
+}
+
+.one-ticket-description-container {
+    display: flex;
+    flex-direction: column;
+    /* width: 70%; */
+    padding: 20px;
 }
 
 .one-ticket-artist {
-    font-size: 18px;
-    font-weight: 600;
-    color: black;
-    margin-bottom: 5px;
+    font-size: 2.4rem;
+    margin-bottom: 24px;
 }
 
-.one-ticket-dates {
-    font-size: 16px;
+body{
+    width: 100vw !important;
+    overflow-x: hidden;
 }
 
-.your-ticket-location {
-    font-size: 16px;
+.one-ticket-discount-price {
+    color: red;
 }
 
-.update-link {
-    font-size: 10px;
+.one-ticket-info, .one-ticket-address, .one-ticket-prices, .one-ticket-original-price {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    line-height: 150%;
+    text-align: start;
+}
+
+.one-ticket-payment {
+    width: 30%;
     display: block;
-    text-decoration: none;
-    font-size: 15px;
-    width: 70px;
-    height: 20px;
-    background-color: #D8DDE0;
-    color: black;
+    align-content: center;
+    /* text-align: center; */
+}
+
+.one-ticket-addToCart {
+    width: 100%;
+    height: 60px;
+    font-size: 1.3rem;
+    border: solid .0625rem black;
+    color: rgb(255, 255, 255);
+    background-color: black;
+    border-radius: .25rem;
+    cursor: pointer;
+    transition: all .14s ease-out;
+    margin-top: 30px;
+    margin-bottom: 24px;
+}
+
+.payment-badge {
+    width: 100%;
     text-align: center;
-    border-radius: 2px;
-    position: absolute;
-    right: 10px;
-    bottom: 10px
+    margin: 0 auto;
 }
 
-/* circles */
-.one-ticket-date:before, .one-ticket-date:after {
-    content: "";
-    display: block;
+.one-ticket-map {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.one-ticket-map-container {
+    display: flex;
+    justify-content: space-evenly;
+    width: 80%;
+    margin: 0 auto;
+}
+
+@media(max-width: 1000px) {
+    .candy__description__one {
+        width: 80%;
+        font-size: 1.1rem;
+    }
+
+    .title_candy_categorttext {
+        font-size: 2rem;
+    }
+}
+
+@media(max-width: 1000px) {
+    .one-ticket-description-container {
+        width: 80%;
+        font-size: 1rem;
+        line-height: 110%;
+        margin-top: 0;
+        margin-bottom: 12px;
+    }
+
+    .one-ticket-artist {
+        font-size: 1.5rem;
+        margin-bottom: 6px;
+    }
+}
+
+@media(max-width:700px) {
+    .one-ticket-description-container {
+        display: none;
+    }
+}
+
+
+
+
+@media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
     
-    width: 30px;
-    height: 30px;
-    background-color: #f1efef;
-    position: absolute;
-    top: -15px;
-    left: 17%;
-    border-radius: 50%
-}
-
-
-.one-ticket-date:after {
-    top: auto;
-    bottom: -8%;
-}
-
-
+    .card-registration .select-input.form-control[readonly]:not([disabled]) {
+    font-size: 1rem;
+    line-height: 2.15;
+    padding-left: .75em;
+    padding-right: .75em;
+    }
+    
+    .card-registration .select-arrow {
+    top: 13px;
+    }
+    
+    .bg-grey {
+    background-color: #eae8e8;
+    }
+    
+    @media (min-width: 992px) {
+    .card-registration-2 .bg-grey {
+    border-top-right-radius: 16px;
+    border-bottom-right-radius: 16px;
+    }
+    }
+    
+    @media (max-width: 991px) {
+    .card-registration-2 .bg-grey {
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    }
+    }

@@ -10,7 +10,7 @@ const Carousel = ({ticket, addToCart, isInStock}) => {
             <>
                 <div className="one-carousel-container">
                     <Link className='carousel-pic' to={`/ticket/${ticket._id}`}>
-                            <img className="carousel-pic" src={ticket.image} alt={ticket.artist} />
+                        <img className="carousel-pic" src={ticket.image} alt={ticket.artist} />
                     </Link>
 
                     <div className='ticket-title-container'>

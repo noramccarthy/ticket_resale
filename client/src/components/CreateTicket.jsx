@@ -19,6 +19,8 @@ const CreateTicket = props => {
     const [image, setImage] = useState("");
     const [lon, setLon] = useState("");
     const [lat, setLat] = useState("");
+    const [address, setAddress] = useState("");
+    const [city, setCity] = useState("");
     const [error, setError] = useState({});
     const navigate = useNavigate();
 
@@ -43,6 +45,10 @@ const CreateTicket = props => {
 
             setLat(res.data.venue.location.lat)
             console.log("Lat:", res.data.venue.location.lat)
+
+            setAddress(res.data.venue.address)
+
+            setCity(res.data.venue.city)
             
         })
         .catch(err => {
@@ -81,6 +87,8 @@ const CreateTicket = props => {
                     newDiscount={discount}
                     lat={lat}
                     lon={lon}
+                    address={address}
+                    city={city}
                     error={error}
                 />
             </div>

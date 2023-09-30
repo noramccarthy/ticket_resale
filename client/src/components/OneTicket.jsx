@@ -5,6 +5,7 @@ import { CartContext } from '../context/CartContext'
 import '../css/OneTicket.css';
 import Navbar from '../components/Navbar';
 import Footer from './Footer';
+import PaymentBadge from '../assets/images/PaymentBadge.png'
 import Map from '../components/Map';
 
 const OneTicket = () => {
@@ -24,8 +25,6 @@ const OneTicket = () => {
 
             const date = new Date(res.data.date)
             setMonth(date.toLocaleString('en-US', {month: 'long'}))
-
-
             setDay(date.toLocaleDateString('en-US', {day: '2-digit'}))
             setYear(date.getFullYear())
 
@@ -59,46 +58,69 @@ const OneTicket = () => {
 
 
     return (
-        <>
-        <Navbar/>
-
         <div className='one-ticket-container'>
-            <div className='one-ticket-body'>
-                <article class="one-ticket-card">
+            <Navbar/>
+    
+            <section className='main-ticket-container'>
+                <div className='one-ticket-image-container'>
+                    <img classname="one-artist-picture" src={ticket.image} alt={ticket.artist} />
+                </div>
 
-                    <section className='one-ticket-img'>
-                        <img classname="artist-picture" src={ticket.image} alt={ticket.artist} />
-                    </section>
+                <div className="one-ticket-description-container">
+                    <h6 className='one-ticket-artist'>{ticket.artist}</h6>
 
-                    <section class="one-ticket-info">
-                        <div className='your-ticket-artist'>
-                            <div>{ticket.artist}</div>
-                        </div>
+                    <div className='one-ticket-info'>
+                        <div>{month} {day}, {year}</div>
+                        <div>{time}</div>
+                    </div>
 
-                        <div class="one-ticket-dates">
-                                <div>{month} {day}, {year}</div>
-                                <div>{time}</div>
-                        </div>
-                        <div class="one-ticket-location">
-                            {ticket.location}
-                        </div>
-                    </section>
+                    <div className='one-ticket-prices'>
+                        {ticket.onSale && ticket.discount > 0 ? (
+                            <div>
+                                <span className='one-ticket-discount-price' style={{ textDecoration: 'line-through' }}>
+                                    ${ticket.price}
+                                </span>{' '}
+                                <span className='one-ticket-original-price'>${getDiscountPrice(ticket)}</span>
+                            </div>
+                        ) : (
+                            <div className='one-ticket-original-price'>${ticket.price}</div>
+                        )}
+                    </div>
 
-                    <button className='addToCart-button' onClick={() => addToCartHandler(ticket)} disabled={isInStock(ticket)}>
-                        {isInStock(ticket) ? "No tickets left" : "Add to cart"}
-                    </button>
-                </article>
+                    <div className="one-ticket-payment">
+                        <button
+                            className='one-ticket-addToCart'
+                            onClick={() => addToCartHandler(ticket)}
+                            disabled={isInStock(ticket)}
+                        >
+                            {isInStock(ticket) ? "Out of Stock" : "Add to Cart"}
+                        </button>
+                        <img className="payment-badge" src={PaymentBadge} alt="Payment Options" />
+                    </div>
+                </div>
+            </section>
 
-                <Map
-                    longitude={ticket.lon}
-                    latitude={ticket.lat}
-                    location={ticket.location}
-                />
-            </div>
+            <section className='one-ticket-map'>
+                <div className='one-ticket-map-container'>
+                    <Map
+                        longitude={ticket.lon}
+                        latitude={ticket.lat}
+                        location={ticket.location}
+                    />
+                    
+                    <div className='one-ticket-address'>
+                        <div style={{fontWeight:700}}>{ticket.location}</div>
+                        <div>{ticket.address}</div>
+                        <div>{ticket.city}, {ticket.state}</div>
+                    </div>
+                </div>
+            </section>
+
+            <Footer/>
+
+
         </div>
 
-        <Footer/>
-        </>
     )
 
 }

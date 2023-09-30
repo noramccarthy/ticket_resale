@@ -9,7 +9,7 @@ const Map = ({latitude, longitude, location}) => {
     const [map, setMap] = React.useState(null)
 
     const containerStyle = {
-        width: '400px',
+        width: '800px',
         height: '400px'
     };
 
