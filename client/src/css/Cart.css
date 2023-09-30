@@ -4,17 +4,20 @@
     box-sizing: border-box;
 }
 
-.main_form_cart {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    width: 90%;
-    height: fit-content;
-}
-
 /* background color */
 .body_cart {
     background-color: white;
+}
+
+.checkout {
+    padding: 10px;
+    min-height: 80vh;
+}
+
+.shopping-cart-title {
+    display: flex;
+    justify-content: center;
+
 }
 
 .quantity-button {
@@ -31,6 +34,7 @@
 .left_btn {
     margin-left: 0;
 }
+
 .disclaimer{
     font-size: 7px;
 }
@@ -43,39 +47,20 @@
     color: red;
 }
 
-.cart_items_card {
-    width: 60%;
-    margin-top: 7%;
-    margin-bottom: 7%;
-}
-
 .trashcan {
     border: none;
     cursor: pointer;
     background: none;
-    margin-left: 30px;
-    /* font-size: 60x; */
 }
-
 
 /* EACH TICKET */
 .each-ticket {
-    border-bottom: 1px solid black;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 0 40px;
-    /* border-radius: 4px; */
-    height: 220px;
-    width: 80%;
+    height: 170px;
+    width: 90%;
     margin: 0 auto;
-    margin-bottom: 2rem;
-    /* box-shadow: .15rem .15rem 4px #000; */
-}
-
-.cart-title {
-    font-size: 1.4rem;
-    margin-bottom: 12px;
 }
 
 .link-title {
@@ -84,19 +69,13 @@
 
 .cart-ticket-img {
     width: 150%;
-    max-width: 250px;
+    max-width: 200px;
     max-height: 230px;
+    border-radius: 15px;
 }
 
 .ticket-price {
     font-size: 1.1rem;
-    margin-bottom: 12px;
-}
-
-.ticket-text {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
 }
 
 .number_input {
@@ -106,19 +85,11 @@
 }
 
 .checkout_main_section_cart {
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    /* text-align: center; */
     padding: 16px 10px;
-    width: 30%;
     height: fit-content;
     border-radius: 12px;
-    margin-top: 7%;
-    margin-bottom: 7%;
-    right: 5%;
     position: sticky;
-    border: 2px solid black;
+    border: 1px solid black;
     box-shadow: .15rem .15rem 4px #000;
 }
 
@@ -193,18 +164,8 @@
 
 /* EMPTY */
 .empty-container {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* justify-content: center; */
-    /* text-align: center; */
-    /* padding: 16px 10px; */
-    /* width: 26%; */
     height: fit-content;
-    border-radius: 12px;
     margin-top: 7%;
     margin-bottom: 7%;
-    /* right: 5%; */
     position: sticky;
-    /* border: 2px solid black; */
-    /* box-shadow: .15rem .15rem 4px #000; */
 }

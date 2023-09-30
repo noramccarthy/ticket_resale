@@ -8,6 +8,8 @@ import { CartContext } from '../context/CartContext';
 import EmptyCart from '../assets/images/empty_cart.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
+import Modal from '../components/Modal';
+
 import '../css/Cart.css'
 import Footer from './Footer';
 
@@ -17,6 +19,8 @@ const PAYPAL_API = "AUXYLTAsvHFThBeI28d4bNu7sYxbtCo1RFiiYZs6L-_wWmJwAkej4vSFV7si
 const Cart = ({cartDetails, setCartDetails}) => {
     const [errorMessage, setErrorMessage] = useState({});
     const { cartItems, removeFromCart, updateCartItemQuantity, clearCart } = useContext(CartContext);
+    const [openModal, setOpenModal] = useState(true);
+
     const navigate = useNavigate();
 
     // discounted price
@@ -92,16 +96,40 @@ const Cart = ({cartDetails, setCartDetails}) => {
             <div className='body_cart'>
                 <Navbar/>
                 <div className='checkout'>
+
+                <div>
+                    <button onClick={() => setOpenModal(false)} 
+                        className='modalButton'> Close
+                    </button>
+                    <Modal
+                        open={openModal} 
+                        onClose={() => setOpenModal(false)}
+                    />
+                </div>
+
                     {updatedCart.length !== 0 ? 
-                        <form className='main_form_cart'>
-                            <div className='cart_items_card'>
+                        <form className='row d-flex justify-content-center mt-5'>
+                            <h1 className='shopping-cart-title mb-5'>Shopping Cart</h1>
+                            <div className='checkout-list col-8'>
                                 {updatedCart.map((ticket) => (
-                                    <div key={ticket._id} className="each-ticket">
-                                        <div className="ticket-text">
-                                            <h6 className="cart-title">
+                                    <div key={ticket._id} className="row each-ticket">
+                                        <hr/>
+
+                                        <div className='col-2'>
+                                            <Link to={`/ticket/` + ticket._id}>
+                                                <img
+                                                    className="cart-ticket-img"
+                                                    src={ticket.image}
+                                                    alt={ticket.artist}
+                                                />
+                                            </Link>
+                                        </div>
+
+                                        <div className='col-2'>
                                                 {ticket.artist}
-                                            </h6>
-                                            <h6 className="ticket-price">${ticket.totalCost.toFixed(2)}</h6>
+                                        </div>
+
+                                        <div className='col-2'>
                                             <div className="quantity-control">
                                                 <button className="quantity-button left_btn" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity - 1) }}>
                                                     -
@@ -110,27 +138,28 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                                 <button className="quantity-button" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity + 1) }}>
                                                     +
                                                 </button>
-                                                <button className="trashcan" onClick={() => removeFromCart(ticket._id, ticket.quantity)} >
-                                                    <FontAwesomeIcon icon={faTrashCan} size="lg"/>
-                                                </button>
+
+                                                {errorMessage[ticket._id] && (
+                                                    <div className="error-message">{errorMessage[ticket._id]}</div>
+                                                )}
                                             </div>
-                                            {errorMessage[ticket._id] && (
-                                            <div className="error-message">{errorMessage[ticket._id]}</div>
-                                            )}
                                         </div>
 
-                                        <Link to={`/ticket/` + ticket._id}>
-                                            <img
-                                            className="cart-ticket-img"
-                                            src={ticket.image}
-                                            alt={ticket.artist}
-                                            />
-                                        </Link>
+                                        <div className='col-2'>
+                                            <div className="ticket-price">${ticket.totalCost.toFixed(2)}</div>
+                                        </div>
+
+                                        <div className='col-1'>
+                                            <button className="trashcan" onClick={() => removeFromCart(ticket._id, ticket.quantity)} >
+                                                <FontAwesomeIcon icon={faTrashCan} size="lg"/>
+                                            </button>
+                                        </div>
+                                        <hr className="my-4" />
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="checkout_main_section_cart">
+                            <div className="col-3 checkout_main_section_cart">
                                 <h3 className='cart-summary-title'>Cart Summary</h3>
                                     <div className="scrollable-cart-body">
                                         {updatedCart.map((ticket) => (

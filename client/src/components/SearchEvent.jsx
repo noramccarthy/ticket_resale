@@ -112,51 +112,48 @@ const SearchEvent = (props) => {
                 </div>
             </div>
             
-            <div className='space'></div>
 
             <section className ='section-2'>
-                <div className='space'></div>
-                    {paginatedEvents.length > 0 ? (
-                        <div> 
-                            <section className='events-container' id='results'>
-                                {paginatedEvents.map((event) => (
-                                    <div key={event.id} className='each-event'>
-                                        <Link to={'/admin/create/' + event.id} className='event-link'>
-                                            <article class="event-card">
-                                                <section className='event-date'>
-                                                    <div className='event-time'><span>{new Date(event.datetime_local).toLocaleDateString('en-US', {day: '2-digit'})} {new Date(event.datetime_local).toLocaleDateString('en-US', {month: 'short'})} {new Date(event.datetime_local).getFullYear()}</span><span>{new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(event.datetime_local))}</span></div>
-                                                </section>
-        
-                                                <section className="event-info">
-                                                    <div className='event-title'>{event.title}</div>
-                                                    <div className="event-venue">{event.venue.name}</div>
-                                                    <div className="event-location">{event.venue.display_location}</div>
-                                                </section>
-                                            </article>
-                                        </Link>
-                                    </div>
-                                ))}
-        
-                                {showButton && (
-                                    <button className="scroll-top-button" onClick={handleScrollTop}><i className="arrow up"></i></button>
-                                )}
-                            </section>
-        
-                            <div className="pagination">
-                                {pages.map((pageNumber) => (
-                                <button key={pageNumber} className={`page-number${pageNumber === currentPage ? ' active' : ''}`} onClick={() => changePage(pageNumber)}>
-                                    {pageNumber + 1}
-                                </button>
-                                ))}
-                            </div>
+                {paginatedEvents.length > 0 ? (
+                    <div> 
+                        <section className='events-container' id='results'>
+                            {paginatedEvents.map((event) => (
+                                <div key={event.id} className='each-event'>
+                                    <Link to={'/admin/create/' + event.id} className='event-link'>
+                                        <article class="event-card">
+                                            <section className='event-date'>
+                                                <div className='event-time'><span>{new Date(event.datetime_local).toLocaleDateString('en-US', {day: '2-digit'})} {new Date(event.datetime_local).toLocaleDateString('en-US', {month: 'short'})} {new Date(event.datetime_local).getFullYear()}</span><span>{new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(event.datetime_local))}</span></div>
+                                            </section>
+    
+                                            <section className="event-info">
+                                                <div className='event-title'>{event.title}</div>
+                                                <div className="event-venue">{event.venue.name}</div>
+                                                <div className="event-location">{event.venue.display_location}</div>
+                                            </section>
+                                        </article>
+                                    </Link>
+                                </div>
+                            ))}
+    
+                            {showButton && (
+                                <button className="scroll-top-button" onClick={handleScrollTop}><i className="arrow up"></i></button>
+                            )}
+                        </section>
+    
+                        <div className="pagination">
+                            {pages.map((pageNumber) => (
+                            <button key={pageNumber} className={`page-number${pageNumber === currentPage ? ' active' : ''}`} onClick={() => changePage(pageNumber)}>
+                                {pageNumber + 1}
+                            </button>
+                            ))}
                         </div>
-                    ) : (
-                        null
-                    )}
-                <Footer/>
-            </section>
+                    </div>
+                ) : (
+                    null
+                )}
+            <Footer/>
         </section>
-
+    </section>
     )
 }
 

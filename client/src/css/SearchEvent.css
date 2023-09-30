@@ -81,10 +81,6 @@
     transition: .2s all;
 }
 
-.space {
-    height: 5vh;
-}
-
 .results-container {
     margin-top: 10px;
     margin-bottom: 10px;
