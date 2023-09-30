@@ -36,7 +36,7 @@ const UserForm = () => {
     return (
         <>
         <section className="bg-color">
-            <div className="login-body py-5">
+            <div className="login-body mt-5">
                 <div className="card-container">
                     <div className="ticket-card bg-white text-black">
                         <div className="card-body p-5">

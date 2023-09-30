@@ -3,6 +3,7 @@
     padding: 0px;
     border: 0px;
     vertical-align: baseline;
+    min-height: 70vh;
 }
 
 .container-header {

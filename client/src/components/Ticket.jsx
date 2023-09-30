@@ -26,10 +26,10 @@ const Ticket = ({ticket, discount, stock}) => {
 
                 <div className='ticket-date'>
                     <div>
-                        <span>{month}</span> &nbsp;<span>{day},</span>&nbsp;<span>{year}</span>
+                        <span>{month}</span> <span>{day},</span>&nbsp;<span>{year}</span>
                     </div>
 
-                    <div>Stock:&nbsp; {ticket.stock}</div>
+                    <div>Stock: {ticket.stock}</div>
                 </div>
 
                 <div className='ticket-cost'>

@@ -1,29 +1,24 @@
 import React from 'react';
+import '../css/Modal.css'
 
 const Modal = ({open, onClose}) => {
     if (!open) return null;
 
     return (
-        <div onClick={onClose} className='overlay'>
-                <div
-                    onClick={(e) => {
-                    e.stopPropagation();
-                    }}
-                    className='modalContainer'
-                >
-                
-                <div className='modalRight'>
-                    <p className='closeBtn' onClick={onClose}>
-                        X
-                    </p>
-                    <div className='content'>
-                        <p>Do you want a</p>
-                        <h1>$20 CREDIT</h1>
-                        <p>for your first tade?</p>
-                    </div>
-                    
+        <div className='modalContainer'>
+            <div className='disclaimer'>
+                <h3 className='disclaimer-title'>Thank you for visiting my solo project</h3>
+
+                <div className='mt-5 disclaimer-description'>
+                    <p>Unfortunately, this is not a real website!!</p>
+                    <p>These tickets are not real and cannot be used anywhere.</p>
+                    <p>I repeat, do not buy anything! You will lose your money.</p>
                 </div>
             </div>
+
+            <button className='closeBtn' onClick={onClose}>
+                I understand
+            </button>
         </div>
     );
 }

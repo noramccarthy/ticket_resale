@@ -25,13 +25,13 @@
     cursor: pointer;
     border: 1px solid black;
     border-radius: 50px;
-    font-size: 16px;
+    font-size: 18px;
     margin: 0 15px;
     height: 30px;
     width: 30px;
 }
 
-.left_btn {
+.left-btn {
     margin-left: 0;
 }
 
@@ -68,9 +68,9 @@
 }
 
 .cart-ticket-img {
-    width: 150%;
-    max-width: 200px;
-    max-height: 230px;
+    width: 100%;
+    max-width: 150px;
+    max-height: 200px;
     border-radius: 15px;
 }
 

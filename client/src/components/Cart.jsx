@@ -95,18 +95,17 @@ const Cart = ({cartDetails, setCartDetails}) => {
         <>
             <div className='body_cart'>
                 <Navbar/>
+                <Modal
+                    open={openModal} 
+                    onClose={() => setOpenModal(false)}
+                    backdrop="static"
+                    keyboard={false}
+                >
+                    
+                </Modal>
+
+
                 <div className='checkout'>
-
-                <div>
-                    <button onClick={() => setOpenModal(false)} 
-                        className='modalButton'> Close
-                    </button>
-                    <Modal
-                        open={openModal} 
-                        onClose={() => setOpenModal(false)}
-                    />
-                </div>
-
                     {updatedCart.length !== 0 ? 
                         <form className='row d-flex justify-content-center mt-5'>
                             <h1 className='shopping-cart-title mb-5'>Shopping Cart</h1>
@@ -115,7 +114,7 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                     <div key={ticket._id} className="row each-ticket">
                                         <hr/>
 
-                                        <div className='col-2'>
+                                        <div className='col-3'>
                                             <Link to={`/ticket/` + ticket._id}>
                                                 <img
                                                     className="cart-ticket-img"
@@ -125,13 +124,13 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                             </Link>
                                         </div>
 
-                                        <div className='col-2'>
+                                        <div className='col-4'>
                                                 {ticket.artist}
                                         </div>
 
                                         <div className='col-2'>
                                             <div className="quantity-control">
-                                                <button className="quantity-button left_btn" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity - 1) }}>
+                                                <button className="quantity-button left-btn" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity - 1) }}>
                                                     -
                                                 </button>
                                                 <span className="quantity-display">{ticket.quantity}</span>
