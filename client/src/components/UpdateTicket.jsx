@@ -9,7 +9,6 @@ const UpdateTicket = props => {
     const [ticketForm, setTicketForm] = useState({});
     const [ticket, setTicket] = useState({});
     const [date, setDate] = useState("");
-
     const navigate = useNavigate();
     const [error, setError] = useState({});
 
@@ -27,6 +26,8 @@ const UpdateTicket = props => {
 
         })
         .catch(err => {
+            props.setAuthorized("Please Login First")
+            navigate("/admin/login")
             console.log("Error:", err)
         })
     }, [id])
@@ -64,6 +65,8 @@ const UpdateTicket = props => {
                     lon={ticket.lon}
                     address={ticket.address}
                     city={ticket.city}
+                    postedBy={ticket.postedBy}
+                    id={ticket._id}
                     error={error}
                 />
             </div>

@@ -1,18 +1,49 @@
 import { useState } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { Modal, Button } from "react-bootstrap";
+
 import '../css/TicketForm.css'
 
-const TicketForm = (props) => {
-    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, address, city, error} = props;
 
+const TicketForm = (props) => {
+    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, address, city, error, postedBy, id} = props;
+
+    // state for controllable user input for CreateTicket and UpdateTicket
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
     const [onSale, setOnSale] = useState(false);
     const [discount, setDiscount] = useState(0);
+    const navigate = useNavigate();
 
+    // delete confirmation modal
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
+    // submit handler for CreateTicket and UpdateTicket
     const onSubmitHandler = (e) => {
         e.preventDefault();
         onSubmitProp({category, artist, date, location, state, image, price, stock, onSale, discount, lat, lon, address, city});
     }
+
+    // delete from backend
+    const deleteTicket = (ticketId) => {
+        axios.delete("http://localhost:8000/api/ticket/delete/" + ticketId)
+            .then(() => {
+                console.log("Successfully delete ticket from DB")
+                navigate('/admin/dashboard')
+            })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
+
+    // const removeFromDom = (ticketId) => {
+    //     setAdminTickets(adminTickets.filter(ticket => ticket._id !== ticketId))
+    // }
+
 
     return (
         <>
@@ -172,6 +203,14 @@ const TicketForm = (props) => {
                                     }
 
                                     <button className="btn btn-outline-light btn-lg px-5" type="submit">List</button>
+
+                                    <div>
+                                        {postedBy ? (
+                                            <button className='btn delete-ticket' onClick={() => deleteTicket(id)}>Delete</button>
+                                        ): (
+                                            null
+                                        )}
+                                    </div>
 
                                 </form>
                                 </div>

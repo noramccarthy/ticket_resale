@@ -39,6 +39,7 @@ const AdminNavbar = () => {
                             <Link className="link-btn" to={'/shop'}>Shop</Link>
                             <Link className="link-btn" to={"/deals"}>Deals</Link>
                             <Link className="link-btn" to={"/admin/events"}>New listing</Link>
+                            <Link className="link-btn" to={"/admin/dashboard"}>Dashboard</Link>
                             <Link className="link-btn" to={"/admin/login"} onClick={logout}>Logout</Link>
                         </ul>
                     </div>
