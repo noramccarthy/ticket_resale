@@ -1,4 +1,4 @@
-import React, { useEffect} from "react";
+import React from "react";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import CompanyLogo from '../assets/images/tfLogo.png';

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext'
 import '../css/OneTicket.css';
 import Navbar from '../components/Navbar';

@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import { Modal, Button } from "react-bootstrap";
 
 import '../css/TicketForm.css'
 

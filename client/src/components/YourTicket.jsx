@@ -1,7 +1,6 @@
-import '../css/AdminDashboard.css'
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import '../css/YourTicket.css'
+import '../css/AdminDashboard.css'
 
 const YourTicket = ({ticket}) => {
     const date = new Date(ticket.date)
