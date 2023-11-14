@@ -58,11 +58,11 @@ const openai = new OpenAI({
 app.post("/openapi", async (req, res) => {
     const result = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
-        messages: [{role:"system", content: "Hello World"}]
+        messages: [{role:"system", content: ""}]
     })
     console.log("Results", result.choices[0].message)
 })
 
 
 // invoke the listen method on the express server
-app.listen(8000, ()=>console.log("Listening on Port 8000"))   
+app.listen(8000, ()=>console.log("Listening on Port 8000"))

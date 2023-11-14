@@ -7,7 +7,6 @@ import Footer from './Footer';
 import Carousel from './Carousel';
 import SlideShow from './SlideShow';
 import '../css/LandingPage.css'
-import Chatbot from './Chatbot';
 
 const LandingPage = () => {
     const [concerts, setConcerts] = useState([]);
@@ -112,7 +111,6 @@ const LandingPage = () => {
             </section>
             
         </div>
-        <Chatbot/>
         <Footer/>
         </>
     )

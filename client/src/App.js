@@ -11,6 +11,7 @@ import Cart from './components/Cart'
 import SearchEvent from './components/SearchEvent'
 import UpdateTicket from './components/UpdateTicket'
 import Receipt from './components/Receipt'
+import Chatbot from './components/Chatbot'
 
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -29,6 +30,7 @@ function App() {
           <Routes>
             <Route>
               <Route path="/" element={<LandingPage cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
+              <Route path="/chat" element={<Chatbot/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/shop" element={<AllTickets/>}/>
               <Route path="/deals" element={<Deals/>}/>
