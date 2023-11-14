@@ -27,7 +27,7 @@ const UserLogin = props => {
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log("Error:", err.response.data);
+            console.log("Error:", err);
             setError(err.response.data);
         })
     }

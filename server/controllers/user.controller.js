@@ -61,19 +61,21 @@ module.exports = {
         res.clearCookie('usertoken');
         res.sendStatus(200);
     },
-    // find user
-    getOneUser: async (req, res) => {
-        console.log("JWT ID:", req.jwtpayload)
-        console.log("JWT ID:", req.jwtpayload.id)
+    // find user function -- not working
+    // Error: cannot read properties of undefined (reading 'id')
 
-        try {
-            const loggedInUser = await User.findOne({_id: req.jwtpayload.id}).populate('listings')
-            console.log("Logged in user:", loggedInUser)
-            res.status(200).json(loggedInUser)
-        }
-        catch(err) {
-            console.log("Error:", err)
-            res.status(400).json(err)
-        }
-    }
+    // getOneUser: async (req, res) => {
+    //     console.log("JWT ID:", req.jwtpayload)
+    //     console.log("JWT ID:", req.jwtpayload.id)
+
+    //     try {
+    //         const loggedInUser = await User.findOne({_id: req.jwtpayload.id}).populate('listings')
+    //         console.log("Logged in user:", loggedInUser)
+    //         res.status(200).json(loggedInUser)
+    //     }
+    //     catch(err) {
+    //         console.log("Error:", err)
+    //         res.status(400).json(err)
+    //     }
+    // }
 }
