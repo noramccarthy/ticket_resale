@@ -1,7 +1,6 @@
 // ES5 syntax
 
 const {OpenAI}  = require("openai")
-
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -11,7 +10,6 @@ const port = 8000;
 // require .env and invoke its config function
 const dotenv = require('dotenv');
 dotenv.config();
-
 // require('dotenv').config({path:'.env'});
 
 
@@ -24,13 +22,12 @@ app.use(cookieParser());
 
 // require mongoose.config.js after middleware
 require("./config/mongoose.config");
-
 require("./routes/category.routes")(app);
 require("./routes/state.routes")(app);
 require("./routes/ticket.routes")(app);
 require("./routes/user.routes")(app);
 
-// PAYPl
+// endpoints for PayPal
 app.post("/my-server/create-paypal-order", async (req, res) => {
     try {
         const order = await paypal.createOrder();
@@ -39,7 +36,7 @@ app.post("/my-server/create-paypal-order", async (req, res) => {
         res.status(500).send(err.message);
     }
 });
-    
+
 app.post("/my-server/capture-paypal-order", async (req, res) => {
     const { orderID } = req.body;
     try {
@@ -50,17 +47,29 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
     }
 });
 
-// initalization
+
+// endpoint for ChatGPT
 const openai = new OpenAI({
     apiKey: process.env.REACT_APP_OPENAPI_KEY
 });
 
-app.post("/openapi", async (req, res) => {
-    const result = await openai.chat.completions.create({
-        model: "gpt-3.5-turbo",
-        messages: [{role:"system", content: ""}]
-    })
-    console.log("Results", result.choices[0].message)
+app.post("/chat", async (req, res) => {
+    console.log("REQ.BODY:", req.body)
+    const chats = req.body;
+
+    try {
+        const result = await openai.chat.completions.create({
+            model: "gpt-3.5-turbo",
+            messages: chats
+        })
+        console.log("Results", result.choices[0].message)
+        res.json(result.choices[0].message)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({
+            error: "An error occured with chatGPT request:", error
+        })
+    }
 })
 
 
