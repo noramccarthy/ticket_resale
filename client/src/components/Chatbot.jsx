@@ -3,8 +3,7 @@ import axios from 'axios';
 import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
 import '../css/Chatbot.css';
 
-
-const Chatbot = (props) => {
+const Chatbot = () => {
 
     const [messages, setMessages] = useState([
         {
@@ -15,22 +14,21 @@ const Chatbot = (props) => {
     ]);
     const [isTyping, setIsTyping] = useState(false);
 
-    
     const handleSend = async (message) => {
         const newMessage = {
-        message,
-        direction: 'outgoing',
-        sender: "user"
+            message,
+            direction: 'outgoing',
+            sender: "user"
         };
-    
+        console.log(newMessage)
+
         const newMessages = [...messages, newMessage];
         
         setMessages(newMessages);
-    
         setIsTyping(true);
         await processMessageToChatGPT(newMessages);
     };
-    
+
     const processMessageToChatGPT = async (chatMessages) => {
         // Format messages for chatGPT API
         // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
@@ -43,18 +41,19 @@ const Chatbot = (props) => {
             }
             return { role: role, content: messageObject.message}
         });
+        console.log(apiMessages)
 
         await axios.post("http://localhost:8000/chat", apiMessages)
         .then(res => {
-            console.log("RESULTS!", res.data.content);
+            console.log("RESULTS!", res.data);
 
             setMessages([...chatMessages, {
-                message: res.data.content,
+                message: res.data,
                 sender: "ChatGPT"
             }]);
 
             setIsTyping(false);
-            });
+        });
     }
     
     return (
@@ -67,7 +66,6 @@ const Chatbot = (props) => {
                         typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing..." /> : null}
                         >
                         {messages.map((message, i) => {
-                            console.log(message)
                             return <Message key={i} model={message} />
                         })}
                         </MessageList>
