@@ -23,30 +23,13 @@ app.use(cookieParser());
 // require mongoose.config.js after middleware
 require("./config/mongoose.config");
 
+// require routes
 require("./routes/category.routes")(app);
 require("./routes/state.routes")(app);
 require("./routes/ticket.routes")(app);
 require("./routes/user.routes")(app);
-
-// PAYPl
-app.post("/my-server/create-paypal-order", async (req, res) => {
-        try {
-        const order = await paypal.createOrder();
-        res.json(order);
-        } catch (err) {
-        res.status(500).send(err.message);
-        }
-    });
-    
-    app.post("/my-server/capture-paypal-order", async (req, res) => {
-        const { orderID } = req.body;
-        try {
-        const captureData = await paypal.capturePayment(orderID);
-        res.json(captureData);
-        } catch (err) {
-        res.status(500).send(err.message);
-        }
-    });
+require("./routes/chat.routes")(app);
+require("./routes/paypal.routes")(app);
 
 // invoke the listen method on the express server
 app.listen(8000, ()=>console.log("Listening on Port 8000"))   
