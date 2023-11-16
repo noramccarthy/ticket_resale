@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { MainContainer, ChatContainer, MessageList, Message, MessageInput, TypingIndicator } from '@chatscope/chat-ui-kit-react';
+import { MessageList, Message, ConversationHeader, EllipsisButton, MessageSeparator, MessageInput, TypingIndicator, MainContainer, ChatContainer } from '@chatscope/chat-ui-kit-react';
+import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
+import '../css/Chatbot.css'
 
 const Chatbot = () => {
-
+    const [isOpen, setIsOpen] = useState(true);
     const [messages, setMessages] = useState([
         {
         message: "Hello, I'm ChatGPT! Ask me anything!",
@@ -12,6 +14,10 @@ const Chatbot = () => {
         }
     ]);
     const [isTyping, setIsTyping] = useState(false);
+
+    const toggle = () => {
+        setIsOpen((isOpen) => !isOpen)
+    }
 
     const handleSend = async (message) => {
         const newMessage = {
@@ -56,23 +62,28 @@ const Chatbot = () => {
     }
     
     return (
-        <div className="App">
-            <div style={{ position:"relative", height: "800px", width: "700px"  }}>
-                <MainContainer>
-                    <ChatContainer>       
-                        <MessageList 
-                        scrollBehavior="smooth" 
-                        typingIndicator={isTyping ? <TypingIndicator content="ChatGPT is typing..." /> : null}
-                        >
+        (isOpen ? <MainContainer responsive>                
+            <ChatContainer>
+                <ConversationHeader>
+                    <ConversationHeader.Back />
+                    <ConversationHeader.Content userName="Virtual Assistant" info="Active" />
+                    <ConversationHeader.Actions>
+                        {/* <EllipsisButton orientation="vertical" /> */}
+                        <button type="button" className='btn-close chatbot-toggle-button' onClick={toggle}></button>
+                    </ConversationHeader.Actions>          
+                </ConversationHeader>
+
+                <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator/> : null}>
+                    <MessageSeparator content="Today" />
                         {messages.map((message, i) => {
                             return <Message key={i} model={message} />
                         })}
-                        </MessageList>
-                        <MessageInput placeholder="Type message here" onSend={handleSend} />        
-                    </ChatContainer>
-                </MainContainer>
-            </div>
-        </div>
+                </MessageList>
+                <MessageInput placeholder="Type message here..." onSend={handleSend} />
+            </ChatContainer>
+        </MainContainer>
+        : "")
+        
     )
 }
 

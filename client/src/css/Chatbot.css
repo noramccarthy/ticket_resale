@@ -1,0 +1,25 @@
+.chatbot-container {
+    width: 400px;
+    height: 400px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    background-color: #d76a6a;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chatbot-message-container {
+    height: auto;
+    overflow-y: scroll;
+    padding: 6px;
+}
+
+.chatbot-messages {
+    height: 200px;
+}
+
+.chatbot-toggle-button {
+    width: 5px;
+    height: 5px;
+}
