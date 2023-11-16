@@ -27,9 +27,8 @@ const UserForm = () => {
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log("Error:", err.response.data.error.errors);
-            console.log(err)
-            setError(err.response.data.error.errors);
+            console.log("Error:", err);
+            setError(err);
         })
     }
 

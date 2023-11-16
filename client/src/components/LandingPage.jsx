@@ -42,7 +42,7 @@ const LandingPage = () => {
         axios.get("http://localhost:8000/api/ticket/concerts")
         .then((res) => {
             setConcerts(res.data)
-            console.log("Concerts:", concerts)
+            // console.log("Concerts:", concerts)
         })
         .catch((err) => console.log(err))
     }, []);
@@ -51,7 +51,7 @@ const LandingPage = () => {
         axios.get("http://localhost:8000/api/ticket/sports")
         .then((res) => {
             setSports(res.data)
-            console.log("Sports:", sports)
+            // console.log("Sports:", sports)
         })
         .catch((err) => console.log(err))
     }, []);
@@ -60,7 +60,7 @@ const LandingPage = () => {
         axios.get("http://localhost:8000/api/ticket/theater")
         .then((res) => {
             setTheater(res.data)
-            console.log("Theater:", theater)
+            // console.log("Theater:", theater)
         })
         .catch((err) => console.log(err))
     }, []);

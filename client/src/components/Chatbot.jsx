@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { MessageList, Message, ConversationHeader, EllipsisButton, MessageSeparator, MessageInput, TypingIndicator, MainContainer, ChatContainer } from '@chatscope/chat-ui-kit-react';
+import { MessageList, Message, ConversationHeader, MessageSeparator, MessageInput, TypingIndicator, MainContainer, ChatContainer } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import '../css/Chatbot.css'
 
@@ -20,6 +20,14 @@ const Chatbot = () => {
     }
 
     const handleSend = async (message) => {
+
+        // const result = await openai.chat.completions.create({
+        //     model: "gpt-3.5-turbo-1106",
+        //     messages: chats
+        // })
+        // console.log("Results", result.choices[0].message)
+        // res.json(result.choices[0].message)
+        
         const newMessage = {
             message,
             direction: 'outgoing',
