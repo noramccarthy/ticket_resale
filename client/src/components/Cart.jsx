@@ -14,7 +14,6 @@ import '../css/Cart.css'
 import Footer from './Footer';
 
 const PAYPAL_API = "AUXYLTAsvHFThBeI28d4bNu7sYxbtCo1RFiiYZs6L-_wWmJwAkej4vSFV7si14s1ozlo-SxZDntQI9xI";
-// const {REACT_APP_CLIENT_ID} = process.env
 
 const Cart = ({cartDetails, setCartDetails}) => {
     const [errorMessage, setErrorMessage] = useState({});
@@ -103,7 +102,6 @@ const Cart = ({cartDetails, setCartDetails}) => {
                 >
                     
                 </Modal>
-
 
                 <div className='checkout'>
                     {updatedCart.length !== 0 ? 

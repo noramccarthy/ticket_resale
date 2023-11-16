@@ -7,14 +7,20 @@ import Footer from './Footer';
 import Carousel from './Carousel';
 import SlideShow from './SlideShow';
 import '../css/LandingPage.css'
+import Chatbot from './Chatbot';
 
 const LandingPage = () => {
+    const [isOpen, setIsOpen] = useState(true);
     const [concerts, setConcerts] = useState([]);
     const [sports, setSports] = useState([]);
     const [theater, setTheater] = useState([]);
 
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
+
+    const toggle = () => {
+        setIsOpen((isOpen) => !isOpen)
+    }
 
     const settings = { 
         dots: true, 
@@ -111,6 +117,12 @@ const LandingPage = () => {
             </section>
             
         </div>
+        <div className='chatbot-toggle'>
+            {isOpen && <Chatbot/>}
+            {/* <button className='chatbot-toggle-button' onClick={toggle}>X</button> */}
+            
+        </div>
+
         <Footer/>
         </>
     )
