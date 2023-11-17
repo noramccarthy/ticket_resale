@@ -112,7 +112,6 @@ const Deals = () => {
         .catch((err) => console.log(err))
     },[])
 
-
     return (
         <>
         <section id="tickets-scroll" className='tickets-container'>
