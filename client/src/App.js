@@ -14,7 +14,6 @@ import Receipt from './components/Receipt'
 
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { Wrapper } from "@googlemaps/react-wrapper";
 
 import './App.css';
 
@@ -24,7 +23,6 @@ function App() {
 
   return (
     <div className="App">
-      {/* <Wrapper apiKey={"AIzaSyA3e3qht-meGsln-PEY2RUhRdRzi0yk4UI"}> */}
         <BrowserRouter>
           <Routes>
             <Route>
@@ -44,7 +42,6 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      {/* </Wrapper> */}
     </div>
   );
 }

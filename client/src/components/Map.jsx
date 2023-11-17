@@ -1,7 +1,6 @@
 import React from 'react';
 import '../css/OneTicket.css';
 
-// import { Loader } from '@googlemaps/js-api-loader';
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
 const Map = ({latitude, longitude, location}) => {
@@ -13,7 +12,6 @@ const Map = ({latitude, longitude, location}) => {
     };
 
     const { isLoaded } = useJsApiLoader({
-        // id: 'google-map-script',
         googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     })
     
