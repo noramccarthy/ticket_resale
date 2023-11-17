@@ -11,7 +11,6 @@ import Cart from './components/Cart'
 import SearchEvent from './components/SearchEvent'
 import UpdateTicket from './components/UpdateTicket'
 import Receipt from './components/Receipt'
-import Chatbot from './components/Chatbot'
 
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -25,12 +24,11 @@ function App() {
 
   return (
     <div className="App">
-      <Wrapper apiKey={"AIzaSyA3e3qht-meGsln-PEY2RUhRdRzi0yk4UI"}>
+      {/* <Wrapper apiKey={"AIzaSyA3e3qht-meGsln-PEY2RUhRdRzi0yk4UI"}> */}
         <BrowserRouter>
           <Routes>
             <Route>
               <Route path="/" element={<LandingPage cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
-              <Route path="/chat" element={<Chatbot/>}/>
               <Route path="/about" element={<About/>}/>
               <Route path="/shop" element={<AllTickets/>}/>
               <Route path="/deals" element={<Deals/>}/>
@@ -46,7 +44,7 @@ function App() {
             </Route>
           </Routes>
         </BrowserRouter>
-      </Wrapper>
+      {/* </Wrapper> */}
     </div>
   );
 }

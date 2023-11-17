@@ -147,35 +147,5 @@ module.exports = {
         Ticket.findByIdAndUpdate(id, {stock: quantity}, {new:true, runValidators:true})
             .then((updatedTicket) => res.json({updatedTicket}))
             .catch((err) => res.status(400).json(err));
-    },
-
-    uploadFile: (req, res) => {
-        try {
-            if (!req.files) {
-                res.send({
-                    status: "Failed",
-                    message: "No file uploaded",
-                })
-            } else {
-                let file = req.files.file;
-                console.log(req.files);
-
-                file.mv("./uploads/" + file.name);
-
-                res.send({
-                    status: "Success",
-                    message: "File successfully uploaded",
-                    data: {
-                        name: file.name,
-                        mimetype: file.mimetype,
-                        size: file.size,
-                    }
-                })
-            }
-        }
-        catch (err) {
-            res.status(500).json(err);
-        }
     }
-
 };

@@ -1,5 +1,5 @@
 // ES5 syntax
-
+const useLoadScript = require('@react-google-maps/api')
 const {OpenAI}  = require("openai")
 const express = require("express");
 const app = express();
@@ -24,11 +24,11 @@ app.use(cookieParser());
 require("./config/mongoose.config");
 // require routes
 require("./routes/category.routes")(app);
+require("./routes/chat.routes")(app);
+require("./routes/paypal.routes")(app);
 require("./routes/state.routes")(app);
 require("./routes/ticket.routes")(app);
 require("./routes/user.routes")(app);
-require("./routes/chat.routes")(app);
-require("./routes/paypal.routes")(app);
 
 // endpoints for PayPal
 app.post("/my-server/create-paypal-order", async (req, res) => {
@@ -49,6 +49,17 @@ app.post("/my-server/capture-paypal-order", async (req, res) => {
         res.status(500).send(err.message);
     }
 });
+
+app.post("/api/load", (req, res) => {
+    try {
+        useLoadScript({
+            googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+        })
+    } catch(err) {
+        console.log(err)
+    }
+})
+
 
 
 // invoke the listen method on the express server

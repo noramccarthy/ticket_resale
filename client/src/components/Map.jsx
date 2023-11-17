@@ -13,8 +13,8 @@ const Map = ({latitude, longitude, location}) => {
     };
 
     const { isLoaded } = useJsApiLoader({
-        id: 'google-map-script',
-        googleMapsApiKey: "AIzaSyA3e3qht-meGsln-PEY2RUhRdRzi0yk4UI"
+        // id: 'google-map-script',
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
     })
     
     const onLoad = React.useCallback(function callback(map) {

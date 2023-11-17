@@ -21,7 +21,7 @@ const OneTicket = () => {
         axios.get("http://localhost:8000/api/ticket/" + id)
         .then((res) => {
             setTicket(res.data)
-            console.log(res.data)
+            console.log("Ticket:", res.data)
 
             const date = new Date(res.data.date)
             setMonth(date.toLocaleString('en-US', {month: 'long'}))
@@ -105,7 +105,6 @@ const OneTicket = () => {
                     <Map
                         longitude={ticket.lon}
                         latitude={ticket.lat}
-                        location={ticket.location}
                     />
                     
                     <div className='one-ticket-address'>
