@@ -5,6 +5,8 @@ const openai = new OpenAI({
     apiKey: process.env.REACT_APP_OPENAPI_KEY
 });
 
+console.log("Key!", process.env.REACT_APP_OPENAPI_KEY)
+
 module.exports = {
     create: async (req, res) => {
         console.log("REQ.BODY:", req.body)
