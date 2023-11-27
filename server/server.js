@@ -62,10 +62,10 @@ app.post("/api/load", (req, res) => {
 
 // endpoint for ChatGPT
 const openai = new OpenAI({
-    apiKey: process.env.REACT_APP_OPENAPI_KEY
+    apiKey: process.env.OPENAI_API_KEY
 });
-console.log(process.env.REACT_APP_OPENAPI_KEY)
-console.log("Key", process.env.REACT_APP_OPENAPI_KEY)
+// console.log(process.env.REACT_APP_OPENAPI_KEY)
+// console.log("Key", process.env.REACT_APP_OPENAPI_KEY)
 
 
 // invoke the listen method on the express server
