@@ -1,6 +1,6 @@
 // ES5 syntax
 const useLoadScript = require('@react-google-maps/api')
-// const OpenAI  = require("openai")
+const OpenAI  = require("openai")
 const express = require("express");
 const app = express();
 const cors = require("cors");
@@ -61,11 +61,11 @@ app.post("/api/load", (req, res) => {
 })
 
 // endpoint for ChatGPT
-// const openai = new OpenAI({
-//     apiKey: process.env.REACT_APP_OPENAPI_KEY
-// });
-// console.log(apiKey)
-// console.log("Key", process.env.REACT_APP_OPENAPI_KEY)
+const openai = new OpenAI({
+    apiKey: process.env.REACT_APP_OPENAPI_KEY
+});
+console.log(process.env.REACT_APP_OPENAPI_KEY)
+console.log("Key", process.env.REACT_APP_OPENAPI_KEY)
 
 
 // invoke the listen method on the express server
