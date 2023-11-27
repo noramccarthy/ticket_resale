@@ -1,3 +1,4 @@
+
 export const sliderData = [
     {
         image: "https://media.architecturaldigest.com/photos/641b2b8252ae61ead67e92d9/16:9/w_1600,c_limit/GettyImages-1474485122.jpg",
@@ -5,7 +6,7 @@ export const sliderData = [
         desc: "A marketplace where fans buy and sell tickets at a fair price.",
     },
     {
-        image: "https://hoopshabit.com/wp-content/uploads/getty-images/2017/07/1238457765.jpeg",
+        image: 'https://images.alphacoders.com/123/1237220.jpg',
         heading: "Boston Celtics",
         desc: "A marketplace where fans buy and sell tickets at a fair price.",
     },
