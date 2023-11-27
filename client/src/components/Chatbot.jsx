@@ -20,13 +20,6 @@ const Chatbot = () => {
     }
 
     const handleSend = async (message) => {
-
-        // const result = await openai.chat.completions.create({
-        //     model: "gpt-3.5-turbo-1106",
-        //     messages: chats
-        // })
-        // console.log("Results", result.choices[0].message)
-        // res.json(result.choices[0].message)
         
         const newMessage = {
             message,
