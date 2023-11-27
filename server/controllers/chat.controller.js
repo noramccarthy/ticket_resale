@@ -5,7 +5,7 @@ module.exports = {
     create: async (req, res) => {
 
         const openai = new OpenAI({
-            apiKey: process.env.OPENAI_API_KEY
+            apiKey: process.env.OPENAI_API_KEY // defaults to process.env["OPENAI_API_KEY"]
         });
 
         console.log("REQ.BODY:", req.body)

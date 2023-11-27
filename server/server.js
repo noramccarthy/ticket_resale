@@ -1,6 +1,6 @@
 // ES5 syntax
 const useLoadScript = require('@react-google-maps/api')
-const OpenAI  = require("openai")
+// const OpenAI  = require("openai")
 const express = require("express");
 const app = express();
 const cors = require("cors");
