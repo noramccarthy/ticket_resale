@@ -13,7 +13,7 @@ module.exports = {
         // check if email is already being used
         const user = await User.findOne({email: req.body.email})
         if(user !== null){
-            return res.status(400).json({message: "Email already taken."})
+            return res.status(400).json({message: "Email address already taken"})
         }
 
         User.create(req.body)
@@ -31,13 +31,13 @@ module.exports = {
         // If user does not match, give error
         const user = await User.findOne({email: req.body.email})
         if (user === null) {
-            return res.status(400).json({message: "Invalid login"})
+            return res.status(400).json({message: "Email address not found"})
         }
         // User found in DB
         const correctPassword = await bcrypt.compare(req.body.password, user.password)
         // If PW does not match DB, give error
         if (!correctPassword) {
-            return res.status(400).json({message: "Invalid login"})
+            return res.status(400).json({message: "Try another password"})
         }
         // create token
         const userToken = jwt.sign({

@@ -8,19 +8,20 @@ const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [messages, setMessages] = useState([
         {
-        message: "Hello, I'm ChatGPT! Ask me anything!",
+        message: "Hello, I'm a virtual assistant. Ask me question!",
         sentTime: "just now",
-        sender: "ChatGPT"
+        sender: "OpenAI"
         }
     ]);
     const [isTyping, setIsTyping] = useState(false);
 
+    // toggle chat window
     const toggle = () => {
-        setIsOpen((isOpen) => !isOpen)
+        setIsOpen((isOpen) => !isOpen);
     }
 
+    // handle sending a message from the user
     const handleSend = async (message) => {
-        
         const newMessage = {
             message,
             direction: 'outgoing',
@@ -28,38 +29,42 @@ const Chatbot = () => {
         };
         console.log("newMessage:", newMessage)
 
+        // update the message state with the new user message
         const newMessages = [...messages, newMessage];
-        
         setMessages(newMessages);
         setIsTyping(true);
-        await processMessageToChatGPT(newMessages);
+
+        // send message to backend to get response from openai
+        await processMessageToOpenAI(newMessages);
     };
 
-    const processMessageToChatGPT = async (chatMessages) => {
-        // Format messages for chatGPT API
-        // API is expecting objects in format of { role: "user" or "assistant", "content": "message here"}
-        let apiMessages = chatMessages.map((messageObject) => {
-            let role = "";
-            if (messageObject.sender === "ChatGPT") {
-                role = "assistant";
-            } else {
-                role = "user";
-            }
-            return { role: role, content: messageObject.message}
-        });
-        console.log("apiMessages:", apiMessages)
+    // send user's message to backend
+    const processMessageToOpenAI = async (chatMessages) => {
+        const userMessage = chatMessages[chatMessages.length - 1].message; // last sent msg
 
-        await axios.post("http://localhost:8000/api/chat", apiMessages)
-        .then(res => {
-            console.log("RESULTS!", res.data);
 
-            setMessages([...chatMessages, {
-                message: res.data,
-                sender: "ChatGPT"
-            }]);
+        // // Format messages for OpenAI API
+        // let apiMessages = chatMessages.map((messageObject) => {
+        //     let role = messageObject.sender === 'OpenAI' ? 'assistant' : 'user';
+        //     return { role, content: messageObject.message };
+        // });
+        // console.log("apiMessages:", apiMessages)
 
+
+        try {
+            const response = await axios.post(
+                'http://localhost:8000/api/chat',
+                { message: userMessage }
+            );
+            const assistantMessage = response.data.message;
+
+            // update message list with assistant's response
+            setMessages([...chatMessages, { message: assistantMessage, sender: 'OpenAI' }]);
             setIsTyping(false);
-        });
+        } catch (error) {
+            console.error('Error in API request:', error);
+            setIsTyping(false);
+        }
     }
     
     return (
@@ -71,7 +76,7 @@ const Chatbot = () => {
                     <ConversationHeader.Actions>
                         {/* <EllipsisButton orientation="vertical" /> */}
                         <button type="button" className='btn-close chatbot-toggle-button' onClick={toggle}></button>
-                    </ConversationHeader.Actions>          
+                    </ConversationHeader.Actions>
                 </ConversationHeader>
 
                 <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator/> : null}>

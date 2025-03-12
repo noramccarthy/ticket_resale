@@ -29,7 +29,7 @@ const Footer = () => {
             </div>
 
             <div className='footer-info'>
-                <p>© 2023 Ticket Forum</p>
+                <p>© 2025 Ticket Forum</p>
             </div>
         </div>
     )
