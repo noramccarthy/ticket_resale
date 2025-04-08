@@ -8,9 +8,9 @@ const Chatbot = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [messages, setMessages] = useState([
         {
-        message: "Hello, I'm a virtual assistant. Ask me question!",
-        sentTime: "just now",
-        sender: "OpenAI"
+            message: "Hello, I'm a virtual assistant. Ask me question!",
+            sentTime: "just now",
+            sender: "OpenAI"
         }
     ]);
     const [isTyping, setIsTyping] = useState(false);
@@ -27,39 +27,35 @@ const Chatbot = () => {
             direction: 'outgoing',
             sender: "user"
         };
-        console.log("newMessage:", newMessage)
+        console.log("New Message Received:", newMessage)
 
         // update the message state with the new user message
-        const newMessages = [...messages, newMessage];
-        setMessages(newMessages);
+        setMessages((prevMessages) => [...prevMessages, newMessage]);
         setIsTyping(true);
 
         // send message to backend to get response from openai
-        await processMessageToOpenAI(newMessages);
+        await processMessageToOpenAI([...messages, newMessage]);
     };
 
     // send user's message to backend
     const processMessageToOpenAI = async (chatMessages) => {
-        const userMessage = chatMessages[chatMessages.length - 1].message; // last sent msg
-
-
-        // // Format messages for OpenAI API
-        // let apiMessages = chatMessages.map((messageObject) => {
-        //     let role = messageObject.sender === 'OpenAI' ? 'assistant' : 'user';
-        //     return { role, content: messageObject.message };
-        // });
-        // console.log("apiMessages:", apiMessages)
-
+        const userMessage = chatMessages[chatMessages.length - 1].message; // send last msg
 
         try {
             const response = await axios.post(
-                'http://localhost:8000/api/chat',
+                "http://localhost:8000/api/chat",
+                // process.env.REACT_APP_API_URL || "http://localhost:8000/api/chat"
                 { message: userMessage }
             );
-            const assistantMessage = response.data.message;
+
+            const assistantMessage = response.data.response;
+            console.log("assistantMessage:", response)
 
             // update message list with assistant's response
-            setMessages([...chatMessages, { message: assistantMessage, sender: 'OpenAI' }]);
+            setMessages((prevMessages) => [
+                ...prevMessages,
+                { message: assistantMessage, sender: 'OpenAI'}
+            ]);
             setIsTyping(false);
         } catch (error) {
             console.error('Error in API request:', error);
@@ -68,7 +64,8 @@ const Chatbot = () => {
     }
     
     return (
-        (isOpen ? <MainContainer responsive>                
+        (isOpen ? 
+        <MainContainer responsive>
             <ChatContainer>
                 <ConversationHeader>
                     <ConversationHeader.Back />
