@@ -1,17 +1,15 @@
 
 .bg-color {
     background-image: url(../assets/images/photo-1540039155733-5bb30b53aa14.jpg);
-
     background-repeat: no-repeat;
     background-size: 100%, contain;
-
     min-height: 100vh;
     min-width: 1024px;
-        
+
     /* Set up proportionate scaling */
     width: 100%;
     height: auto;
-        
+
     /* Set up positioning */
     position: fixed;
     top: 0;

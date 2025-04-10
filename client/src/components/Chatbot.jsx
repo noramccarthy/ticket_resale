@@ -71,7 +71,6 @@ const Chatbot = () => {
                     <ConversationHeader.Back />
                     <ConversationHeader.Content userName="Virtual Assistant" info="Active" />
                     <ConversationHeader.Actions>
-                        {/* <EllipsisButton orientation="vertical" /> */}
                         <button type="button" className='btn-close chatbot-toggle-button' onClick={toggle}></button>
                     </ConversationHeader.Actions>
                 </ConversationHeader>
@@ -79,7 +78,21 @@ const Chatbot = () => {
                 <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator/> : null}>
                     <MessageSeparator content="Today" />
                         {messages.map((message, i) => {
-                            return <Message key={i} model={message} />
+                            
+                            const isUser = message.sender === 'user';
+
+                            return (
+                                <Message 
+                                    key={i} 
+                                    model={{
+                                        message: message.message, 
+                                        sentTime: "just now",
+                                        sender: message.sender, 
+                                        direction: isUser ? "outgoing" : "incoming",
+                                        position: "single",
+                                    }} 
+                                />
+                            )
                         })}
                 </MessageList>
                 <MessageInput placeholder="Type message here..." onSend={handleSend} />

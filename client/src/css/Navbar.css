@@ -6,10 +6,9 @@
 
 .nav {
     position: sticky;
-    z-index: 100;
-    top: 0;
-    padding: 15px 5%;
-    background-color: #1C2431;
+    top: 0px;
+    padding: 5px 5%;
+    background-color: #07060bf1;
 }
 
 .nav-row {

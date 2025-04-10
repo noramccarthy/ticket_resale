@@ -1,3 +1,5 @@
+import celtics from './assets/images/celtics.jpg'
+
 
 export const sliderData = [
     {
@@ -6,7 +8,7 @@ export const sliderData = [
         desc: "A marketplace where fans buy and sell tickets at a fair price.",
     },
     {
-        image: 'https://images.alphacoders.com/123/1237220.jpg',
+        image: celtics,
         heading: "Boston Celtics",
         desc: "A marketplace where fans buy and sell tickets at a fair price.",
     },

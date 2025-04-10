@@ -7,12 +7,12 @@ const Modal = ({open, onClose}) => {
     return (
         <div className='modalContainer'>
             <div className='disclaimer'>
-                <h3 className='disclaimer-title'>Thank you for visiting my solo project</h3>
+                <h3 className='disclaimer-title'>Thanks for checking out my solo project!</h3>
 
-                <div className='mt-5 disclaimer-description'>
-                    <p>Unfortunately, this is not a real website!!</p>
+                <div className='disclaimer-description'>
+                    <p>Unfortunately, this is not a real website.</p>
                     <p>These tickets are not real and cannot be used anywhere.</p>
-                    <p>I repeat, do not buy anything! You will lose your money.</p>
+                    <p>Do not buy anything!</p>
                 </div>
             </div>
 
