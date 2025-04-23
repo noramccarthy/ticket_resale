@@ -2,15 +2,12 @@ import { Link } from 'react-router-dom';
 import '../css/YourTicket.css'
 import '../css/AdminDashboard.css'
 
-const YourTicket = ({ticket}) => {
+const SingleTicket = ({ticket}) => {
     const date = new Date(ticket.date)
     const month = date.toLocaleString('en-US', {month: 'long'})
     const day = date.toLocaleDateString('en-US', {day: '2-digit'})
     const year = date.getFullYear();
-
     const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
-
-    
 
     return (
         <>
@@ -46,4 +43,4 @@ const YourTicket = ({ticket}) => {
     )
 }
 
-export default YourTicket;
+export default SingleTicket;

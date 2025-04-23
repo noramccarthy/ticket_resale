@@ -11,10 +11,11 @@ import Cart from './components/Cart'
 import SearchEvent from './components/SearchEvent'
 import UpdateTicket from './components/UpdateTicket'
 import Receipt from './components/Receipt'
+import ProfileManagement from './components/ProfileManagement'
+import UserTickets from './components/UserTickets'
 
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
 import './App.css';
 
 function App() {
@@ -35,10 +36,13 @@ function App() {
               <Route path="/admin/login" element={<UserLogin authorized={authorized} setAuthorized={setAuthorized}/>}/>
               <Route path="/admin/register" element={<UserForm authorized={authorized} setAuthorized={setAuthorized}/>}/>
               <Route path="/admin/dashboard" element={<AdminDashboard authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/profile" element={<ProfileManagement authorized={authorized} setAuthorized={setAuthorized}/>}/>
               <Route path="/admin/events" element={<SearchEvent authorized={authorized} setAuthorized={setAuthorized}/>}/>
+              <Route path="/admin/tickets" element={<UserTickets authorized={authorized} setAuthorized={setAuthorized}/>}/>
               <Route path="/admin/create/:id" element={<CreateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
               <Route path="/admin/update/:id" element={<UpdateTicket authorized={authorized} setAuthorized={setAuthorized}/>}/>
               <Route path="/receipt" element={<Receipt cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
+            
             </Route>
           </Routes>
         </BrowserRouter>

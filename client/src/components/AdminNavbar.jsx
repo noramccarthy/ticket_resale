@@ -1,6 +1,5 @@
-import axios from 'axios';
 import React, { useContext } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { Badge } from "@mui/material";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -9,18 +8,6 @@ import '../css/Navbar.css';
 
 const AdminNavbar = () => {
     const { cartCount } = useContext(CartContext);
-    const navigate = useNavigate();
-
-    const logout = () => {
-        axios.get('http://localhost:8000/api/logout', { withCredentials: true })
-            .then(res => {
-                // console.log(res);
-                navigate("/admin/login")
-            })
-            .catch(err => {
-                console.log(err);
-            })
-    }
 
     return (
         <>
@@ -38,9 +25,7 @@ const AdminNavbar = () => {
                         <ul className="nav-links">
                             <Link className="link-btn" to={'/shop'}>Shop</Link>
                             <Link className="link-btn" to={"/deals"}>Deals</Link>
-                            <Link className="link-btn" to={"/admin/events"}>New listing</Link>
-                            <Link className="link-btn" to={"/admin/dashboard"}>Dashboard</Link>
-                            <Link className="link-btn" to={"/admin/login"} onClick={logout}>Logout</Link>
+                            <Link className="link-btn" to={"/admin/dashboard"}>Account</Link>
                         </ul>
                     </div>
 

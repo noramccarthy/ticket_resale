@@ -73,7 +73,7 @@ const LandingPage = () => {
     
             <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
                 <div className="carousel-container">
-                    <h1 className='category-title'> Shop Concerts</h1>
+                    <h1 className='category-title'>Concerts</h1>
                         <Slider {...settings}>
                             {concerts.map((ticket, index) => (
                                 <div className='carousel-body' key={index}>
@@ -87,7 +87,7 @@ const LandingPage = () => {
                         </Slider>
                 </div>
                 <div className="carousel-container">
-                    <h1 className='category-title'> Shop Sports</h1>
+                    <h1 className='category-title'>Sports</h1>
                         <Slider {...settings}>
                             {sports.map((ticket, index) => (
                                 <div className='carousel-body' key={index}>
@@ -101,7 +101,7 @@ const LandingPage = () => {
                         </Slider>
                 </div>
                 <div className="carousel-container">
-                    <h1 className='category-title'> Shop Theater</h1>
+                    <h1 className='category-title'>Theater</h1>
                         <Slider {...settings}>
                             {theater.map((ticket, index) => (
                                 <div className='carousel-body' key={index}>
