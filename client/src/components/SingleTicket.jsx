@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
-import '../css/YourTicket.css'
-import '../css/AdminDashboard.css'
+// import '../css/AdminDashboard.css'
 
 const SingleTicket = ({ticket}) => {
     const date = new Date(ticket.date)
@@ -10,36 +9,39 @@ const SingleTicket = ({ticket}) => {
     const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
 
     return (
-        <>
-        <div class="your-ticket-container">
-            <div className='your-ticket-body'>
-                <article class="your-ticket-card">
-                    <section className='your-ticket-date'>
-                        <div className='your-ticket-time'>
-                            <span>{day}</span><span>{month}</span>
+        <tr className="inner-box">
+            <th scope="row">
+                <div className="event-date">
+                    <span>{day}</span>
+                    <p>{month}</p>
+                </div>
+            </th>
+            <td>
+                <div className="event-img">
+                    <img src={ticket.image} alt={ticket.artist} />
+                </div>
+            </td>
+            <td>
+                <div className="event-wrap">
+                    <span>{ticket.artist}</span>
+                    <div className="meta">
+                        <div className="organizers">
+                            {ticket.price}
                         </div>
-                    </section>
-
-                    <section class="your-ticket-info">
-                        <div className='your-ticket-artist'>
-                            <div>{ticket.artist}</div>
-                        </div>
-
-                        <div class="your-ticket-dates">
-                                <div>{month} {day}, {year}</div>
-                                <div>{time}</div>
-                        </div>
-                        <div class="your-ticket-location">
-                            {ticket.location}
-                        </div>
-                        <Link className='update-link' to={`/admin/update/${ticket._id}`}> Update</Link>
-
-                    </section>
-                </article>
-
-            </div>
-        </div>
-        </>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div className="r-no">
+                    <span>{ticket.artist}</span>
+                </div>
+            </td>
+            <td>
+                <div className="primary-btn">
+                    <Link className="btn btn-primary" to={`/admin/update/${ticket._id}`}>Edit</Link>
+                </div>
+            </td>
+        </tr>
     )
 }
 

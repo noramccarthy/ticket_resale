@@ -1,7 +1,7 @@
 .body-container {
     display: block;
     margin: auto;
-    min-height: 90vh;
+    min-height: 100vh;
 }
 
 .filter-bar {
@@ -42,3 +42,12 @@
     font-weight: lighter;
 }
 
+/* Pagination bar */
+.pagination-bar {
+    padding: 1rem 0;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+}

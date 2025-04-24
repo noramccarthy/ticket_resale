@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../css/ProfileManagement.css'
-import '../css/AdminDashboard.css'
+import '../css/ProfileManagement.css';
 import Layout from './Layout';
 
 const ProfileManagement = () => {
@@ -16,34 +15,32 @@ const ProfileManagement = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/user", {withCredentials:true})
-        .then(res => {
-            setUser(res.data);
-            console.log(res.data)
-        })
-        .catch((err) => {
-            navigate("/admin/login")
-            console.log("Error:", err);
-        })
-    },[navigate])
+        axios.get("http://localhost:8000/api/user", { withCredentials: true })
+            .then(res => {
+                setUser(res.data);
+            })
+            .catch(err => {
+                navigate("/admin/login");
+                console.log("Error:", err);
+            });
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setUser(prev => ({...prev, [name]: value }));
+        setUser(prev => ({ ...prev, [name]: value }));
     };
 
     const handleToggleEdit = () => {
         if (isEditing) {
-            // save changes
             axios.put("http://localhost:8000/api/user/update", user, { withCredentials: true })
-            .then(() => {
-                alert("Profile updated successfully!");
-                setIsEditing(false);
-            })
-            .catch(err => {
-                console.log("Update error:", err);
-                alert("Error updating profile.")
-            });
+                .then(() => {
+                    alert("Profile updated successfully!");
+                    setIsEditing(false);
+                })
+                .catch(err => {
+                    console.log("Update error:", err);
+                    alert("Error updating profile.");
+                });
         } else {
             setIsEditing(true);
         }
@@ -51,95 +48,123 @@ const ProfileManagement = () => {
 
     return (
         <Layout>
-            <div className='admin-container'>
-                <div class="admin-content">
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card border-0 shadow-sm">
-                                <div class="card-body p-0">
-                                    <div class="row g-0">
-                                        <div class="col-lg-9">
-                                            <div class="p-4">
-                                                <div class="mb-4">
-                                                    <h5 class="mb-4">Personal Information</h5>
-                                                    <div class="row g-3">
-                                                        <div class="col-md-6">
-                                                            <label class="form-label">First Name</label>
-                                                            {isEditing ? (
-                                                                <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={handleChange} />
-                                                            ) : ( 
-                                                                <p className='form-control'>{user.firstName}</p>
-                                                            )}
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label class="form-label">Last Name</label>
-                                                                {isEditing ? (
-                                                                    <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={handleChange} />
-                                                                ) : ( 
-                                                                    <p className='form-control'>{user.lastName}</p>
-                                                                )}
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label class="form-label">Email Address</label>
-                                                                {isEditing ? (
-                                                                    <input type="text" className="form-control" name="email" value={user.email} onChange={handleChange} />
-                                                                ) : ( 
-                                                                    <p className='form-control'>{user.email}</p>
-                                                                )}
-                                                        </div>
-                                                        <div class="col-md-6">
-                                                            <label class="form-label">Phone Number</label>
-                                                                {isEditing ? (
-                                                                    <input type="text" className="form-control" name="phone" value={user.phone} onChange={handleChange} />
-                                                                ) : ( 
-                                                                    <p className='form-control'>{user.phone || '-'}</p>
-                                                                )}
-                                                        </div>
-                                                        <div className="mt-4">
-                                                            <button className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`} onClick={handleToggleEdit}>
-                                                                {isEditing ? 'Save Changes' : 'Edit Profile'}
-                                                            </button>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="row g-4 mb-4">
-                                                    <div class="col-md-6">
-                                                        <div class="settings-card card">
-                                                            <div class="card-body">
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <div>
-                                                                        <h6 class="mb-1">Two-Factor Authentication</h6>
-                                                                        <p class="text-muted mb-0 small">Add an extra layer of
-                                                                            security</p>
-                                                                    </div>
-                                                                    <div class="form-check form-switch">
-                                                                        <input class="form-check-input" type="checkbox" checked/>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <div class="settings-card card">
-                                                            <div class="card-body">
-                                                                <div class="d-flex justify-content-between align-items-center">
-                                                                    <div>
-                                                                        <h6 class="mb-1">Email Notifications</h6>
-                                                                        <p class="text-muted mb-0 small">Receive activity updates
-                                                                        </p>
-                                                                    </div>
-                                                                    <div class="form-check form-switch">
-                                                                        <input class="form-check-input" type="checkbox" checked/>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+            <div className="profile-container mt-5">
+                <div className="row gutters">
+                    <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
+                        <div className="card h-100">
+                            <div className="card-body">
+                                <div className="account-settings">
+                                    <div className="user-profile">
+                                        <h5 className="user-name">{user.firstName} {user.lastName}</h5>
+                                        <h6 className="user-email">{user.email}</h6>
                                     </div>
+                                    <div className="about">
+                                        <h5>About</h5>
+                                        <p>This is your profile settings area. You can update your personal information and account preferences here.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="col-xl-9 col-lg-9 col-md-12 col-sm-12 col-12">
+                        <div className="card h-100">
+                            <div className="card-body">
+                                <div className="row gutters">
+                                    <div className="col-12">
+                                        <h6 className="mb-3 text-primary">Personal Information</h6>
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label className="form-label">First Name</label>
+                                        {isEditing ? (
+                                            <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={handleChange} />
+                                        ) : (
+                                            <p className="form-control">{user.firstName}</p>
+                                        )}
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label className="form-label">Last Name</label>
+                                        {isEditing ? (
+                                            <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={handleChange} />
+                                        ) : (
+                                            <p className="form-control">{user.lastName}</p>
+                                        )}
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label className="form-label">Email</label>
+                                        {isEditing ? (
+                                            <input type="email" className="form-control" name="email" value={user.email} onChange={handleChange} />
+                                        ) : (
+                                            <p className="form-control">{user.email}</p>
+                                        )}
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label className="form-label">Phone</label>
+                                        {isEditing ? (
+                                            <input type="tel" className="form-control" name="phone" value={user.phone} onChange={handleChange} />
+                                        ) : (
+                                            <p className="form-control">{user.phone || '-'}</p>
+                                        )}
+                                    </div>
+                                </div>
+
+                                <hr className="my-4" />
+
+                                <div className="row gutters">
+                                    <div className="col-12">
+                                        <h6 className="mb-3 text-primary">Account Settings</h6>
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label className="form-label">Preferred Language</label>
+                                        <select className="form-select">
+                                            <option value="en">English</option>
+                                            <option value="es">Español</option>
+                                            <option value="fr">Français</option>
+                                            <option value="de">Deutsch</option>
+                                        </select>
+                                    </div>
+
+                                    <div className="col-md-6 mb-3">
+                                        <label className="form-label">Time Zone</label>
+                                        <select className="form-select">
+                                            <option value="UTC-8">Pacific Time (PT)</option>
+                                            <option value="UTC-5">Eastern Time (ET)</option>
+                                            <option value="UTC+0">UTC</option>
+                                            <option value="UTC+1">Central European Time (CET)</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <hr className="my-4" />
+
+                                <div className="row gutters">
+                                    <div className="col-12">
+                                        <h6 className="mb-3 text-primary">Change Password</h6>
+                                    </div>
+
+                                    <div className="col-md-4 mb-3">
+                                        <label className="form-label">Current Password</label>
+                                        <input type="password" className="form-control" />
+                                    </div>
+                                    <div className="col-md-4 mb-3">
+                                        <label className="form-label">New Password</label>
+                                        <input type="password" className="form-control" />
+                                    </div>
+                                    <div className="col-md-4 mb-3">
+                                        <label className="form-label">Confirm Password</label>
+                                        <input type="password" className="form-control" />
+                                    </div>
+                                </div>
+
+                                <div className="text-end">
+                                    <button type="button" className="btn btn-secondary me-2" onClick={() => setIsEditing(false)}>Cancel</button>
+                                    <button type="button" className="btn btn-primary" onClick={handleToggleEdit}>
+                                        {isEditing ? "Save Changes" : "Edit Profile"}
+                                    </button>
                                 </div>
                             </div>
                         </div>
@@ -147,7 +172,7 @@ const ProfileManagement = () => {
                 </div>
             </div>
         </Layout>
-    )
-}
+    );
+};
 
 export default ProfileManagement;

@@ -141,12 +141,18 @@ const Deals = () => {
                             ))}
                         </div>
 
-                        <div className="pagination">
+                        <div className="pagination-bar">
+                            <div className="pagination">
                             {pages.map((pageNumber) => (
-                            <button key={pageNumber} className={`page-number${pageNumber === currentPage ? ' active' : ''}`} onClick={() => changePage(pageNumber)}>
+                                <button
+                                key={pageNumber}
+                                className={`page-number${pageNumber === currentPage ? ' active' : ''}`}
+                                onClick={() => changePage(pageNumber)}
+                                >
                                 {pageNumber + 1}
-                            </button>
+                                </button>
                             ))}
+                            </div>
                         </div>
                     </div>
                     ) : (

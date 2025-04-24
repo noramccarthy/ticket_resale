@@ -1,0 +1,25 @@
+.event-schedule-area-two .tab-content .table {
+    margin-bottom: 0;
+}
+.table thead {
+    font-size: 20px;
+}
+.event-schedule-area-two .tab-content .table tbody tr th {
+    border: 0;
+    padding: 30px 20px;
+    vertical-align: middle;
+}
+.event-schedule-area-two .tab-content .table tbody tr th .event-date span {
+    font-size: 50px;
+    line-height: 50px;
+    font-weight: normal;
+}
+.event-schedule-area-two .tab-content .table tbody tr td {
+    padding: 30px 20px;
+    vertical-align: middle;
+}
+.event-schedule-area-two .tab-content .table tbody tr td .event-img img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+}

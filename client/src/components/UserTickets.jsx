@@ -2,8 +2,9 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SingleTicket from './SingleTicket';
-import '../css/AdminDashboard.css'
+import '../css/AdminDashboard.css';
 import Layout from './Layout';
+import '../css/UserTickets.css';
 
 const UserTickets = () => {
     const [adminTickets, setAdminTickets] = useState([]);
@@ -23,24 +24,44 @@ const UserTickets = () => {
 
     return (
         <Layout>
-            <div className='admin-dashboard'>
-                <h1 className='your-listings-title'>Your Listings</h1>
-                <div class="admin-container">
-                    <section className='your-listings-container'>
-                        {adminTickets.length > 0 ? (
-                            <div className='your-listings-body'>
-                                {adminTickets.map((ticket) => (
-                                    <div key= {ticket._id}>
-                                        <SingleTicket 
-                                            ticket={ticket}
-                                        />
-                                    </div>
-                                ))}
+            <div class="event-schedule-area-two">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="section-title text-center title-text">
+                                <h2>Past Events</h2>
                             </div>
-                            ) : ( 
-                                null
-                            )}
-                    </section>
+                        </div>
+                    </div>
+                    {adminTickets.length > 0 ? (
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th class="text-center" scope="col">Date</th>
+                                                    <th class="text-center" scope="col"></th>
+                                                    <th class="text-center" scope="col">Artist</th>
+                                                    <th class="text-center" scope="col">Status</th>
+                                                    <th class="text-center" scope="col">Edit</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            {adminTickets.map((ticket) => (
+                                                <SingleTicket 
+                                                    key={ticket._id} 
+                                                    ticket={ticket} 
+                                                />
+                                            ))}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    ) : null}
                 </div>
             </div>
         </Layout>

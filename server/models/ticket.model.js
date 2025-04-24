@@ -71,6 +71,10 @@ const TicketSchema = new mongoose.Schema({
         type: Number,
         default: 0,
         min: [0.0, "Ticket must be discounted at least 0"]
+    },
+    sold: {
+        type: Boolean,
+        default: false,
     }
 }, {timestamps: true});
 
