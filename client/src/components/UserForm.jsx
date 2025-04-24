@@ -6,6 +6,8 @@ import tfLogo from '../assets/images/tfLogo.png'
 
 const UserForm = () => {
     const [userForm, setUserForm] = useState({
+        firstName:"",
+        lastName:"",
         email:"",
         password:"",
         confirmPassword:"",
@@ -27,8 +29,8 @@ const UserForm = () => {
             navigate('/admin/dashboard')
         })
         .catch(err => {
-            console.log("Error:", err);
-            setError(err);
+            console.log("Error:", err.response.data);
+            setError(err.response.data);
         })
     }
 
@@ -45,7 +47,29 @@ const UserForm = () => {
                                 
                                 <form onSubmit={handleUserForm} className='create-user-form'>
                                     <h2 className="fw-bold mb-5 text-uppercase">Welcome</h2>
-                                    {error.email ? <p className='ticket_form_error_msg'>{error.email.message}</p> : null}
+                                    {error ? <p className='ticket_form_error_msg'>{error.message}</p> : null}
+
+                                    <div class="form-outline form-black mb-4">
+                                        <label className="user-form-label" htmlFor="firstName">First name</label>
+                                        <input 
+                                            type="firstName"
+                                            name="firstName"
+                                            className="form-control form-control-lg"
+                                            value={userForm.firstName}
+                                            onChange={onChangeHandler}
+                                        />
+                                    </div>
+
+                                    <div class="form-outline form-black mb-4">
+                                        <label className="user-form-label" htmlFor="lastName">Last name</label>
+                                        <input 
+                                            type="lastName"
+                                            name="lastName"
+                                            className="form-control form-control-lg"
+                                            value={userForm.lastName}
+                                            onChange={onChangeHandler}
+                                        />
+                                    </div>
 
                                     <div class="form-outline form-black mb-4">
                                         <label className="user-form-label" htmlFor="email">Email address</label>
@@ -58,7 +82,7 @@ const UserForm = () => {
                                         />
                                     </div>
 
-                                    {error.password ? <p className='ticket_form_error_msg'>{error.password.message}</p> : null}
+                                    {/* {error.password ? <p className='ticket_form_error_msg'>{error.password.message}</p> : null} */}
                                     <div className="form-outline form-black mb-4">
                                         <label className="user-form-label" htmlFor="password">Password</label>
                                         <input 
@@ -70,7 +94,7 @@ const UserForm = () => {
                                         />
                                     </div>
 
-                                    {error.confirmPassword ? <p className='ticket_form_error_msg'>{error.confirmPassword.message}</p> : null}
+                                    {/* {error.confirmPassword ? <p className='ticket_form_error_msg'>{error.confirmPassword.message}</p> : null} */}
                                     <div className="form-outline form-black mb-4">
                                         <label className="user-form-label" htmlFor="confirmPassword">Confirm Password</label>
                                         <input 

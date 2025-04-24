@@ -1,9 +1,53 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import '../css/ProfileManagement.css'
 import AdminNavbar from './AdminNavbar';
 import Sidebar from './Sidebar';
 
 const ProfileManagement = () => {
+    const [user, setUser] = useState({
+        firstName: "",
+        lastName: "",
+        email: "",
+        phone: "",
+    });
+    const [isEditing, setIsEditing] = useState(false);
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        axios.get("http://localhost:8000/api/user", {withCredentials:true})
+        .then(res => {
+            setUser(res.data);
+            console.log(res.data)
+        })
+        .catch((err) => {
+            navigate("/admin/login")
+            console.log("Error:", err);
+        })
+    },[navigate])
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUser(prev => ({...prev, [name]: value }));
+    };
+
+    const handleToggleEdit = () => {
+        if (isEditing) {
+            // save changes
+            axios.put("http://localhost:8000/api/user/update", user, { withCredentials: true })
+            .then(() => {
+                alert("Profile updated successfully!");
+                setIsEditing(false);
+            })
+            .catch(err => {
+                console.log("Update error:", err);
+                alert("Error updating profile.")
+            });
+        } else {
+            setIsEditing(true);
+        }
+    };
 
     return (
         <>
@@ -15,38 +59,51 @@ const ProfileManagement = () => {
                     <div class="card border-0 shadow-sm">
                         <div class="card-body p-0">
                             <div class="row g-0">
-                        
-                                {/* <!-- Content Area --> */}
                                 <div class="col-lg-9">
                                     <div class="p-4">
-                                        {/* <!-- Personal Information --> */}
                                         <div class="mb-4">
                                             <h5 class="mb-4">Personal Information</h5>
                                             <div class="row g-3">
                                                 <div class="col-md-6">
                                                     <label class="form-label">First Name</label>
-                                                    <input type="text" class="form-control" value="Alex"/>
+                                                    {isEditing ? (
+                                                        <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={handleChange} />
+                                                    ) : ( 
+                                                        <p className='form-control'>{user.firstName}</p>
+                                                    )}
                                                 </div>
                                                 <div class="col-md-6">
                                                     <label class="form-label">Last Name</label>
-                                                    <input type="text" class="form-control" value="Johnson"/>
+                                                        {isEditing ? (
+                                                            <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={handleChange} />
+                                                        ) : ( 
+                                                            <p className='form-control'>{user.lastName}</p>
+                                                        )}
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Email</label>
-                                                    <input type="email" class="form-control" value="alex.johnson@example.com"/>
+                                                    <label class="form-label">Email Address</label>
+                                                        {isEditing ? (
+                                                            <input type="text" className="form-control" name="email" value={user.email} onChange={handleChange} />
+                                                        ) : ( 
+                                                            <p className='form-control'>{user.email}</p>
+                                                        )}
                                                 </div>
                                                 <div class="col-md-6">
-                                                    <label class="form-label">Phone</label>
-                                                    <input type="tel" class="form-control" value="+1 (555) 123-4567"/>
+                                                    <label class="form-label">Phone Number</label>
+                                                        {isEditing ? (
+                                                            <input type="text" className="form-control" name="phone" value={user.phone} onChange={handleChange} />
+                                                        ) : ( 
+                                                            <p className='form-control'>{user.phone || '-'}</p>
+                                                        )}
                                                 </div>
-                                                <div class="col-12">
-                                                    <label class="form-label">Bio</label>
-                                                    <textarea class="form-control" rows="4">Product designer with 5+ years of experience in creating user-centered digital solutions. Passionate about solving complex problems through simple and elegant designs.</textarea>
+                                                <div className="mt-4">
+                                                    <button className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`} onClick={handleToggleEdit}>
+                                                        {isEditing ? 'Save Changes' : 'Edit Profile'}
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        {/* <!-- Settings Cards --> */}
                                         <div class="row g-4 mb-4">
                                             <div class="col-md-6">
                                                 <div class="settings-card card">

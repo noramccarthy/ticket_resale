@@ -2,6 +2,16 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcrypt");
 
 const UserSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required: [true, "First name is required."],
+        minlength: [1, "Name must be at least 1 character."]
+    },
+    lastName: {
+        type: String,
+        required: [true, "Last name is required."],
+        minlength: [1, "Name must be at least 1 character."]
+    },
     email: {
         type: String,
         required: [true, "Email is required."],
@@ -14,7 +24,15 @@ const UserSchema = new mongoose.Schema({
         type: String,
         required: [true, "Password is required."],
         minlength: [8, "Password must be at least 8 characters."]
-    }
+    },
+    phone: {
+        type: String,
+        required: false,
+        validate: {
+            validator: val => /^(\+?\d{1,2}\s?)?(\(?\d{3}\)?[\s.-]?)?\d{3}[\s.-]?\d{4}$/.test(val),
+            message: "Please enter a valid phone number."
+        }
+    },
 }, {timestamps: true});
 
 // Confirm PW

@@ -24,7 +24,6 @@ const UserTickets = (props) => {
         })
     },[])
 
-
     return (
         <>
         <AdminNavbar/>
