@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import { Badge } from "@mui/material";
@@ -8,6 +8,8 @@ import '../css/Navbar.css';
 
 const AdminNavbar = () => {
     const { cartCount } = useContext(CartContext);
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
 
     return (
         <>
@@ -20,16 +22,31 @@ const AdminNavbar = () => {
                 </div>
 
                 <div span="6" className='nav-col-end'>
-                    {/* LINKS */}
                     <div>
                         <ul className="nav-links">
                             <Link className="link-btn" to={'/shop'}>Shop</Link>
                             <Link className="link-btn" to={"/deals"}>Deals</Link>
-                            <Link className="link-btn" to={"/admin/dashboard"}>Account</Link>
+
+
+                            {/* <Link className="link-btn" to={"/admin/dashboard"}>Account</Link> */}
+                            <div 
+                                className="dropdown" 
+                                onMouseEnter={() => setDropdownOpen(true)} 
+                                onMouseLeave={() => setDropdownOpen(false)}
+                            >
+                            <button className="link-btn dropdown-toggle">Account</button>
+                            {dropdownOpen && (
+                                <div className="dropdown-menu">
+                                    <Link to="/admin/profile" className="dropdown-item">Profile</Link>
+                                    <Link to="/admin/events" className="dropdown-item">New Listing</Link>
+                                    <Link to="/admin/tickets" className="dropdown-item">Your Listings</Link>
+                                    <Link to="/admin/logout" className="dropdown-item">Logout</Link>
+                                </div>
+                            )}
+                        </div>
                         </ul>
                     </div>
 
-                    {/* CART */}
                     <div className="signup">
                         <li className="signup__primary" style={{ position: 'relative' }}>
                             <Link className="a__primary" to={"/cart"}>

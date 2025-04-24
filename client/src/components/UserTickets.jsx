@@ -4,7 +4,6 @@ import { useNavigate } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
 import Footer from './Footer';
 import SingleTicket from './SingleTicket';
-import Sidebar from './Sidebar';
 import '../css/AdminDashboard.css'
 
 const UserTickets = (props) => {
@@ -27,11 +26,8 @@ const UserTickets = (props) => {
     return (
         <>
         <AdminNavbar/>
-        <Sidebar/>
-
         <div className='admin-dashboard'>
             <h1 className='your-listings-title'>Your Listings</h1>
-
             <div class="admin-container">
                 <section className='your-listings-container'>
                     {adminTickets.length > 0 ? (
@@ -50,9 +46,7 @@ const UserTickets = (props) => {
                 </section>
             </div>
             <Footer/>
-
         </div>
-
         </>
     )
 }

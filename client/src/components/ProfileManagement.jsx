@@ -3,7 +3,6 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../css/ProfileManagement.css'
 import AdminNavbar from './AdminNavbar';
-import Sidebar from './Sidebar';
 
 const ProfileManagement = () => {
     const [user, setUser] = useState({
@@ -52,7 +51,6 @@ const ProfileManagement = () => {
     return (
         <>
         <AdminNavbar/>
-        <Sidebar/>
         <div class="container py-5">
             <div class="row">
                 <div class="col-12">

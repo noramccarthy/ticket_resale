@@ -4,16 +4,12 @@ import { useNavigate } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
 import Footer from './Footer';
 import '../css/AdminDashboard.css'
-import Sidebar from './Sidebar';
 
 const AdminDashboard = (props) => {
-
 
     return (
         <>
         <AdminNavbar/>
-        <Sidebar/>
-
             <main className="main-content">
                 <div className="container-fluid">
                     <h2>Welcome Back!</h2>

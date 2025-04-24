@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AdminNavbar from './AdminNavbar';
 import Footer from './Footer';
-import Sidebar from './Sidebar';
 import '../css/SearchEvent.css'
 
 const PAGE_SIZE = 10;
@@ -80,7 +79,6 @@ const SearchEvent = (props) => {
     return (
         <section>
             <AdminNavbar/>
-            <Sidebar/>
             <div className='section' id='booking'>
                 <div className='section-center'>
                     <div className='booking-container'>
