@@ -1,4 +1,4 @@
-.ticket_form_error_msg {
+.ticket-form-error-msg {
     color: red;
 }
 
@@ -8,14 +8,62 @@
     background-position: center;
 }
 
-.delete-ticket {
-    width: 90px;
-    height: 40px;
-    background-color: red;
+.list-btn {
+    background-color: #4075f0;
     color: white;
-    text-align: center;
-    border-radius: 2px;
-    position: absolute;
-    right: 14px;
-    bottom: 10px
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
+}
+
+.list-btn:hover {
+background-color: #0b5ed7;
+}
+
+.delete-btn {
+    background-color: #181c22;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
+}
+
+.delete-btn:hover {
+background-color: #0b5ed7;
+}
+
+/* Ensure the section takes up full viewport height but doesn't overflow */
+.vh-100 {
+    min-height: 100vh; /* Make sure it takes full height of the viewport */
+    background-size: cover;
+    background-position: center;
+}
+
+.create-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto; /* Allow scrolling if content overflows */
+    padding-bottom: 30px; /* Ensure space at the bottom for footer */
+}
+
+.card {
+    width: 100%; /* Make sure card doesn't overflow */
+    max-width: 900px; /* You can adjust this as needed */
+    margin-bottom: 30px; /* Space between form and footer */
+}
+
+form.create-ticket-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.ticket-form-error-msg {
+    color: red;
+    font-size: 1rem;
+    margin-top: 0.25rem;
 }

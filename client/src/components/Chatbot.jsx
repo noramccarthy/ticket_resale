@@ -87,8 +87,8 @@ const Chatbot = () => {
                         </ConversationHeader>
             
                         <MessageList
-                        scrollBehavior="smooth"
-                        typingIndicator={isTyping ? <TypingIndicator /> : null}
+                            scrollBehavior="smooth"
+                            typingIndicator={isTyping ? <TypingIndicator /> : null}
                         >
                         <MessageSeparator content="Today" />
                         {messages.map((message, i) => {

@@ -89,10 +89,9 @@ const Cart = ({cartDetails, setCartDetails}) => {
         }
         ));
 
-
     return (
         <>
-            <div className='body_cart'>
+            <div className='body-cart'>
                 <Navbar/>
                 <Modal
                     open={openModal} 
@@ -105,75 +104,78 @@ const Cart = ({cartDetails, setCartDetails}) => {
 
                 <div className='checkout'>
                     {updatedCart.length !== 0 ? 
-                        <form className='row d-flex justify-content-center mt-5'>
-                            <h1 className='shopping-cart-title mb-5'>Shopping Cart</h1>
-                            <div className='checkout-list col-8'>
+                        <form className='row d-flex justify-content-center'>
+                            <h1 className='shopping-cart-title'>Shopping Cart</h1>
+                            <div className='col-8'>
                                 {updatedCart.map((ticket) => (
-                                    <div key={ticket._id} className="row each-ticket">
-                                        <hr/>
-
-                                        <div className='col-3'>
-                                            <Link to={`/ticket/` + ticket._id}>
-                                                <img
-                                                    className="cart-ticket-img"
-                                                    src={ticket.image}
-                                                    alt={ticket.artist}
-                                                />
+                                    <div className="each-ticket row">
+                                    <div className="ticket-title d-flex col-6">
+                                        <div className="me-3">
+                                            <Link to={`/ticket/${ticket._id}`}>
+                                            <img className="cart-ticket-img" src={ticket.image} alt={ticket.artist} />
                                             </Link>
                                         </div>
-
-                                        <div className='col-4'>
-                                                {ticket.artist}
+                                        <div className="link-title d-flex align-items-center">{ticket.artist}</div>
                                         </div>
+                                    
+                                        <div className="d-flex justify-content-end align-items-center gap-3 col-6">
+                                        <div className="ticket-price">${ticket.totalCost.toFixed(2)}</div>
 
-                                        <div className='col-2'>
-                                            <div className="quantity-control">
-                                                <button className="quantity-button left-btn" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity - 1) }}>
-                                                    -
-                                                </button>
-                                                <span className="quantity-display">{ticket.quantity}</span>
-                                                <button className="quantity-button" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity + 1) }}>
-                                                    +
-                                                </button>
+                                        <div className="quantity-control d-flex align-items-center gap-2">
+                                            <i
+                                                className="fa-solid fa-minus quantity-icon"
+                                                onClick={(event) => {
+                                                event.preventDefault();
+                                                handleQuantityChange(ticket._id, ticket.quantity - 1);
+                                                }}
+                                            ></i>
 
-                                                {errorMessage[ticket._id] && (
-                                                    <div className="error-message">{errorMessage[ticket._id]}</div>
-                                                )}
+                                            <span className="quantity-display">{ticket.quantity}</span>
+
+                                            <i
+                                                className="fa-solid fa-plus quantity-icon"
+                                                onClick={(event) => {
+                                                event.preventDefault();
+                                                handleQuantityChange(ticket._id, ticket.quantity + 1);
+                                                }}
+                                            ></i>
                                             </div>
-                                        </div>
 
-                                        <div className='col-2'>
-                                            <div className="ticket-price">${ticket.totalCost.toFixed(2)}</div>
+                                    
+                                        {/* <div className="quantity-control d-flex align-items-center">
+                                            <button className="quantity-button" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity - 1) }}>-</button>
+                                            <span className="quantity-display">{ticket.quantity}</span>
+                                            <button className="quantity-button" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity + 1) }}>+</button>
+                                        </div> */}
+                                    
+                                        <button className="trashcan" onClick={() => removeFromCart(ticket._id, ticket.quantity)}>
+                                            <FontAwesomeIcon icon={faTrashCan} size="lg" />
+                                        </button>
                                         </div>
-
-                                        <div className='col-1'>
-                                            <button className="trashcan" onClick={() => removeFromCart(ticket._id, ticket.quantity)} >
-                                                <FontAwesomeIcon icon={faTrashCan} size="lg"/>
-                                            </button>
-                                        </div>
-                                        <hr className="my-4" />
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="col-3 checkout_main_section_cart">
+                            <div className="col-3 checkout-cart">
                                 <h3 className='cart-summary-title'>Cart Summary</h3>
                                     <div className="scrollable-cart-body">
                                         {updatedCart.map((ticket) => (
                                                 <div key={ticket._id} className='mapped-cart'>
-                                                    <h4 className='mapped-tickets'>{ticket.artist}</h4>
-                                                    <h4 className='mapped-price'>${ticket.totalCost.toFixed(2)}</h4>
+                                                    <span className='mapped-tickets'>{ticket.artist}</span>
+                                                    <span className='mapped-price'>${ticket.totalCost.toFixed(2)}</span>
                                                 </div>
                                         ))}
                                     </div>
 
+                                    <hr className='cart-divider'/>
+
                                 <div className="subtotal-container">
-                                    <h4 className='checkout_subtotal'> Subtotal</h4>
-                                    <h4 className='checkout_subtotal_price'>${cartSubtotal().toFixed(2)}</h4>
+                                    <span className='checkout-subtotal'> Subtotal</span>
+                                    <span className='checkout-subtotal-price'>${cartSubtotal().toFixed(2)}</span>
                                 </div>
 
-                                <div className="paypal_container">
-                                    <PayPalScriptProvider className="paypalSection"
+                                <div className="paypal-container">
+                                    <PayPalScriptProvider className="paypal-section"
                                         // Use the PayPalScriptProvider options prop to configure the JS SDK
                                         // It accepts an object for passing query parameters and data attributes to the JS SDK script
                                         options={{ "clientId": PAYPAL_API }} >

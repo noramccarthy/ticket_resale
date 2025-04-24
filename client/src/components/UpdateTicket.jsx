@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate, useParams} from 'react-router-dom';
 import TicketForm from './TicketForm';
-import '../css/TicketForm.css'
+import Layout from './Layout';
+import '../css/TicketForm.css';
 
 const UpdateTicket = props => {
     const {id} = useParams();
@@ -46,32 +47,32 @@ const UpdateTicket = props => {
     }
 
     return (
-        <>
-        <div className='ticket-form-container'>
-            <div>
-                <TicketForm
-                    onSubmitProp={updateTicket}
-                    category={ticket.category}
-                    artist={ticket.artist}
-                    date={date}
-                    location={ticket.location}
-                    state={ticket.state}
-                    image={ticket.image}
-                    newPrice={ticket.price}
-                    newStock={ticket.stock}
-                    newOnSale={ticket.onSale}
-                    newDiscount={ticket.discount}
-                    lat={ticket.lat}
-                    lon={ticket.lon}
-                    address={ticket.address}
-                    city={ticket.city}
-                    postedBy={ticket.postedBy}
-                    id={ticket._id}
-                    error={error}
-                />
+        <Layout>
+            <div className='ticket-form-container'>
+                <div>
+                    <TicketForm
+                        onSubmitProp={updateTicket}
+                        category={ticket.category}
+                        artist={ticket.artist}
+                        date={date}
+                        location={ticket.location}
+                        state={ticket.state}
+                        image={ticket.image}
+                        newPrice={ticket.price}
+                        newStock={ticket.stock}
+                        newOnSale={ticket.onSale}
+                        newDiscount={ticket.discount}
+                        lat={ticket.lat}
+                        lon={ticket.lon}
+                        address={ticket.address}
+                        city={ticket.city}
+                        postedBy={ticket.postedBy}
+                        id={ticket._id}
+                        error={error}
+                    />
+                </div>
             </div>
-        </div>
-        </>
+        </Layout>
     )
 }
 export default UpdateTicket;
