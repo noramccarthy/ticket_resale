@@ -1,3 +1,10 @@
+.listing-container {
+    min-height: 100vh;
+}
+.listing-section-title {
+    padding: 10px;
+    margin: 20px 20px;
+}
 .event-schedule-area-two .tab-content .table {
     margin-bottom: 0;
 }

@@ -24,12 +24,12 @@ const UserTickets = () => {
 
     return (
         <Layout>
-            <div class="event-schedule-area-two">
-                <div class="container">
+            <div class="listing-container">
+                <div class="event-schedule-area-two">
                     <div class="row">
                         <div class="col-lg-12">
-                            <div class="section-title text-center title-text">
-                                <h2>Past Events</h2>
+                            <div class="listing-section-title">
+                                <h2>Your Tickets</h2>
                             </div>
                         </div>
                     </div>

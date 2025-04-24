@@ -112,14 +112,3 @@
     /* bottom: -30px; */
     visibility: hidden;
 }
-
-/* chatbot toggle button */
-.chatbot-toggle {
-    width: 350px;
-    height: 40vh;
-    padding: 10px;
-    position: fixed;
-    right: 0;
-    bottom: 0;
-}
-

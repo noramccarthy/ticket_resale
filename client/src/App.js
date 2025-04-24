@@ -19,6 +19,7 @@ import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext'
 import './App.css';
+import UserListings from './components/UserListings'
 
 function App() {
   const [cartDetails, setCartDetails] = useState("");
@@ -42,6 +43,7 @@ function App() {
               <Route path="/admin/profile" element={<ProfileManagement/>}/>
               <Route path="/admin/events" element={<SearchEvent/>}/>
               <Route path="/admin/tickets" element={<UserTickets/>}/>
+              <Route path="/admin/listings" element={<UserListings/>}/>
               <Route path="/admin/create/:id" element={<CreateTicket/>}/>
               <Route path="/admin/update/:id" element={<UpdateTicket/>}/>
             </Route>

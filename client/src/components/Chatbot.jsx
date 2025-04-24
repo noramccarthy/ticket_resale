@@ -15,12 +15,10 @@ const Chatbot = () => {
     ]);
     const [isTyping, setIsTyping] = useState(false);
 
-    // toggle chat window
     const toggle = () => {
         setIsOpen((isOpen) => !isOpen);
     }
 
-    // handle sending a message from the user
     const handleSend = async (message) => {
         const newMessage = {
             message,
@@ -64,42 +62,56 @@ const Chatbot = () => {
     }
     
     return (
-        (isOpen ? 
-        <MainContainer responsive>
-            <ChatContainer>
-                <ConversationHeader>
-                    <ConversationHeader.Back />
-                    <ConversationHeader.Content userName="Virtual Assistant" info="Active" />
-                    <ConversationHeader.Actions>
-                        <button type="button" className='btn-close chatbot-toggle-button' onClick={toggle}></button>
-                    </ConversationHeader.Actions>
-                </ConversationHeader>
-
-                <MessageList scrollBehavior="smooth" typingIndicator={isTyping ? <TypingIndicator/> : null}>
-                    <MessageSeparator content="Today" />
-                        {messages.map((message, i) => {
-                            
-                            const isUser = message.sender === 'user';
-
-                            return (
-                                <Message 
-                                    key={i} 
-                                    model={{
-                                        message: message.message, 
-                                        sentTime: "just now",
-                                        sender: message.sender, 
-                                        direction: isUser ? "outgoing" : "incoming",
-                                        position: "single",
-                                    }} 
-                                />
-                            )
-                        })}
-                </MessageList>
-                <MessageInput placeholder="Type message here..." onSend={handleSend} />
-            </ChatContainer>
-        </MainContainer>
-        : "")
+        <div className="chatbot-wrapper">
+            {/* Toggle button when collapsed */}
+            {!isOpen && (
+                <button className="chatbot-toggle-button-closed" onClick={toggle}>
+                💬
+                </button>
+            )}
         
+            {/* Chat UI when open */}
+            {isOpen && (
+                <MainContainer responsive className="chatbot-window">
+                    <ChatContainer>
+                        <ConversationHeader>
+                            <ConversationHeader.Back />
+                            <ConversationHeader.Content userName="Virtual Assistant" info="Active" />
+                                <ConversationHeader.Actions>
+                                    <button
+                                    type="button"
+                                    className="btn-close chatbot-toggle-button-open"
+                                    onClick={toggle}
+                                    />
+                                </ConversationHeader.Actions>
+                        </ConversationHeader>
+            
+                        <MessageList
+                        scrollBehavior="smooth"
+                        typingIndicator={isTyping ? <TypingIndicator /> : null}
+                        >
+                        <MessageSeparator content="Today" />
+                        {messages.map((message, i) => {
+                            const isUser = message.sender === 'user';
+                            return (
+                            <Message
+                                key={i}
+                                model={{
+                                message: message.message,
+                                sentTime: "just now",
+                                sender: message.sender,
+                                direction: isUser ? "outgoing" : "incoming",
+                                position: "single"
+                                }}
+                            />
+                            );
+                        })}
+                        </MessageList>
+                        <MessageInput placeholder="Type your message..." onSend={handleSend} />
+                    </ChatContainer>
+                </MainContainer>
+            )}
+        </div>
     )
 }
 
