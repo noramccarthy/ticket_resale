@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import '../css/LoginRegistration.css'
 import tfLogo from '../assets/images/tfLogo.png'
 
-const UserLogin = props => {
+const UserLogin = () => {
     const [userLogin, setUserLogin] = useState({
         email:"",
         password:""
@@ -13,18 +13,19 @@ const UserLogin = props => {
     const navigate = useNavigate();
 
     const onChangeHandler = (e) => {
-        props.setAuthorized("");
         setUserLogin({...userLogin, [e.target.name]: e.target.value})
     }
 
     const handleUserLogin = (e) => {
         e.preventDefault();
 
-        axios.post("http://localhost:8000/api/login", userLogin, {withCredentials: true})
+        axios.post("http://localhost:8000/api/login", userLogin, { withCredentials: true })
         .then(res => {
             console.log(res.data)
+            const token = res.data.token;
+            localStorage.setItem("token", token)
             setUserLogin(res.data);
-            navigate('/admin/dashboard')
+            navigate('/')
         })
         .catch(err => {
             console.log("Error:", err);
@@ -39,7 +40,6 @@ const UserLogin = props => {
                 <div className="card-container">
                     <div className="ticket-card bg-white text-black">
                         <div className="card-body p-5">
-                            <div className='unauthorized'>{props.authorized}</div>
                                 <div className="mb-md-5 mt-md-4 pb-5">
                                     <a href="/"><img className='logo-img mb-3' require src={tfLogo} alt="companyLogo" /></a>
                                     <form onSubmit={handleUserLogin} className='create-user-form'>

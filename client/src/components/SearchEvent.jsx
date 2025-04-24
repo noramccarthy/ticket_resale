@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import AdminNavbar from './AdminNavbar';
+import { useState, useEffect, useContext } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 import Footer from './Footer';
 import '../css/SearchEvent.css'
+import Navbar from './Navbar';
+import { AuthContext } from '../context/AuthContext';
 
 const PAGE_SIZE = 10;
 
@@ -12,8 +13,8 @@ const SearchEvent = (props) => {
     const [events, setEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [showButton, setShowButton] = useState(false);
+    const { isLoggedIn } = useContext(AuthContext);
 
-    // auto scroll to top
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -32,6 +33,10 @@ const SearchEvent = (props) => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    if (!isLoggedIn) {
+        return <p>You need to be logged in to access this page. <Link to="/admin/login">Login</Link></p>;
+    }
 
     // pagination
     const totalPages = Math.ceil(
@@ -78,7 +83,7 @@ const SearchEvent = (props) => {
 
     return (
         <section>
-            <AdminNavbar/>
+            <Navbar/>
             <div className='section' id='booking'>
                 <div className='section-center'>
                     <div className='booking-container'>

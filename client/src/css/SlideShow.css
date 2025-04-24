@@ -3,6 +3,7 @@
     height: 45vh;
     position: relative;
     overflow: hidden;
+    z-index: 1;
 }
 
 .slide {
@@ -11,6 +12,7 @@
     left: 0;
     width: 100%;
     transition: all 0s ease-in;
+    z-index: 2;
 }
 
 @media screen and (min-width: 600px) {

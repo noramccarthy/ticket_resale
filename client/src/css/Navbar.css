@@ -6,26 +6,35 @@
 
 .nav {
     position: sticky;
-    top: 0px;
+    top: 0;
     padding: 5px 5%;
     background-color: #07060bf1;
+    z-index: 10000;
 }
 
 .nav-row {
-    -webkit-box-align: center;
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
     align-items: center;
-    padding: 15px 0px;
+    padding: 15px 0;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
 }
 
 .nav-col {
     display: flex;
-    -webkit-box-align: center;
     align-items: center;
 }
 
 .nav-col-end {
     display: flex;
-    -webkit-box-align: center;
+    align-items: center;
     justify-content: flex-end;
 }
 
@@ -37,21 +46,19 @@
 }
 
 .logo {
-    /* font-weight: lighter; */
     position: relative;
     overflow: hidden;
     max-height: 100px;
     max-width: 200px;
 }
 
-.link-btn{
+.link-btn {
     margin: 0 20px;
-    /* font-weight: lighter; */
     transform: scale(1);
     transition: all 300ms ease-in-out;
 }
 
-.link-btn:hover{
+.link-btn:hover {
     transform: scale(1.1);
     border-bottom: 1px solid white;
     padding-bottom: 2px;
@@ -59,15 +66,6 @@
 
 li {
     list-style: none;
-}
-
-.nav-row {
-    width: 100%;
-    max-width: 1600px;
-    margin: 0 auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 a {
@@ -78,7 +76,6 @@ a {
 
 .fa-cart-shopping {
     color: white;
-    content: "1";
     transition: transform 0.2s;
     font-size: 50px;
 }
@@ -115,25 +112,35 @@ a {
     transition: all 300ms ease-in-out;
 }
 
-/* Optional: same hover effect as other nav links */
 .dropdown-toggle:hover {
     transform: scale(1.1);
     border-bottom: 1px solid white;
     padding-bottom: 2px;
 }
 
-/* Dropdown Menu */
+/* Dropdown Menu with Transition */
 .dropdown-menu {
     position: absolute;
     top: 100%;
     right: 0;
-    background-color: #1a1a1a; /* dark menu background */
+    background-color: #1a1a1a;
     min-width: 180px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     border-radius: 6px;
-    z-index: 1000;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    z-index: 10001;
     display: flex;
     flex-direction: column;
+}
+
+/* Show dropdown menu on hover */
+.dropdown:hover .dropdown-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
 }
 
 /* Dropdown Items */

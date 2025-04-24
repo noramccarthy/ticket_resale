@@ -24,9 +24,9 @@ const AdminNavbar = () => {
                 <div span="6" className='nav-col-end'>
                     <div>
                         <ul className="nav-links">
+                            <Link className="link-btn" to={"/about"}>About</Link>
                             <Link className="link-btn" to={'/shop'}>Shop</Link>
                             <Link className="link-btn" to={"/deals"}>Deals</Link>
-
 
                             {/* <Link className="link-btn" to={"/admin/dashboard"}>Account</Link> */}
                             <div 

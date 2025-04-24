@@ -1,16 +1,17 @@
 
 .admin-container {
-    background-color: #dce7f9;
-    font-family: arial;
-    /* display: flex; */
-    /* flex-direction: column; */
-    column-count: 2;
-    column-gap: 2px;
-    padding: 10px;
-    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    /* column-count: 2; */
+    /* column-gap: 2px; */
+    min-height: 100vh;
 }
 
-.your-listings-container {
+.admin-content {
+    flex: 1;
+}
+
+/* .your-listings-container {
     display: flex;
     justify-content: center;
     margin-bottom: 5px;
@@ -34,4 +35,4 @@
 
 .admin-dashboard {
     display: block;
-}
+} */

@@ -1,12 +1,12 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import AdminNavbar from './AdminNavbar';
 import Footer from './Footer';
 import SingleTicket from './SingleTicket';
 import '../css/AdminDashboard.css'
+import Navbar from './Navbar';
 
-const UserTickets = (props) => {
+const UserTickets = () => {
     const [adminTickets, setAdminTickets] = useState([]);
     const navigate = useNavigate();
 
@@ -17,15 +17,14 @@ const UserTickets = (props) => {
             console.log(res.data)
         })
         .catch((err) => {
-            // props.setAuthorized("Please Login First")
-            navigate("/admin/login")
+            navigate("/")
             console.log("Error:", err);
         })
     },[])
 
     return (
         <>
-        <AdminNavbar/>
+        <Navbar/>
         <div className='admin-dashboard'>
             <h1 className='your-listings-title'>Your Listings</h1>
             <div class="admin-container">
