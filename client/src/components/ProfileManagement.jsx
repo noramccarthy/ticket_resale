@@ -3,8 +3,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import '../css/ProfileManagement.css'
 import '../css/AdminDashboard.css'
-import Footer from './Footer';
-import Navbar from './Navbar';
+import Layout from './Layout';
 
 const ProfileManagement = () => {
     const [user, setUser] = useState({
@@ -51,87 +50,88 @@ const ProfileManagement = () => {
     };
 
     return (
-        <div className='admin-container'>
-            <Navbar/>
-            <div class="admin-content">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card border-0 shadow-sm">
-                            <div class="card-body p-0">
-                                <div class="row g-0">
-                                    <div class="col-lg-9">
-                                        <div class="p-4">
-                                            <div class="mb-4">
-                                                <h5 class="mb-4">Personal Information</h5>
-                                                <div class="row g-3">
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">First Name</label>
-                                                        {isEditing ? (
-                                                            <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={handleChange} />
-                                                        ) : ( 
-                                                            <p className='form-control'>{user.firstName}</p>
-                                                        )}
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Last Name</label>
+        <Layout>
+            <div className='admin-container'>
+                <div class="admin-content">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="card border-0 shadow-sm">
+                                <div class="card-body p-0">
+                                    <div class="row g-0">
+                                        <div class="col-lg-9">
+                                            <div class="p-4">
+                                                <div class="mb-4">
+                                                    <h5 class="mb-4">Personal Information</h5>
+                                                    <div class="row g-3">
+                                                        <div class="col-md-6">
+                                                            <label class="form-label">First Name</label>
                                                             {isEditing ? (
-                                                                <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={handleChange} />
+                                                                <input type="text" className="form-control" name="firstName" value={user.firstName} onChange={handleChange} />
                                                             ) : ( 
-                                                                <p className='form-control'>{user.lastName}</p>
+                                                                <p className='form-control'>{user.firstName}</p>
                                                             )}
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Email Address</label>
-                                                            {isEditing ? (
-                                                                <input type="text" className="form-control" name="email" value={user.email} onChange={handleChange} />
-                                                            ) : ( 
-                                                                <p className='form-control'>{user.email}</p>
-                                                            )}
-                                                    </div>
-                                                    <div class="col-md-6">
-                                                        <label class="form-label">Phone Number</label>
-                                                            {isEditing ? (
-                                                                <input type="text" className="form-control" name="phone" value={user.phone} onChange={handleChange} />
-                                                            ) : ( 
-                                                                <p className='form-control'>{user.phone || '-'}</p>
-                                                            )}
-                                                    </div>
-                                                    <div className="mt-4">
-                                                        <button className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`} onClick={handleToggleEdit}>
-                                                            {isEditing ? 'Save Changes' : 'Edit Profile'}
-                                                        </button>
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="form-label">Last Name</label>
+                                                                {isEditing ? (
+                                                                    <input type="text" className="form-control" name="lastName" value={user.lastName} onChange={handleChange} />
+                                                                ) : ( 
+                                                                    <p className='form-control'>{user.lastName}</p>
+                                                                )}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="form-label">Email Address</label>
+                                                                {isEditing ? (
+                                                                    <input type="text" className="form-control" name="email" value={user.email} onChange={handleChange} />
+                                                                ) : ( 
+                                                                    <p className='form-control'>{user.email}</p>
+                                                                )}
+                                                        </div>
+                                                        <div class="col-md-6">
+                                                            <label class="form-label">Phone Number</label>
+                                                                {isEditing ? (
+                                                                    <input type="text" className="form-control" name="phone" value={user.phone} onChange={handleChange} />
+                                                                ) : ( 
+                                                                    <p className='form-control'>{user.phone || '-'}</p>
+                                                                )}
+                                                        </div>
+                                                        <div className="mt-4">
+                                                            <button className={`btn ${isEditing ? 'btn-success' : 'btn-primary'}`} onClick={handleToggleEdit}>
+                                                                {isEditing ? 'Save Changes' : 'Edit Profile'}
+                                                            </button>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
 
-                                            <div class="row g-4 mb-4">
-                                                <div class="col-md-6">
-                                                    <div class="settings-card card">
-                                                        <div class="card-body">
-                                                            <div class="d-flex justify-content-between align-items-center">
-                                                                <div>
-                                                                    <h6 class="mb-1">Two-Factor Authentication</h6>
-                                                                    <p class="text-muted mb-0 small">Add an extra layer of
-                                                                        security</p>
-                                                                </div>
-                                                                <div class="form-check form-switch">
-                                                                    <input class="form-check-input" type="checkbox" checked/>
+                                                <div class="row g-4 mb-4">
+                                                    <div class="col-md-6">
+                                                        <div class="settings-card card">
+                                                            <div class="card-body">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <div>
+                                                                        <h6 class="mb-1">Two-Factor Authentication</h6>
+                                                                        <p class="text-muted mb-0 small">Add an extra layer of
+                                                                            security</p>
+                                                                    </div>
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input" type="checkbox" checked/>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <div class="settings-card card">
-                                                        <div class="card-body">
-                                                            <div class="d-flex justify-content-between align-items-center">
-                                                                <div>
-                                                                    <h6 class="mb-1">Email Notifications</h6>
-                                                                    <p class="text-muted mb-0 small">Receive activity updates
-                                                                    </p>
-                                                                </div>
-                                                                <div class="form-check form-switch">
-                                                                    <input class="form-check-input" type="checkbox" checked/>
+                                                    <div class="col-md-6">
+                                                        <div class="settings-card card">
+                                                            <div class="card-body">
+                                                                <div class="d-flex justify-content-between align-items-center">
+                                                                    <div>
+                                                                        <h6 class="mb-1">Email Notifications</h6>
+                                                                        <p class="text-muted mb-0 small">Receive activity updates
+                                                                        </p>
+                                                                    </div>
+                                                                    <div class="form-check form-switch">
+                                                                        <input class="form-check-input" type="checkbox" checked/>
+                                                                    </div>
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -145,9 +145,8 @@ const ProfileManagement = () => {
                         </div>
                     </div>
                 </div>
-                <Footer/>
             </div>
-        </div>
+        </Layout>
     )
 }
 

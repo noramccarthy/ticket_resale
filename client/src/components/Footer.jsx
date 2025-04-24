@@ -3,10 +3,9 @@ import tfLogo from '../assets/images/tfLogo.png'
 import '../css/Footer.css'
 
 const Footer = () => {
-
     return (
         <div className="footer-container">
-            <div div className='footer-links'>
+            <div className='footer-links'>
                     <Link className='footer-links-color' to={'/shop'}>Shop</Link>
                     <Link className='footer-links-color' to={'/deals'}>Deals</Link>
                     

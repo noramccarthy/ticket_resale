@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext } from 'react';
-import { Link, Navigate } from 'react-router-dom';
-import Footer from './Footer';
+import { Link } from 'react-router-dom';
 import '../css/SearchEvent.css'
-import Navbar from './Navbar';
 import { AuthContext } from '../context/AuthContext';
+import Layout from './Layout';
 
 const PAGE_SIZE = 10;
 
@@ -82,8 +81,7 @@ const SearchEvent = (props) => {
     }
 
     return (
-        <section>
-            <Navbar/>
+        <Layout>
             <div className='section' id='booking'>
                 <div className='section-center'>
                     <div className='booking-container'>
@@ -154,9 +152,8 @@ const SearchEvent = (props) => {
                 ) : (
                     null
                 )}
-            <Footer/>
-        </section>
-    </section>
+            </section>
+        </Layout>
     )
 }
 

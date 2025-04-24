@@ -1,6 +1,7 @@
-import UserLogin from './components/UserLogin'
+// import UserLogin from './components/UserLogin'
 import LandingPage from './components/LandingPage'
-import UserForm from './components/UserForm'
+// import UserForm from './components/UserForm'
+import UserAuth from './components/UserAuth'
 import AdminDashboard from './components/AdminDashboard'
 import CreateTicket from  './components/CreateTicket'
 import OneTicket from './components/OneTicket'
@@ -35,8 +36,8 @@ function App() {
               <Route path="/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
               <Route path="/receipt" element={<Receipt cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
               <Route path="/ticket/:id" element={<OneTicket/>}/>
-              <Route path="/admin/login" element={<UserLogin/>}/>
-              <Route path="/admin/register" element={<UserForm/>}/>
+              <Route path="/admin/login" element={<UserAuth/>}/>
+              <Route path="/admin/register" element={<UserAuth/>}/>
               <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
               <Route path="/admin/profile" element={<ProfileManagement/>}/>
               <Route path="/admin/events" element={<SearchEvent/>}/>

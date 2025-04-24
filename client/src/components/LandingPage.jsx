@@ -2,12 +2,11 @@ import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
 import axios from 'axios';
 import Slider from 'react-slick'
-import NavBar from '../components/Navbar';
-import Footer from './Footer';
 import Carousel from './Carousel';
 import SlideShow from './SlideShow';
 import '../css/LandingPage.css'
 import Chatbot from './Chatbot';
+import Layout from './Layout';
 
 const LandingPage = () => {
     const [isOpen, setIsOpen] = useState(true);
@@ -66,65 +65,61 @@ const LandingPage = () => {
     }, []);
 
     return (
-        <>
-        <div className="main-body">
-            <NavBar/>
-            <SlideShow/>
-    
-            <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
-                <div className="carousel-container">
-                    <h1 className='category-title'>Concerts</h1>
-                        <Slider {...settings}>
-                            {concerts.map((ticket, index) => (
-                                <div className='carousel-body' key={index}>
-                                    <Carousel
-                                        ticket={ticket}
-                                        addToCart={addToCart}
-                                        isInStock={isInStock}
-                                    />
-                                </div>
-                            ))}
-                        </Slider>
-                </div>
-                <div className="carousel-container">
-                    <h1 className='category-title'>Sports</h1>
-                        <Slider {...settings}>
-                            {sports.map((ticket, index) => (
-                                <div className='carousel-body' key={index}>
-                                    <Carousel
-                                        ticket={ticket}
-                                        addToCart={addToCart}
-                                        isInStock={isInStock}
-                                    />
-                                </div>
-                            ))}
-                        </Slider>
-                </div>
-                <div className="carousel-container">
-                    <h1 className='category-title'>Theater</h1>
-                        <Slider {...settings}>
-                            {theater.map((ticket, index) => (
-                                <div className='carousel-body' key={index}>
-                                    <Carousel
-                                        ticket={ticket}
-                                        addToCart={addToCart}
-                                        isInStock={isInStock}
-                                    />
-                                </div>
-                            ))}
-                        </Slider>
-                </div>
-            </section>
-            
-        </div>
-        <div className='chatbot-toggle'>
-            {isOpen && <Chatbot/>}
-            {/* <button className='chatbot-toggle-button' onClick={toggle}>X</button> */}
-            
-        </div>
-
-        <Footer/>
-        </>
+        <Layout>
+            <div className="main-body">
+                <SlideShow/>
+                <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
+                    <div className="carousel-container">
+                        <h1 className='category-title'>Concerts</h1>
+                            <Slider {...settings}>
+                                {concerts.map((ticket, index) => (
+                                    <div className='carousel-body' key={index}>
+                                        <Carousel
+                                            ticket={ticket}
+                                            addToCart={addToCart}
+                                            isInStock={isInStock}
+                                        />
+                                    </div>
+                                ))}
+                            </Slider>
+                    </div>
+                    <div className="carousel-container">
+                        <h1 className='category-title'>Sports</h1>
+                            <Slider {...settings}>
+                                {sports.map((ticket, index) => (
+                                    <div className='carousel-body' key={index}>
+                                        <Carousel
+                                            ticket={ticket}
+                                            addToCart={addToCart}
+                                            isInStock={isInStock}
+                                        />
+                                    </div>
+                                ))}
+                            </Slider>
+                    </div>
+                    <div className="carousel-container">
+                        <h1 className='category-title'>Theater</h1>
+                            <Slider {...settings}>
+                                {theater.map((ticket, index) => (
+                                    <div className='carousel-body' key={index}>
+                                        <Carousel
+                                            ticket={ticket}
+                                            addToCart={addToCart}
+                                            isInStock={isInStock}
+                                        />
+                                    </div>
+                                ))}
+                            </Slider>
+                    </div>
+                </section>
+                
+            </div>
+            <div className='chatbot-toggle'>
+                {isOpen && <Chatbot/>}
+                {/* <button className='chatbot-toggle-button' onClick={toggle}>X</button> */}
+                
+            </div>
+        </Layout>
     )
 }
 

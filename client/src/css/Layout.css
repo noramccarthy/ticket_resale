@@ -1,0 +1,22 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    flex: 1;  /* Take up remaining space */
+    /* padding: 20px; */
+    /* background-color: #fff; */
+}
+
+.footer-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;  /* Ensures footer is at the bottom */
+    margin: 0 auto;
+    width: 100%;
+    height: 10vh;  /* Adjust as needed */
+    background-color: #07060bf1;
+    position: relative;  /* Ensure it doesn't get stuck under content */
+}

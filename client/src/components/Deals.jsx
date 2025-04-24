@@ -1,11 +1,10 @@
 import axios from 'axios';
 import React, { useState, useEffect, useContext } from 'react';
-import Navbar from '../components/Navbar';
 import { CartContext } from '../context/CartContext'
 import FilterBar from './FilterBar';
 import Ticket from './Ticket';
 import '../css/AllTickets.css'
-import Footer from './Footer';
+import Layout from './Layout';
 
 const PAGE_SIZE = 20;
 
@@ -113,56 +112,51 @@ const Deals = () => {
     },[])
 
     return (
-        <>
-        <section id="tickets-scroll" className='tickets-container'>
-            <Navbar/>
-        </section>
-        
-        <div className='body-container'>
-            {/* filter bar */}
-            <div className='filter-bar'>
-                <FilterBar
-                    categories={categories}
-                    onSearchFilter={handleSearchChange}
-                    onCategoryFilter={handleCategoryChange}
-                    states={states}
-                    onStateFilter={handleStateChange}
-                />
-            </div>
+        <Layout>
+            <div className='body-container'>
+                {/* filter bar */}
+                <div className='filter-bar'>
+                    <FilterBar
+                        categories={categories}
+                        onSearchFilter={handleSearchChange}
+                        onCategoryFilter={handleCategoryChange}
+                        states={states}
+                        onStateFilter={handleStateChange}
+                    />
+                </div>
 
-            {/* tickets */}
-            {paginatedTickets.length > 0 ? (
-                <div> 
+                {/* tickets */}
+                {paginatedTickets.length > 0 ? (
+                    <div> 
+                        <div className='filtered-tickets-container'>
+                            {paginatedTickets.map((ticket) => (
+                                <div key={ticket._id} className='one-ticket'>
+                                    <Ticket 
+                                        ticket = {ticket}
+                                        discount = {getDiscountPrice}
+                                        cart = {addToCartHandler}
+                                        stock = {stockReached}
+                                    />
+                                </div>
+                            ))}
+                        </div>
+
+                        <div className="pagination">
+                            {pages.map((pageNumber) => (
+                            <button key={pageNumber} className={`page-number${pageNumber === currentPage ? ' active' : ''}`} onClick={() => changePage(pageNumber)}>
+                                {pageNumber + 1}
+                            </button>
+                            ))}
+                        </div>
+                    </div>
+                    ) : (
+                    // no tickets
                     <div className='filtered-tickets-container'>
-                        {paginatedTickets.map((ticket) => (
-                            <div key={ticket._id} className='one-ticket'>
-                                <Ticket 
-                                    ticket = {ticket}
-                                    discount = {getDiscountPrice}
-                                    cart = {addToCartHandler}
-                                    stock = {stockReached}
-                                />
-                            </div>
-                        ))}
+                            <p className='empty-category'>No Tickets</p>
                     </div>
-
-                    <div className="pagination">
-                        {pages.map((pageNumber) => (
-                        <button key={pageNumber} className={`page-number${pageNumber === currentPage ? ' active' : ''}`} onClick={() => changePage(pageNumber)}>
-                            {pageNumber + 1}
-                        </button>
-                        ))}
-                    </div>
-                </div>
-                ) : (
-                // no tickets
-                <div className='filtered-tickets-container'>
-                        <p className='empty-category'>No Tickets</p>
-                </div>
-            )}
-        </div>
-        <Footer/>
-        </>
+                )}
+            </div>
+        </Layout>
     )
 }
 
