@@ -30,3 +30,31 @@
     height: 80px;
     border-radius: 100%;
 }
+
+.empty-listings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 300px;
+    text-align: center;
+    background-color: #f9f9f9; /* Optional: add a light background */
+    border: 1px dashed #ccc; /* Optional: a dashed border to visualize the area */
+    border-radius: 10px;
+    max-width: 800px;
+    margin-top: 50px; /* Adjust spacing as necessary */
+    margin-left: auto; /* Centers the container horizontally */
+    margin-right: auto; /* Centers the container horizontally */
+}
+
+.empty-listings h4 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.empty-listings p {
+    font-size: 16px;
+    color: #777;
+    max-width: 600px; /* Optional: to limit the text width */
+}

@@ -9,7 +9,7 @@
 }
 
 .list-btn {
-    background-color: #4075f0;
+    background-color: #FF5841;
     color: white;
     border: none;
     padding: 0.5rem 1.5rem;
@@ -33,7 +33,7 @@ background-color: #0b5ed7;
 }
 
 .delete-btn:hover {
-background-color: #0b5ed7;
+background-color: #FF5841;
 }
 
 /* Ensure the section takes up full viewport height but doesn't overflow */

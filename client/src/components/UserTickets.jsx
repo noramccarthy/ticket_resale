@@ -29,7 +29,7 @@ const UserTickets = () => {
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="listing-section-title">
-                                <h2>Your Tickets</h2>
+                                <h2>Your Listings</h2>
                             </div>
                         </div>
                     </div>

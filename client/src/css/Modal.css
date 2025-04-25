@@ -1,47 +1,72 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 .modalContainer {
     max-width: 600px;
     padding: 30px;
     width: 100%;
-    height: 35vh;
     position: fixed;
-    top: 38%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;
-    justify-content: center;
-    background-color: rgb(172, 170, 170);
-    border-radius: 10px;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background: linear-gradient(145deg, #e1e1e1, #d1d1d1);
+    border-radius: 12px;
     z-index: 999;
-    border-style: solid;
-    border-width: 2px;
-    border-color: black;
+    border: 2px solid #333;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    max-height: 80vh;
+    overflow-y: auto;
 }
 
 .disclaimer-title {
+    font-size: 24px;
     font-weight: 600;
-}
-
-.disclaimer {
-    color: white;
+    color: black;
+    text-align: center;
+    margin-bottom: 15px;
 }
 
 .disclaimer-description {
-    font-size: 20px;
-    margin-top: 5%;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    line-height: 1.5;
 }
 
 .closeBtn {
-    position: fixed;
-    bottom: 8px;
-    background-color: red;
-    width: 30%;
+    width: 50%;
+    padding: 12px;
+    background-color: #f62424;
+    color: black;
     text-transform: uppercase;
     font-weight: 500;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 25px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    border: none;
+}
+
+.closeBtn:hover {
+    background-color: #ff2a2a;
+    transform: scale(1.05);
+}
+
+.modalOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 998;
 }

@@ -45,9 +45,9 @@ const Navbar = () => {
                                     {isLoggedIn ? (
                                         <>
                                             <Link to="/admin/profile" className="dropdown-item">Profile</Link>
+                                            <Link to="/admin/tickets" className="dropdown-item">My Tickets</Link>
                                             <Link to="/admin/events" className="dropdown-item">New Listing</Link>
-                                            <Link to="/admin/tickets" className="dropdown-item">Your Tickets</Link>
-                                            <Link to="/admin/listings" className="dropdown-item">Your Listings</Link>
+                                            <Link to="/admin/listings" className="dropdown-item">My Listings</Link>
                                             <button onClick={handleLogout} className="dropdown-item">Logout</button>
                                         </>
                                     ) : (

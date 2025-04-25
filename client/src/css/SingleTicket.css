@@ -1,0 +1,16 @@
+
+.edit-btn {
+    background-color: #FF5841;
+    border: none;
+    color: black;
+    padding: 0.5rem 1.5rem;
+    font-size: 0.9rem;
+    border-radius: 0.25rem;
+    margin-top: 2rem;
+}
+
+.edit-btn:hover {
+    background-color: #f94d37;
+    border: none;
+
+}

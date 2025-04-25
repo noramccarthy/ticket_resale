@@ -1,10 +1,8 @@
-// import UserLogin from './components/UserLogin'
 import LandingPage from './components/LandingPage'
-// import UserForm from './components/UserForm'
 import UserAuth from './components/UserAuth'
 import AdminDashboard from './components/AdminDashboard'
 import CreateTicket from  './components/CreateTicket'
-import OneTicket from './components/OneTicket'
+import TicketDetail from './components/TicketDetail'
 import AllTickets from './components/AllTickets'
 import About from './components/About'
 import Deals from './components/Deals'
@@ -36,7 +34,7 @@ function App() {
               <Route path="/deals" element={<Deals/>}/>
               <Route path="/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
               <Route path="/receipt" element={<Receipt cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
-              <Route path="/ticket/:id" element={<OneTicket/>}/>
+              <Route path="/ticket/:id" element={<TicketDetail/>}/>
               <Route path="/admin/login" element={<UserAuth/>}/>
               <Route path="/admin/register" element={<UserAuth/>}/>
               <Route path="/admin/dashboard" element={<AdminDashboard/>}/>

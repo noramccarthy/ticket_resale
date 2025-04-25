@@ -1,5 +1,5 @@
 import React from 'react';
-import '../css/OneTicket.css';
+import '../css/TicketDetail.css';
 
 import { GoogleMap, Marker, useJsApiLoader } from '@react-google-maps/api';
 
@@ -18,7 +18,6 @@ const Map = ({latitude, longitude, location}) => {
     const onLoad = React.useCallback(function callback(map) {
         const bounds = new window.google.maps.LatLngBounds((latitude, longitude));
         map.fitBounds(bounds);
-    
         setMap(map)
     }, [])
     

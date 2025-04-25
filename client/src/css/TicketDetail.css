@@ -1,0 +1,151 @@
+/* General Layout */
+.product-page {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f9f9f9;
+}
+
+/* Product Card */
+.product-card {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1000px;
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    padding: 30px;
+    gap: 30px;
+    margin-bottom: 40px;
+}
+
+/* Image Section */
+.product-image {
+    flex: 1 1 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 350px;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+/* Details Section */
+.product-details {
+    flex: 1 1 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-title {
+    font-size: 28px;
+    font-weight: 700;
+    color: #222;
+}
+
+.product-description,
+.product-info-date {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+/* Pricing */
+.product-price {
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+}
+
+.original-price {
+    text-decoration: line-through;
+    color: #b12704;
+    font-weight: 500;
+}
+
+.sale-price {
+    color: #111;
+    font-weight: 700;
+}
+
+/* Stock Info */
+.product-stock {
+    font-size: 15px;
+    font-weight: 600;
+    margin-top: 8px;
+}
+
+.in-stock {
+    color: #228B22;
+}
+
+.out-of-stock {
+    color: #DC3545;
+}
+
+/* Add to Cart Button */
+.add-to-cart-btn {
+    background-color: #FF5841;
+    color: white;
+    padding: 14px 24px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.add-to-cart-btn:hover:not(:disabled) {
+    background-color: #FF5841;
+}
+
+.add-to-cart-btn:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
+}
+
+/* Payment Badge */
+.payment-badge-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.payment-badge {
+    width: 220px;
+    max-width: 90%;
+    object-fit: contain;
+}
+
+/* Map & Location */
+.one-ticket-map {
+    background-color: #fff;
+    width: 100%;
+    max-width: 1000px;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+    margin-bottom: 60px;
+}
+
+.one-ticket-map-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.one-ticket-address {
+    font-size: 20px;
+    color: #444;
+    line-height: 1.6;
+}

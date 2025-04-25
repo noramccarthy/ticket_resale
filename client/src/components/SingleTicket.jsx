@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-// import '../css/AdminDashboard.css'
+import '../css/SingleTicket.css'
 
 const SingleTicket = ({ticket}) => {
     const date = new Date(ticket.date)
@@ -38,7 +38,7 @@ const SingleTicket = ({ticket}) => {
             </td>
             <td>
                 <div className="primary-btn">
-                    <Link className="btn btn-primary" to={`/admin/update/${ticket._id}`}>Edit</Link>
+                    <Link className="edit-btn" to={`/admin/update/${ticket._id}`}>Edit</Link>
                 </div>
             </td>
         </tr>

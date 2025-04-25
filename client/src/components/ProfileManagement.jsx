@@ -162,7 +162,7 @@ const ProfileManagement = () => {
 
                                 <div className="text-end">
                                     <button type="button" className="btn btn-secondary me-2" onClick={() => setIsEditing(false)}>Cancel</button>
-                                    <button type="button" className="btn btn-primary" onClick={handleToggleEdit}>
+                                    <button type="button" className="btn btn-save" onClick={handleToggleEdit}>
                                         {isEditing ? "Save Changes" : "Edit Profile"}
                                     </button>
                                 </div>
