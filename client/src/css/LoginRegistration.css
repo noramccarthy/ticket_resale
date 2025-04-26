@@ -36,3 +36,15 @@
     font-weight: bold;
     font-size: 20px;
 }
+
+.auth-toggle-link {
+    background-color: #FF5841;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
+    margin-top: 2rem;
+    margin-left:5px;
+}

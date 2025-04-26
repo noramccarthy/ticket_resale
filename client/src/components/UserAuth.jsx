@@ -102,7 +102,7 @@ const UserAuth = () => {
                                 </form>
                                 <p className="mb-0 mt-5">
                                     {isLogin ? "Don't have an account?" : "Already have an account?"}
-                                    <button type="button" className="toggle-link" onClick={toggleForm}>
+                                    <button type="button" className="auth-toggle-link" onClick={toggleForm}>
                                         {isLogin ? " Sign up" : " Login"}
                                     </button>
                                 </p>

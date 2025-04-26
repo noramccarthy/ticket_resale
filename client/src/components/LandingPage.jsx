@@ -7,12 +7,15 @@ import SlideShow from './SlideShow';
 import '../css/LandingPage.css'
 import Chatbot from './Chatbot';
 import Layout from './Layout';
+import SearchBar from './SearchBar';
 
 const LandingPage = () => {
     const [isOpen, setIsOpen] = useState(true);
     const [concerts, setConcerts] = useState([]);
     const [sports, setSports] = useState([]);
     const [theater, setTheater] = useState([]);
+    const [searchTerm, setSearchTerm] = useState('');
+    const [confirmedSearchTerm, setConfirmedSearchTerm] = useState('');
 
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
@@ -67,6 +70,8 @@ const LandingPage = () => {
     return (
         <Layout>
             <div className="main-body">
+                <SearchBar/>
+
                 <SlideShow/>
                 <section className={`section-one ${animate ? 'animate' : 'slide-in'}`}>
                     <div className="carousel-container">

@@ -3,7 +3,6 @@ import UserAuth from './components/UserAuth'
 import AdminDashboard from './components/AdminDashboard'
 import CreateTicket from  './components/CreateTicket'
 import TicketDetail from './components/TicketDetail'
-import AllTickets from './components/AllTickets'
 import About from './components/About'
 import Deals from './components/Deals'
 import Cart from './components/Cart'
@@ -12,13 +11,17 @@ import UpdateTicket from './components/UpdateTicket'
 import Receipt from './components/Receipt'
 import ProfileManagement from './components/ProfileManagement'
 import UserTickets from './components/UserTickets'
-import { LoadScript } from '@react-google-maps/api';
+import UserListings from './components/UserListings'
+import Sports from './components/Sports'
+import Music from './components/Music'
+import Shows from './components/Shows'
+import SearchResults from './components/SearchResults'
 
+import { LoadScript } from '@react-google-maps/api';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext'
 import './App.css';
-import UserListings from './components/UserListings'
 
 
 function App() {
@@ -33,8 +36,11 @@ function App() {
               <Route>
                 <Route path="/" element={<LandingPage cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
                 <Route path="/about" element={<About/>}/>
-                <Route path="/shop" element={<AllTickets/>}/>
+                <Route path="/sports" element={<Sports/>}/>
+                <Route path="/music" element={<Music/>}/>
+                <Route path="/shows" element={<Shows/>}/>
                 <Route path="/deals" element={<Deals/>}/>
+                <Route path="/results" element={<SearchResults/>}/>
                 <Route path="/cart" element={<Cart cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
                 <Route path="/receipt" element={<Receipt cartDetails={cartDetails} setCartDetails={setCartDetails}/>}/>
                 <Route path="/ticket/:id" element={<TicketDetail/>}/>

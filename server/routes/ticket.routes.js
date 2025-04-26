@@ -17,9 +17,11 @@ module.exports = (app) => {
     app.get("/api/ticket/concerts", TicketController.findAllConcerts);
     app.get("/api/ticket/sports", TicketController.findAllSports);
     app.get("/api/ticket/theater", TicketController.findAllTheater);
+    app.get("/api/ticket/search", TicketController.searchTickets);
 
     app.get("/api/ticket/:id", TicketController.findOneTicket);
     app.put("/api/ticket/update/:id", TicketController.updateStock);
     app.delete("/api/ticket/delete/:id", TicketController.deleteTicket);
+
 
 }

@@ -1,14 +1,21 @@
 import { Link, useNavigate } from 'react-router-dom';
-import '../css/SingleTicket.css'
+import '../css/SingleTicketResults.css'
 
-const SingleTicket = ({ticket}) => {
+const SingleTicketResults = ({ticket}) => {
     const date = new Date(ticket.date)
     const month = date.toLocaleString('en-US', {month: 'long'})
     const day = date.toLocaleDateString('en-US', {day: '2-digit'})
     const year = date.getFullYear();
     const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
     const navigate = useNavigate();
+    const isLoggedIn = localStorage.getItem('token') !== null;
 
+    const handleListClick = (e) => {
+        if (!isLoggedIn) {
+            e.preventDefault();
+            alert('You must be logged in to list tickets!');
+        }
+    };
 
     return (
         <tr className="inner-box">
@@ -31,17 +38,19 @@ const SingleTicket = ({ticket}) => {
             </td>
             <td>
                 <div className="r-no">
-                        <span>{ticket.sold ? 'Sold' : 'Available'}</span>
+                    <div>
+                        <span style={{ display: 'block' }}>{ticket.location}</span>
+                        <span style={{ display: 'block' }}>{ticket.city}, {ticket.state}</span>
+                    </div>
                 </div>
             </td>
             <td>
-                <div>
+                <div className="primary-btn">
                     <Link className="view-btn" to={`/ticket/${ticket._id}`}>View</Link>
-                    <Link className="edit-btn" to={`/admin/update/${ticket._id}`}>Edit</Link>
                 </div>
             </td>
         </tr>
     )
 }
 
-export default SingleTicket;
+export default SingleTicketResults;

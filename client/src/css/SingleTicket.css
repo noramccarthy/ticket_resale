@@ -1,16 +1,29 @@
+.view-btn {
+    background-color: #FF5841;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
+    margin-top: 2rem;
+}
+
+.view-btn:hover {
+    background-color: #fb3d24;
+}
 
 .edit-btn {
-    background-color: #FF5841;
-    border: none;
+    background-color: #999;
     color: black;
+    border: none;
     padding: 0.5rem 1.5rem;
-    font-size: 0.9rem;
-    border-radius: 0.25rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
     margin-top: 2rem;
 }
 
 .edit-btn:hover {
-    background-color: #f94d37;
-    border: none;
-
+    background-color: #787878;
 }

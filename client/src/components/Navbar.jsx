@@ -31,10 +31,10 @@ const Navbar = () => {
 
                 <div className='nav-col-end'>
                     <ul className="nav-links">
-                        <li><Link className="link-btn" to="/about">About</Link></li>
-                        <li><Link className="link-btn" to="/shop">Shop</Link></li>
+                        <li><Link className="link-btn" to="/sports">Sports</Link></li>
+                        <li><Link className="link-btn" to="/music">Music</Link></li>
+                        <li><Link className="link-btn" to="/shows">Shows</Link></li>
                         <li><Link className="link-btn" to="/deals">Deals</Link></li>
-
                         <li className="dropdown"
                             onMouseEnter={() => setDropdownOpen(true)}
                             onMouseLeave={() => setDropdownOpen(false)}

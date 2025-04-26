@@ -1,9 +1,7 @@
 .listing-container {
     min-height: 100vh;
 }
-.listing-body-content {
-    padding: 2rem;
-}
+
 .listing-section-title {
     padding: 10px;
     margin: 20px 20px;
@@ -60,4 +58,30 @@
     font-size: 16px;
     color: #777;
     max-width: 600px; /* Optional: to limit the text width */
+}
+
+.ticket-results {
+    max-width: 80%;
+}
+
+.ticket-login-sidebar {
+    flex: 1;
+    padding: 20px 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    max-width: 250px;
+}
+
+.sidebar-login-link-btn {
+    display: inline-block;
+    background-color: #FF5841;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    text-align: center;
+    transition: background-color 0.3s ease;
 }

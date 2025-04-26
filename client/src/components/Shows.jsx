@@ -8,7 +8,7 @@ import Layout from './Layout';
 
 const PAGE_SIZE = 20;
 
-const AllTickets = () => {
+const Shows = () => {
     const [tickets, setTickets] = useState([]);
     const [filterTickets, setFilterTickets] = useState(tickets);
     const [categories, setCategories] = useState([]);
@@ -79,7 +79,7 @@ const AllTickets = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket")
+        axios.get("http://localhost:8000/api/ticket/theater")
         .then((res) => {
             setTickets(res.data)
             setFilterTickets(res.data)
@@ -124,10 +124,10 @@ const AllTickets = () => {
                 {paginatedTickets.length > 0 ? (
                     <div> 
                         <div className='filtered-tickets-container'>
-                            {paginatedTickets.map((ticket) => (
-                                <div key={ticket._id} className='one-ticket'>
+                            {paginatedTickets.map((tickets) => (
+                                <div key={tickets._id} className='one-ticket'>
                                     <Ticket 
-                                        ticket = {ticket}
+                                        ticket = {tickets}
                                         discount = {getDiscountPrice}
                                         stock = {stockReached}
                                     />
@@ -156,4 +156,4 @@ const AllTickets = () => {
     )
 }
 
-export default AllTickets;
+export default Shows;

@@ -147,5 +147,30 @@ module.exports = {
         Ticket.findByIdAndUpdate(id, {stock: quantity}, {new:true, runValidators:true})
             .then((updatedTicket) => res.json({updatedTicket}))
             .catch((err) => res.status(400).json(err));
-    }
+    },
+
+    searchTickets: async (req, res) => {
+        const { query } = req.query;
+
+        if (!query) {
+            return res.status(400).json({ message: 'No search query provided.' });
+        }
+
+        try {
+            const searchRegex = new RegExp(query, 'i');
+
+            const tickets = await Ticket.find({
+                $or: [
+                    { artist: { $regex: searchRegex } },
+                    { category: { $regex: searchRegex } },
+                    { venue: { $regex: searchRegex } },
+                    { location: { $regex: searchRegex } },
+                ]
+            });
+            return res.json(tickets);
+        } catch (err) {
+            console.error("Error searching tickets:", err);
+            return res.status(400).json({ message: "Something went wrong with searchTickets()", error: err });
+        }
+    },
 };

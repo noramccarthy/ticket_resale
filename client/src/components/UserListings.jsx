@@ -33,35 +33,38 @@ const UserListings = () => {
                             </div>
                         </div>
                     </div>
-                    {adminTickets.length > 0 ? (
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="tab-content" id="myTabContent">
-                                    <div class="table-responsive">
-                                        <table class="table">
-                                            <thead>
-                                                <tr>
-                                                    <th class="text-center" scope="col">Date</th>
-                                                    <th class="text-center" scope="col"></th>
-                                                    <th class="text-center" scope="col">Artist</th>
-                                                    <th class="text-center" scope="col">Status</th>
-                                                    <th class="text-center" scope="col">Edit</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                            {adminTickets.map((ticket) => (
-                                                <SingleTicket 
-                                                    key={ticket._id} 
-                                                    ticket={ticket} 
-                                                />
-                                            ))}
-                                            </tbody>
-                                        </table>
+                    <div className='listing-body-content'>
+                        {adminTickets.length > 0 ? (
+                            
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="tab-content" id="myTabContent">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th class="text-center" scope="col">Date</th>
+                                                        <th class="text-center" scope="col"></th>
+                                                        <th class="text-center" scope="col">Artist</th>
+                                                        <th class="text-center" scope="col">Status</th>
+                                                        <th class="text-center" scope="col"></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                {adminTickets.map((ticket) => (
+                                                    <SingleTicket 
+                                                        key={ticket._id} 
+                                                        ticket={ticket} 
+                                                    />
+                                                ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    ) : null}
+                        ) : null}
+                    </div>
                 </div>
             </div>
         </Layout>
