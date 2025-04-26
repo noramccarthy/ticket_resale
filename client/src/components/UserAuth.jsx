@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import '../css/LoginRegistration.css';
+import '../css/UserAuth.css';
 import tfLogo from '../assets/images/tfLogo.png';
 import Layout from './Layout';
 import { AuthContext } from '../context/AuthContext';
@@ -60,9 +60,9 @@ const UserAuth = () => {
                     <div className="card-container mt-5 mb-5">
                         <div className="ticket-card bg-white text-black">
                             <div className="card-body p-5">
-                                <div className="form-header">
+                                <div className="form-header mb-5">
                                     <a href="/"><img className="logo-img mb-3" src={tfLogo} alt="companyLogo" /></a>
-                                    <h2 className="form-title">{isLogin ? "Welcome back" : "Welcome"}</h2>
+                                    <h4 className="form-title">{isLogin ? "Welcome back" : "Welcome"}</h4>
                                 </div>
                                 {error?.message && <p className="ticket_form_error_msg">{error.message}</p>}
                                 <form onSubmit={onSubmitHandler} className="create-user-form">
@@ -96,15 +96,19 @@ const UserAuth = () => {
                                         </div>
                                     )}
 
-                                    <button className="btn btn-outline-dark btn-lg px-4" type="submit">
+                                    <button className="user-auth-login-btn" type="submit">
                                         {isLogin ? "Login" : "Sign up"}
                                     </button>
                                 </form>
                                 <p className="mb-0 mt-5">
                                     {isLogin ? "Don't have an account?" : "Already have an account?"}
-                                    <button type="button" className="auth-toggle-link" onClick={toggleForm}>
-                                        {isLogin ? " Sign up" : " Login"}
-                                    </button>
+                                    <span
+                                        className="auth-toggle-link"
+                                        onClick={toggleForm}
+                                        style={{ fontWeight: 'bold', color: 'black', cursor: 'pointer', marginLeft: '5px' }}
+                                    >
+                                        {isLogin ? "Sign up" : "Login"}
+                                    </span>
                                 </p>
                             </div>
                         </div>

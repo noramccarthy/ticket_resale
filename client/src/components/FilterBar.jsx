@@ -37,69 +37,48 @@ const FilterBar = ({categories, onSearchFilter, onCategoryFilter, states, onStat
 
 
     return (
-        <>
-
-        <div className='filter-bar-container'>
-            <div className='row mb-3 mt-5'>
-                <div className="col">
-                    <h4 className="border-bottom">Filters</h4>
-                </div>
+        <div className="filter-bar-container">
+            <div className="filters-header">
+                <h2>Filters</h2>
             </div>
-
-            <div className="row mb-5">
-                <div className="col">
-                    {/* <label htmlFor="name">Search</label> */}
-
+            <div className="filters-row">
+                <div className="filter-search-wrapper">
                     <input
                         type="text"
-                        className="form-control"
-                        placeholder="Artist, event, team..."
-                        id="searchbar"
+                        className="filter-search-input"
+                        placeholder="Search..."
                         value={filters.searchInput}
                         onChange={handleFilter("searchInput")}
                     />
                 </div>
+                <select
+                    className="filter-select"
+                    onChange={handleFilter("state")}
+                    defaultValue=""
+                >
+                    <option value="" disabled>State</option>
+                    {states.map((state, index) => (
+                        <option key={index} value={state.stateName}>
+                            {state.stateName}
+                        </option>
+                    ))}
+                </select>
 
-                <div className="col">
-                    {/* <label htmlFor="state">State</label> */}
-
-                    <select 
-                        className="form-control"
-                        id="state"
-                        onChange={handleFilter("state")}
-                    >
-
-                        <option value="" disabled selected>States</option>
-                            {states.map((state, index) => (
-                                <option key={index} value={state.stateName}>
-                                    {state.stateName}
-                                </option>
-                                ))
-                            }
-                    </select>
-                </div>
-
-                <div className="col">
-                    {/* <label htmlFor="category">Category</label> */}
-
-                    <select 
-                        className="form-control"
-                        id="category"
-                        onChange={handleFilter("category")}
-                    >
-
-                        <option value="" disabled selected>Category</option>
-                            {categories.map((category, index) => (
-                                <option key={index} value={category.seatgeekName}>
-                                    {category.categoryName}
-                                </option>
-                                ))
-                            }
-                    </select>
-                </div>
+                {/* Categories Select */}
+                <select
+                    className="filter-select"
+                    onChange={handleFilter("category")}
+                    defaultValue=""
+                >
+                    <option value="" disabled>Category</option>
+                    {categories.map((category, index) => (
+                        <option key={index} value={category.seatgeekName}>
+                            {category.categoryName}
+                        </option>
+                    ))}
+                </select>
             </div>
         </div>
-        </>
     );
 }
 

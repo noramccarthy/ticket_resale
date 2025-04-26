@@ -1,55 +1,57 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import debounce from 'lodash.debounce';
+import '../css/SearchBar.css';
 
 const SearchBar = () => {
     const [query, setQuery] = useState('');
-    const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(false);
     const [noResults, setNoResults] = useState(false);
     const navigate = useNavigate();
 
-    // Debounced search function
-    const debouncedSearch = debounce(async (searchTerm) => {
-        if (!searchTerm) return;
+    const handleSearch = async () => {
+        if (!query.trim()) return;
 
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/ticket/search?query=${searchTerm}`);
+            const response = await axios.get(`http://localhost:8000/api/ticket/search?query=${query}`);
             const data = response.data;
 
-            navigate('/results', { state: { results: data, searchTerm: searchTerm } });
-
-            setResults(data);
-            setNoResults(data.length === 0);
+            if (data.length === 0) {
+                setNoResults(true);
+            } else {
+                setNoResults(false);
+                navigate('/results', { state: { results: data, searchTerm: query } });
+            }
         } catch (error) {
             console.error('Error searching tickets:', error);
+            setNoResults(true);
         } finally {
             setLoading(false);
         }
-    }, 500); // 500ms debounce
+    };
 
-    // Watch the query state
-    useEffect(() => {
-        debouncedSearch(query);
-
-        // Cleanup debounce on unmount
-        return () => {
-            debouncedSearch.cancel();
-        };
-    }, [query]);
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    };
 
     return (
         <div className="search-bar-container">
             <input
                 type="text"
-                placeholder="Search concerts, sports, theater..."
+                placeholder="Search..."
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                className="search-input"
+                onKeyDown={handleKeyDown}
+                className="search-bar" style={{ color: '#888'}}
             />
+            <i className="fas fa-search search-bar-icon"></i>
             {loading && <p>Loading...</p>}
+            {!loading && noResults && (
+                <p className="no-results-message">No results found for "{query}"</p>
+            )}
         </div>
     );
 };

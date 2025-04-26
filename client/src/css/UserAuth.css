@@ -1,4 +1,3 @@
-
 .bg-color {
     background-image: url(../assets/images/photo-1540039155733-5bb30b53aa14.jpg);
     background-repeat: no-repeat;
@@ -37,7 +36,7 @@
     font-size: 20px;
 }
 
-.auth-toggle-link {
+.user-auth-login-btn {
     background-color: #FF5841;
     color: white;
     border: none;

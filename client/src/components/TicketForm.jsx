@@ -118,16 +118,15 @@ const TicketForm = (props) => {
                                             <input type="text" className="form-control" value={seat} onChange={(e) => setSeat(e.target.value)} />
                                             {errors.seat && <small className="text-danger">{errors.seat}</small>}
                                         </div>
-
-                                        <div className="col-md-6">
-                                            <h6 className="ticket-form-label mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>How much did you pay per ticket?</h6>
-                                            <input type="number" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)} />
-                                            {errors.price && <small className="text-danger">{errors.price}</small>}
-                                        </div>
                                         <div className="col-md-6">
                                             <h6 className="ticket-form-label mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>How many tickets are you selling?</h6>
                                             <input type="number" className="form-control" value={stock} onChange={(e) => setStock(e.target.value)} />
                                             {errors.stock && <small className="text-danger">{errors.stock}</small>}
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h6 className="ticket-form-label mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>How much did you pay per ticket?</h6>
+                                            <input type="number" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)} />
+                                            {errors.price && <small className="text-danger">{errors.price}</small>}
                                         </div>
 
                                         <div className="mb-5 col-md-6 d-flex align-items-end">
@@ -178,7 +177,7 @@ const TicketForm = (props) => {
                                         <div className="col-12 d-flex mt-4">
                                             {postedBy && (
                                                 <button className="cancel-btn me-3" onClick={() => deleteTicket(id)}>
-                                                    Cancel
+                                                    Delete
                                                 </button>
                                             )}
                                             <button className="list-btn ms-auto" type="submit" disabled={!agree}>
