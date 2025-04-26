@@ -70,8 +70,9 @@
     min-height: 38px; 
 }
 
+
 .text-primary {
-    color: #FF5841 !important;
+    color: #E04A34 !important;
 }
 
 .col-xl-6, .col-lg-6, .col-md-6, .col-sm-6, .col-12 {
@@ -89,22 +90,30 @@
     background-color: #FF5841;
     border: none;
     color: black;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
 }
 
 .btn-save:hover {
     background-color: #f94d37;
     border: none;
-
 }
 
 .btn-secondary {
-    background-color: #6c757d;
+    background-color: #999;
     border: none;
     color: black;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    transition: background-color 0.2s ease;
 }
 
 .btn-secondary:hover {
-    background-color: #697278;
+    background-color: #787878;
     border: none;
     color: black;
 }

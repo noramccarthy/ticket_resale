@@ -10,29 +10,3 @@
 .admin-content {
     flex: 1;
 }
-
-/* .your-listings-container {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 5px;
-}
-
-.your-listings-body {
-    width: 100%;
-}
-
-.your-listings-title {
-    text-transform: uppercase;
-    font-weight: 600;
-    background-color: #dce7f9;
-    margin: 0 auto;
-    font-size: 2.5rem;
-    height: 10vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.admin-dashboard {
-    display: block;
-} */

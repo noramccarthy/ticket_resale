@@ -22,6 +22,9 @@ const CreateTicket = props => {
     const [address, setAddress] = useState("");
     const [city, setCity] = useState("");
     const [error, setError] = useState({});
+    const [section, setSection] = useState("");
+    const [row, setRow] = useState("");
+    const [seat, setSeat] = useState("");
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -90,6 +93,9 @@ const CreateTicket = props => {
                     address={address}
                     city={city}
                     error={error}
+                    section={section}
+                    row={row}
+                    seat={seat}
                 />
             </div>
         </div>

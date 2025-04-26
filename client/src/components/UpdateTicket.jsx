@@ -69,6 +69,9 @@ const UpdateTicket = props => {
                         postedBy={ticket.postedBy}
                         id={ticket._id}
                         error={error}
+                        section={ticket.section}
+                        row={ticket.row}
+                        seat={ticket.seat}
                     />
                 </div>
             </div>

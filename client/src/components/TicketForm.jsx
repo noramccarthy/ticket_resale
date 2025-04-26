@@ -5,13 +5,18 @@ import '../css/TicketForm.css'
 
 
 const TicketForm = (props) => {
-    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, address, city, error, postedBy, id} = props;
+    const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, address, city, error, postedBy, id, newSection, newRow, newSeat} = props;
 
     // state for controllable user input for CreateTicket and UpdateTicket
     const [price, setPrice] = useState(0);
     const [stock, setStock] = useState(0);
     const [onSale, setOnSale] = useState(false);
     const [discount, setDiscount] = useState(0);
+    const [section, setSection] = useState("");
+    const [row, setRow] = useState("");
+    const [seat, setSeat] = useState("");
+    const [agree, setAgree] = useState(false);
+    const [errors, setErrors] = useState({});
     const navigate = useNavigate();
 
     // delete confirmation modal
@@ -19,12 +24,42 @@ const TicketForm = (props) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-
-    // submit handler for CreateTicket and UpdateTicket
     const onSubmitHandler = (e) => {
         e.preventDefault();
-        onSubmitProp({category, artist, date, location, state, image, price, stock, onSale, discount, lat, lon, address, city});
-    }
+
+        const newErrors = {};
+    
+        if (!section) newErrors.section = "Section is required";
+        if (!row) newErrors.row = "Row is required";
+        if (!seat) newErrors.seat = "Seat is required";
+        if (!price) newErrors.price = "Price is required";
+        if (!stock) newErrors.stock = "Stock is required";
+        if (!agree) {newErrors.agree = "You must agree to the terms";}
+    
+        setErrors(newErrors);
+    
+        if (Object.keys(newErrors).length === 0) {
+            onSubmitProp({
+                category,
+                artist,
+                date,
+                location,
+                state,
+                image,
+                price,
+                stock,
+                onSale,
+                discount,
+                lat,
+                lon,
+                address,
+                city,
+                section,
+                row,
+                seat
+            });
+        }
+    };
 
     const deleteTicket = (ticketId) => {
         axios.delete("http://localhost:8000/api/ticket/delete/" + ticketId)
@@ -36,112 +71,125 @@ const TicketForm = (props) => {
                 console.log(err);
             })
     }
-
     return (
         <section className="bg-image d-flex align-items-center" style={{ minHeight: '100vh' }}>
             <div className="container py-5">
                 <div className="row justify-content-center">
-                <div className="col-12 col-md-8 col-lg-6 col-xl-5">
-                    <div className="card bg-dark text-white w-100">
-                    <div className="card-body p-5 text-center">
-                        <form onSubmit={onSubmitHandler} className="create-ticket-form">
-                        <h5 className="text-white-50 mb-3">List your tickets</h5>
+                    <div className="col-12 col-md-10 col-lg-8 col-xl-7">
+                        <div className="card bg-white text-black w-100">
+                            <div className="card-body p-5">
+                                <form onSubmit={onSubmitHandler} className="create-ticket-form">
+                                    <div className="row g-4">
+                                        <div className="col-12">
+                                            <h6 className="text-center mb-4" style={{ color: '#E04A34', fontWeight: '600' }}>Your Event</h6>
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="ticket-form-label">Artist</label>
+                                            <input type="text" name="artist" className="form-control" value={artist} readOnly />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="ticket-form-label">Date</label>
+                                            <input type="text" name="date" className="form-control" value={date} readOnly />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="ticket-form-label">Location</label>
+                                            <input type="text" name="location" className="form-control" value={location} readOnly />
+                                        </div>
+                                        <div className="col-md-6">
+                                            <label className="ticket-form-label">State</label>
+                                            <input type="text" name="state" className="form-control" value={state} readOnly />
+                                        </div>
 
-                        {/* Hidden fields */}
-                        <input type="hidden" name="lat" value={lat} />
-                        <input type="hidden" name="lon" value={lon} />
-                        <input type="hidden" name="address" value={address} />
-                        <input type="hidden" name="city" value={city} />
-                        <input type="hidden" name="category" value={category} />
-                        <input type="hidden" name="event.image" value={image} />
+                                        <div className="col-12">
+                                            <h6 className="text-center mb-2 mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>Where are you sitting?</h6>
+                                        </div>
+                                        <div className="col-md-4">
+                                            <label className="ticket-form-label">Section</label>
+                                            <input type="text" className="form-control" value={section} onChange={(e) => setSection(e.target.value)} />
+                                            {errors.section && <small className="text-danger">{errors.section}</small>}
+                                        </div>
+                                        <div className="col-md-4">
+                                            <label className="ticket-form-label">Row</label>
+                                            <input type="text" className="form-control" value={row} onChange={(e) => setRow(e.target.value)} />
+                                            {errors.row && <small className="text-danger">{errors.row}</small>}
+                                        </div>
+                                        <div className="col-md-4">
+                                            <label className="ticket-form-label">Seat</label>
+                                            <input type="text" className="form-control" value={seat} onChange={(e) => setSeat(e.target.value)} />
+                                            {errors.seat && <small className="text-danger">{errors.seat}</small>}
+                                        </div>
 
-                        {/* Form Fields */}
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="artist">Artist</label>
-                            <input type="text" name="artist" className="form-control form-control-lg" value={artist} />
-                        </div>
+                                        <div className="col-md-6">
+                                            <h6 className="ticket-form-label mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>How much did you pay per ticket?</h6>
+                                            <input type="number" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)} />
+                                            {errors.price && <small className="text-danger">{errors.price}</small>}
+                                        </div>
+                                        <div className="col-md-6">
+                                            <h6 className="ticket-form-label mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>How many tickets are you selling?</h6>
+                                            <input type="number" className="form-control" value={stock} onChange={(e) => setStock(e.target.value)} />
+                                            {errors.stock && <small className="text-danger">{errors.stock}</small>}
+                                        </div>
 
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="date">Date</label>
-                            <input type="text" name="date" className="form-control form-control-lg" value={date} />
-                        </div>
+                                        <div className="mb-5 col-md-6 d-flex align-items-end">
+                                            <div className="form-check">
+                                                <input
+                                                    type="checkbox"
+                                                    className="form-check-input"
+                                                    id="onSale"
+                                                    checked={onSale}
+                                                    onChange={() => setOnSale(!onSale)}
+                                                />
+                                                <h6 className="form-check-label" htmlFor="onSale" style={{ color: '#E04A34', fontWeight: '600' }}>Sell at a discounted price</h6>
+                                            </div>
+                                        </div>
 
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="location">Location</label>
-                            <input type="text" name="location" className="form-control form-control-lg" value={location} />
-                        </div>
+                                        {onSale && (
+                                            <div className="col-md-6">
+                                                <h6 className="ticket-form-label" style={{ color: '#E04A34', fontWeight: '600' }}>Discounted price:</h6>
+                                                <input
+                                                    type="number"
+                                                    name="discount"
+                                                    className="form-control"
+                                                    value={discount}
+                                                    onChange={(e) => setDiscount(e.target.value)}
+                                                    disabled={!onSale}
+                                                />
+                                            </div>
+                                        )}
 
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="state">State</label>
-                            <input type="text" name="state" className="form-control form-control-lg" value={state} />
-                        </div>
+                                        <div className="form-check d-flex align-items-start">
+                                            <input
+                                                type="checkbox"
+                                                className="form-check-input"
+                                                id="agreement"
+                                                checked={agree}
+                                                onChange={(e) => setAgree(e.target.checked)}
+                                                style={{ flexShrink: 0, width: '18px', height: '18px'}}
+                                            />
+                                            <label
+                                                className="form-check-label ms-3"
+                                                htmlFor="agreement"
+                                                style={{ maxWidth: '700px', textAlign: 'left', fontSize: '0.95rem' }}
+                                            >
+                                                I acknowledge that a valid payment method must be on file. I understand that if the tickets I list are sold and I am unable to produce them, or if they are determined to be fraudulent, my card may be charged to reimburse the buyer.
+                                            </label>
+                                        </div>
 
-                        {error.price && <p className="ticket-form-error-msg">{error.price.message}</p>}
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="price">Price</label>
-                            <input
-                            type="number"
-                            name="price"
-                            className="form-control form-control-lg"
-                            placeholder={newPrice}
-                            value={price}
-                            onChange={(e) => setPrice(e.target.value)}
-                            />
-                        </div>
-
-                        {error.stock && <p className="ticket-form-error-msg">{error.stock.message}</p>}
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="stock">Stock</label>
-                            <input
-                            type="number"
-                            name="stock"
-                            className="form-control form-control-lg"
-                            placeholder={newStock}
-                            value={stock}
-                            onChange={(e) => setStock(e.target.value)}
-                            />
-                        </div>
-
-                        <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="onSale">On sale?</label> &nbsp;
-                            <input
-                            type="checkbox"
-                            name="onSale"
-                            checked={onSale}
-                            onChange={() => setOnSale(!onSale)}
-                            />
-                        </div>
-
-                        {onSale && (
-                            <div className="form-outline form-white mb-4">
-                            <label className="ticket-form-label" htmlFor="discount">Discount</label>
-                            <input
-                                type="number"
-                                name="discount"
-                                className="form-control form-control-lg"
-                                placeholder={newDiscount}
-                                value={discount}
-                                onChange={(e) => setDiscount(e.target.value)}
-                            />
+                                        <div className="col-12 d-flex mt-4">
+                                            {postedBy && (
+                                                <button className="cancel-btn me-3" onClick={() => deleteTicket(id)}>
+                                                    Cancel
+                                                </button>
+                                            )}
+                                            <button className="list-btn ms-auto" type="submit" disabled={!agree}>
+                                                List
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                        )}
-                        <div className="d-flex justify-content-between align-items-center mt-4">
-                            {postedBy && (
-                                <button
-                                className="btn delete-btn"
-                                onClick={() => deleteTicket(id)}
-                                >
-                                Delete
-                                </button>
-                            )}
-                            <button className="btn list-btn" type="submit">
-                                List
-                            </button>
                         </div>
-                        </form>
                     </div>
-                    </div>
-                </div>
                 </div>
             </div>
         </section>

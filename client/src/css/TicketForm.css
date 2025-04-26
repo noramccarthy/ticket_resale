@@ -16,29 +16,30 @@
     font-size: 1rem;
     border-radius: 0.3rem;
     transition: background-color 0.2s ease;
+    margin-top: 2rem;
 }
 
 .list-btn:hover {
-background-color: #0b5ed7;
+    background-color: #fb3d24;
 }
 
-.delete-btn {
-    background-color: #181c22;
-    color: white;
+.cancel-btn {
+    background-color: #999;
+    color: black;
     border: none;
     padding: 0.5rem 1.5rem;
     font-size: 1rem;
     border-radius: 0.3rem;
     transition: background-color 0.2s ease;
+    margin-top: 2rem;
 }
 
-.delete-btn:hover {
-background-color: #FF5841;
+.cancel-btn:hover {
+    background-color: #787878;
 }
 
-/* Ensure the section takes up full viewport height but doesn't overflow */
 .vh-100 {
-    min-height: 100vh; /* Make sure it takes full height of the viewport */
+    min-height: 100vh;
     background-size: cover;
     background-position: center;
 }
@@ -47,14 +48,14 @@ background-color: #FF5841;
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: auto; /* Allow scrolling if content overflows */
-    padding-bottom: 30px; /* Ensure space at the bottom for footer */
+    overflow: auto;
+    padding-bottom: 30px;
 }
 
 .card {
-    width: 100%; /* Make sure card doesn't overflow */
-    max-width: 900px; /* You can adjust this as needed */
-    margin-bottom: 30px; /* Space between form and footer */
+    width: 100%;
+    max-width: 900px;
+    margin-bottom: 30px;
 }
 
 form.create-ticket-form {
@@ -66,4 +67,8 @@ form.create-ticket-form {
     color: red;
     font-size: 1rem;
     margin-top: 0.25rem;
+}
+
+.ticket-form-header {
+    color: #FF5841;
 }

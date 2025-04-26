@@ -1,35 +1,57 @@
-/* ABOUT PAGE CSS */
 .about-page-container {
-    /* border-top: 3px solid black; */
     background-position: center;
     background-size: cover;
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 6% 12%;
+    padding: 6% 8%;
     text-align: center;
     min-height: 90vh;
+    background-color: #f7f8fa;
 }
 
 .about-page-title {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-    font-size: 4rem;
-    text-transform: uppercase;
+    margin: 0;
+    font-size: 3.5rem;
     color: #FF5841;
+    margin-bottom: 40px;
 }
 
-.about-page-text {
-    /* background-color: #f9d9b0; */
-    background-color: #dce7f9;
-    opacity: 0.95;
-    border-radius: 12px;
-    border: none;
-    box-shadow: 2px 2px 12px #94afb5;
-    padding: 3%;
-    font-size: 1.3rem;
+.about-cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
     width: 100%;
-    margin-top: 50px;
-    line-height: 245%;
+}
+
+.about-card {
+    background-color: #ffffff;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.about-icon {
+    font-size: 2.5rem;
+    color: #FF5841;
+    margin-bottom: 1rem;
+}
+
+.about-card h3 {
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.about-card p {
+    font-size: 1rem;
+    color: #555;
 }

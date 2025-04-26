@@ -1,3 +1,4 @@
+/* Wrapper for chatbot floating */
 .chatbot-wrapper {
     position: fixed;
     bottom: 20px;
@@ -5,32 +6,168 @@
     z-index: 999;
 }
 
-.chatbot-toggle-button-open {
-background-color: #007bff;
-border: none;
-border-radius: 50%;
-width: 25px;
-height: 25px;
-font-size: 10px;
-cursor: pointer;
-box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-}
-
+/* Button when collapsed (big button with chat icon) */
 .chatbot-toggle-button-closed {
-    background-color: #007bff;
+    background-color: #FF5841;
     border: none;
     border-radius: 50%;
     width: 50px;
     height: 50px;
     font-size: 25px;
+    color: white;
     cursor: pointer;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-    }
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
+/* Button when chatbot is open (small X button) */
+.chatbot-toggle-button-open {
+    background-color: #FF5841;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Chat window main container */
 .chatbot-window {
-width: 350px;
-height: 400px;
-border-radius: 10px;
-overflow: hidden;
-box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    width: 350px;
+    height: 450px;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    background-color: #ffffff;
+}
+
+/* Conversation header (top bar) */
+.chatbot-window .cs-conversation-header {
+    background-color: #ffe5db;
+}
+
+/* Message bubbles */
+.chatbot-window .cs-message--incoming .cs-message__content {
+    background-color: #ffe5db !important;
+    color: black;
+}
+
+.chatbot-window .cs-message--outgoing .cs-message__content {
+    background-color: #FF5841;
+    color: black;
+    padding: 10px 16px; /* ← Add more padding inside */
+    font-size: 15px; /* ← Slightly bigger text */
+    border-radius: 16px; /* ← Smooth rounded corners */
+    max-width: 100%; /* ← Limit width nicely */
+    word-break: break-word; /* ← Handle long words properly */
+}
+
+/* Typing indicator */
+.chatbot-window .cs-typing-indicator {
+    color: #FF5841 !important;
+}
+
+/* Separator line ("Today") */
+.chatbot-window .cs-message-separator {
+    color: #FF5841 !important;
+    font-weight: bold;
+    font-size: 0.9rem;
+    padding-bottom: 2px;
+    margin-bottom: 8px;
+}
+
+.cs-message-separator::before, .cs-message-separator::after {
+    box-sizing: border-box;
+    content: "";
+    background-color: #FF5841;
+    display: block;
+    flex-grow: 1;
+    height: 1px;
+}
+
+.cs-conversation-header__content .cs-conversation-header__user-name {
+    background-color: transparent;
+}
+
+.cs-conversation-header__content .cs-conversation-header__info {
+    background-color: transparent;
+}
+
+/* Message input section */
+.chatbot-window .cs-message-input {
+    /* background-color: #ffe5db; */
+    border-top: .5px solid #FF5841 !important;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cs-message-input__content-editor-wrapper {
+    box-sizing: border-box;
+    position: relative;
+    background-color: white !important;
+    margin: 0;
+    padding: .6em .9em;
+    border-radius: .7em;
+    flex-grow: 1;
+}
+
+
+/* Text input field */
+.chatbot-window .cs-message-input__content-editor {
+    background-color: #ffe5db !important;
+    color: black;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ffe5db;
+    width: 100%;
+}
+
+/* Input placeholder */
+.chatbot-window .cs-message-input__content-editor::placeholder {
+    color: #666;
+}
+
+/* Attachment button */
+.chatbot-window .cs-button--attachment {
+    background-color: #FF5841 !important;
+    color: white !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Send button */
+.chatbot-window .cs-button--send {
+    background-color: #FF5841 !important;
+    color: white !important;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Send button icon inside */
+.chatbot-window .cs-button--send svg {
+    color: white !important;
+    fill: white !important;
+}
+
+/* Hover effect for buttons */
+.chatbot-window .cs-button--send:hover,
+.chatbot-window .cs-button--attachment:hover {
+    background-color: #e14a37 !important;
+}
+
+/* Focus effect for buttons */
+.chatbot-window .cs-button--send:focus,
+.chatbot-window .cs-button--attachment:focus {
+    box-shadow: 0 0 0 2px rgba(255, 88, 65, 0.3) !important;
 }

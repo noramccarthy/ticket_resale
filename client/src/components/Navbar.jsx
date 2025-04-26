@@ -61,8 +61,16 @@ const Navbar = () => {
                         </li>
                         <li className="signup__primary" style={{ position: 'relative' }}>
                             <Link className="a__primary" to={"/cart"}>
-                                <Badge color="primary" badgeContent={cartCount}>
-                                    <ShoppingCartIcon color="black"/>
+                                <Badge
+                                    badgeContent={cartCount}
+                                    sx={{
+                                        '& .MuiBadge-badge': {
+                                        backgroundColor: '#FF5841', // your site's orange
+                                        color: 'white',
+                                        },
+                                    }}
+                                >
+                                <ShoppingCartIcon />
                                 </Badge>
                             </Link>
                         </li>

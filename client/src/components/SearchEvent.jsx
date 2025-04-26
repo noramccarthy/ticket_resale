@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import '../css/SearchEvent.css';
 import { AuthContext } from '../context/AuthContext';
@@ -14,6 +14,7 @@ const SearchEvent = (props) => {
     const [showButton, setShowButton] = useState(false);
     const [loading, setLoading] = useState(false);
     const { isLoggedIn } = useContext(AuthContext);
+    const topOfResultsRef = useRef(null);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -54,9 +55,8 @@ const SearchEvent = (props) => {
         } finally {
             setLoading(false);
             setTimeout(() => {
-                const results = document.getElementById('results');
-                if (results) {
-                    results.scrollIntoView({ behavior: 'smooth' });
+                if (topOfResultsRef.current) {
+                    topOfResultsRef.current.scrollIntoView({ behavior: 'smooth' });
                 }
             }, 100);
         }
@@ -97,8 +97,7 @@ const SearchEvent = (props) => {
                 </div>
             </div>
 
-            {/* Results Section */}
-            <section className="section-2">
+            <section className="section-2" ref={topOfResultsRef}>
                 {loading && (
                     <div className="text-center my-4">
                         <p>Loading results...</p>

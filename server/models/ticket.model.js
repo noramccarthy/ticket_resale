@@ -75,6 +75,18 @@ const TicketSchema = new mongoose.Schema({
     sold: {
         type: Boolean,
         default: false,
+    },
+    section: {
+        type: String,
+        required: [true, "Section is required."]
+    },
+    row: {
+        type: String,
+        required: [true, "Row is required."]
+    },
+    seat: {
+        type: String,
+        required: [true, "Seat is required."]
     }
 }, {timestamps: true});
 

@@ -1,151 +1,207 @@
-/* General Layout */
-.product-page {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 40px 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #f9f9f9;
+.ticket-page {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f7f7f7;
 }
 
-/* Product Card */
-.product-card {
+.ticket-detail-card {
     display: flex;
-    flex-wrap: wrap;
-    max-width: 1000px;
-    background-color: #fff;
+    flex-direction: row;
+    gap: 20px;
+    background: white;
     border-radius: 12px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-    padding: 30px;
-    gap: 30px;
-    margin-bottom: 40px;
+    padding: 20px;
 }
 
-/* Image Section */
-.product-image {
-    flex: 1 1 350px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.ticket-image-section {
+    flex: 1;
 }
 
-.product-image img {
+.ticket-detail-image {
     width: 100%;
-    max-width: 350px;
-    object-fit: contain;
-    border-radius: 10px;
+    height: 220px;
+    border-radius: 12px;
+    object-fit: cover;
 }
 
-/* Details Section */
-.product-details {
-    flex: 1 1 400px;
+.ticket-info-section {
+    flex: 2;
+}
+
+.ticket-title {
+    font-size: 30px;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.ticket-detail-venue {
+    font-size: 20px;
+    color: #191818;
+    margin-bottom: 5px;
+}
+
+.ticket-detail-date {
+    font-size: 16px;
+    color: #191818;
+    margin-bottom: 15px;
+}
+
+.ticket-info-header {
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    /* margin-top: 20px; */
 }
 
-.product-title {
+.price-cart-wrapper {
+    background: #fefefe;
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    border: 1px solid #eee;
+    margin-bottom: 15px;
+}
+
+.ticket-price {
     font-size: 28px;
     font-weight: 700;
-    color: #222;
+    color: #00a650;
 }
 
-.product-description,
-.product-info-date {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.5;
-}
-
-/* Pricing */
-.product-price {
-    font-size: 22px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-}
-
-.original-price {
+.price-original {
     text-decoration: line-through;
-    color: #b12704;
+    color: #999;
+    font-size: 16px;
+    margin-right: 8px;
+}
+
+.price-discounted {
+    font-size: 28px;
+    font-weight: 700;
+    color: #00a650;
+    margin-right: 6px;
+}
+
+.price-text {
+    font-size: 12px;
+    color: #777;
+}
+
+.ticket-detail-seats {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    font-size: 14px;
+    color: #666;
+    gap: 4px;
+    margin-top: 8px;
+
+}
+
+.ticket-detail-seats .seat-item {
+    display: flex;
+    align-items: flex-end;
+    gap: 5px;
     font-weight: 500;
 }
 
-.sale-price {
-    color: #111;
-    font-weight: 700;
+.tickets-left {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    font-weight: 500;
+    color: #666;
+    gap: 5px;
 }
 
-/* Stock Info */
-.product-stock {
-    font-size: 15px;
-    font-weight: 600;
-    margin-top: 8px;
-}
-
-.in-stock {
-    color: #228B22;
-}
-
-.out-of-stock {
-    color: #DC3545;
-}
-
-/* Add to Cart Button */
-.add-to-cart-btn {
+.add-to-cart {
+    margin-top: 2rem;
     background-color: #FF5841;
     color: white;
-    padding: 14px 24px;
-    font-size: 16px;
-    font-weight: 600;
+    width: fit-content; /* 👈 button becomes as wide as its content */
+    padding: 12px 30px; /* 👈 more comfortable side padding */
     border: none;
-    border-radius: 8px;
+    border-radius: 30px;
+    font-size: 16px;
     cursor: pointer;
+    display: block;
+    margin-left: auto; /* 👈 push it to the right */
+    margin-right: auto; /* 👈 center it horizontally */
 }
 
-.add-to-cart-btn:hover:not(:disabled) {
-    background-color: #FF5841;
+.add-to-cart:hover {
+    background-color: #e14b36; /* slightly darker */
+    transform: scale(1.02); /* tiny grow effect */
+    transition: all 0.2s ease-in-out;
 }
 
-.add-to-cart-btn:disabled {
-    background-color: #aaa;
+.add-to-cart:disabled {
+    background-color: #ccc;
     cursor: not-allowed;
 }
 
-/* Payment Badge */
-.payment-badge-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.payment-info {
     margin-top: 20px;
+    text-align: center;
 }
 
 .payment-badge {
-    width: 220px;
-    max-width: 90%;
-    object-fit: contain;
-}
-
-/* Map & Location */
-.one-ticket-map {
-    background-color: #fff;
     width: 100%;
-    max-width: 1000px;
-    border-radius: 12px;
-    padding: 30px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
-    margin-bottom: 60px;
+    max-width: 180px;
 }
 
-.one-ticket-map-container {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.one-ticket-address {
-    font-size: 20px;
+.ticket-location-details {
     color: #444;
-    line-height: 1.6;
+    line-height: 1.8;
+}
+
+.map-section {
+    margin-top: 30px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .ticket-detail-card {
+        flex-direction: column;
+    }
+    .ticket-info-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .ticket-detail-seats {
+        align-items: flex-start;
+        margin-top: 10px;
+    }
+}
+
+.ticket-location-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 30px 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    margin-top: 40px;
+}
+
+.location-venue {
+    font-size: 18px;
+    color: black;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.location-address,
+.location-city {
+    font-size: 14px;
+    color: #626161;
+}
+
+.map-detail-section {
+    margin-top: 20px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    max-height: 400px;
 }
