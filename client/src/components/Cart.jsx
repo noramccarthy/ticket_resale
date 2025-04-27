@@ -1,7 +1,6 @@
-import axios from 'axios';
+import api from '../services/api';
 import React, { useState, useContext } from 'react';
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
-// https://github.com/paypal/react-paypal-js
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import { CartContext } from '../context/CartContext';
@@ -9,11 +8,8 @@ import EmptyCart from '../assets/images/empty_cart.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTrashCan } from '@fortawesome/free-regular-svg-icons'
 import Modal from '../components/Modal';
-
-import '../css/Cart.css'
 import Footer from './Footer';
-
-const PAYPAL_API = "AUXYLTAsvHFThBeI28d4bNu7sYxbtCo1RFiiYZs6L-_wWmJwAkej4vSFV7si14s1ozlo-SxZDntQI9xI";
+import '../css/Cart.css'
 
 const Cart = ({cartDetails, setCartDetails}) => {
     const [errorMessage, setErrorMessage] = useState({});
@@ -69,7 +65,7 @@ const Cart = ({cartDetails, setCartDetails}) => {
     // decrease stock
     const updateStock = async (ticketID, quantity) => {
         try {
-            const res = await axios.put('http://localhost:8000/api/ticket/update/' + ticketID, {quantity})
+            const res = await api.put('/ticket/update/' + ticketID, {quantity})
             console.log("Stock updated:", res.data)
         }
         catch(err) {
@@ -101,7 +97,6 @@ const Cart = ({cartDetails, setCartDetails}) => {
                 >
                     
                 </Modal>
-
                 <div className='checkout'>
                     {updatedCart.length !== 0 ? 
                         <form className='row d-flex justify-content-center'>
@@ -120,7 +115,6 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                     
                                         <div className="d-flex justify-content-end align-items-center gap-3 col-6">
                                         <div className="ticket-price">${ticket.totalCost.toFixed(2)}</div>
-
                                         <div className="quantity-control d-flex align-items-center gap-2">
                                             <i
                                                 className="fa-solid fa-minus quantity-icon"
@@ -129,9 +123,7 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                                 handleQuantityChange(ticket._id, ticket.quantity - 1);
                                                 }}
                                             ></i>
-
                                             <span className="quantity-display">{ticket.quantity}</span>
-
                                             <i
                                                 className="fa-solid fa-plus quantity-icon"
                                                 onClick={(event) => {
@@ -140,14 +132,6 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                                 }}
                                             ></i>
                                             </div>
-
-                                    
-                                        {/* <div className="quantity-control d-flex align-items-center">
-                                            <button className="quantity-button" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity - 1) }}>-</button>
-                                            <span className="quantity-display">{ticket.quantity}</span>
-                                            <button className="quantity-button" onClick={(event) => { event.preventDefault(); handleQuantityChange(ticket._id, ticket.quantity + 1) }}>+</button>
-                                        </div> */}
-                                    
                                         <button className="trashcan" onClick={() => removeFromCart(ticket._id, ticket.quantity)}>
                                             <FontAwesomeIcon icon={faTrashCan} size="lg" />
                                         </button>
@@ -155,7 +139,6 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                     </div>
                                 ))}
                             </div>
-
                             <div className="col-3 checkout-cart">
                                 <h3 className='cart-summary-title'>Cart Summary</h3>
                                     <div className="scrollable-cart-body">
@@ -166,19 +149,14 @@ const Cart = ({cartDetails, setCartDetails}) => {
                                                 </div>
                                         ))}
                                     </div>
-
                                     <hr className='cart-divider'/>
-
                                 <div className="subtotal-container">
                                     <span className='checkout-subtotal'> Subtotal</span>
                                     <span className='checkout-subtotal-price'>${cartSubtotal().toFixed(2)}</span>
                                 </div>
-
                                 <div className="paypal-container">
                                     <PayPalScriptProvider className="paypal-section"
-                                        // Use the PayPalScriptProvider options prop to configure the JS SDK
-                                        // It accepts an object for passing query parameters and data attributes to the JS SDK script
-                                        options={{ "clientId": PAYPAL_API }} >
+                                        options={{ "clientId": process.env.REACT_APP_PAYPAL_API }} >
                                         <PayPalButtons
                                             forceReRender={items}
                                             createOrder={(data, actions) => {

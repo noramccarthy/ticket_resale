@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../services/api';
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext'
 import FilterBar from './FilterBar';
@@ -84,7 +84,7 @@ const Deals = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket/deals")
+        api.get("/ticket/deals")
         .then((res) => {
             setTickets(res.data)
             setFilterTickets(res.data)
@@ -94,7 +94,7 @@ const Deals = () => {
     },[])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/category")
+        api.get("/category")
         .then((res) => {
             setCategories(res.data.categories)
             console.log(res.data.categories)
@@ -103,7 +103,7 @@ const Deals = () => {
     },[])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/state")
+        api.get("/state")
         .then((res) => {
             setStates(res.data.states)
             console.log(res.data.states)
@@ -114,7 +114,6 @@ const Deals = () => {
     return (
         <Layout>
             <div className='body-container'>
-                {/* filter bar */}
                 <div className='filter-bar'>
                     <FilterBar
                         categories={categories}
@@ -124,8 +123,6 @@ const Deals = () => {
                         onStateFilter={handleStateChange}
                     />
                 </div>
-
-                {/* tickets */}
                 {paginatedTickets.length > 0 ? (
                     <div> 
                         <div className='filtered-tickets-container'>
@@ -140,7 +137,6 @@ const Deals = () => {
                                 </div>
                             ))}
                         </div>
-
                         <div className="pagination-bar">
                             <div className="pagination">
                             {pages.map((pageNumber) => (
@@ -156,7 +152,6 @@ const Deals = () => {
                         </div>
                     </div>
                     ) : (
-                    // no tickets
                     <div className='filtered-tickets-container'>
                             <p className='empty-category'>No Tickets</p>
                     </div>

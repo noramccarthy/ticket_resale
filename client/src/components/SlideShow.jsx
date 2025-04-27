@@ -4,13 +4,9 @@ import '../css/SlideShow.css'
 
 const SlideShow = () => {
     const [currentSlide, setCurrentSlide] = useState(0);
-
     const slideLength = sliderData.length;
-
     const autoScroll = true;
-
     let slideInterval;
-
     let intervalTime = 8000;
 
     const nextSlide = () => {

@@ -2,14 +2,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import '../css/Ticket.css'
 
-
 const Ticket = ({ticket, discount, stock}) => {
     const date = new Date(ticket.date)
     const month = date.toLocaleString('en-US', {month: 'long'})
     const day = date.toLocaleDateString('en-US', {day: '2-digit'})
     const year = date.getFullYear();
-
-    // const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
 
     return (
     <div className='ticket-container'>
@@ -19,9 +16,7 @@ const Ticket = ({ticket, discount, stock}) => {
 
         <div className='ticket-info'>
             <div className='ticket-artist'>
-                {/* <Link to={'/ticket/' + ticket._id}> */}
                     {ticket.artist}
-                {/* </Link> */}
             </div>
 
             <div className='ticket-date'>
@@ -46,7 +41,6 @@ const Ticket = ({ticket, discount, stock}) => {
                     )}
                 </div>
             </div>
-
         </div>
     </div>
     )

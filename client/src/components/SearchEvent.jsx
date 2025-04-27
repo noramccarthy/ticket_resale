@@ -1,8 +1,9 @@
 import { useRef, useState, useEffect, useContext } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
-import '../css/SearchEvent.css';
 import { AuthContext } from '../context/AuthContext';
 import Layout from './Layout';
+import '../css/SearchEvent.css';
 
 const PAGE_SIZE = 20;
 
@@ -43,12 +44,15 @@ const SearchEvent = (props) => {
         const query = searchInput.trim().replace(/\s+/g, '+');
 
         try {
-            const response = await fetch(
-                `https://api.seatgeek.com/2/events?client_id=MjkzNzI3MDF8MTY4OTAyMjc0MC40MTAxMDc2&per_page=25&q=${query}`
-            );
+            const response = await axios.get(`https://api.seatgeek.com/2/events`, {
+                params: {
+                    client_id: 'MjkzNzI3MDF8MTY4OTAyMjc0MC40MTAxMDc2',
+                    per_page: 25,
+                    q: query
+                }
+            });
             const data = await response.json();
             setEvents(data.events);
-            console.log("EVENTS", events)
             setCurrentPage(0);
         } catch (error) {
             console.error('Failed to fetch events:', error);
@@ -70,7 +74,6 @@ const SearchEvent = (props) => {
             </p>
         );
 }
-
     return (
         <Layout>
             <div className="search-wrapper">

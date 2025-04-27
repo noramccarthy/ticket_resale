@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../services/api';
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
@@ -17,7 +17,7 @@ const TicketDetail = () => {
     const { addToCart, cartItems } = useContext(CartContext);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/api/ticket/${id}`)
+        api.get(`/ticket/${id}`)
             .then((res) => {
                 const ticket = res.data;
                 setTicket(ticket);
@@ -53,18 +53,14 @@ const TicketDetail = () => {
                     <div className="ticket-image-section">
                         <img src={ticket.image} alt={ticket.artist} className="ticket-detail-image" />
                     </div>
-
                     <div className="ticket-info-section">
                         <h1 className="ticket-title">{ticket.artist}</h1>
                         <div className='ticket-detail-venue'>
                             {ticket.location}   
                         </div>
-
-
                         <div className="ticket-detail-date">
                             {month} {day}, {year} · {time}
                         </div>
-
                         <div className="ticket-info-header">
                             <div className="ticket-price">
                                 {ticket.onSale && ticket.discount ? (
@@ -80,16 +76,13 @@ const TicketDetail = () => {
                                 </>
                                 )}
                             </div>
-                            
                             <div className="ticket-detail-seats">
                                 <span className="seat-item"><strong>Section</strong> {ticket.section} </span>
                                 <span className="seat-item"><strong>Row</strong> {ticket.row} </span>
                                 <span className="seat-item"><strong>Seats</strong> {ticket.seat} </span>
                             </div>
                         </div>
-
                         <div className="tickets-left"><strong>Tickets left:</strong> {ticket.stock}</div>
-
                         <button
                             className="add-to-cart"
                             onClick={handleAddToCart}
@@ -97,20 +90,17 @@ const TicketDetail = () => {
                         >
                             {isInStock(ticket) ? 'Sold Out' : 'Add to Cart'}
                         </button>
-
                         <div className="payment-info">
                             <img src={PaymentBadge} alt="Secure Payment Options" className="payment-badge" />
                         </div>
                     </div>
                 </div>
-
                 <div className="ticket-location-card">
                     <div className="ticket-location-details">
                         <strong className="location-venue">{ticket.location}</strong>
                         <div className="location-address">{ticket.address}</div>
                         <div className="location-city">{ticket.city}, {ticket.state}</div>
                     </div>
-
                     <div className="map-detail-section">
                         <Map
                             longitude={ticket.lon}

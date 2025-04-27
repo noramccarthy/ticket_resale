@@ -1,8 +1,7 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import '../css/TicketForm.css'
-
 
 const TicketForm = (props) => {
     const {onSubmitProp, category, artist, date, location, state, image, newPrice, newStock, newOnSale, newDiscount, lat, lon, address, city, error, postedBy, id, newSection, newRow, newSeat} = props;
@@ -62,10 +61,10 @@ const TicketForm = (props) => {
     };
 
     const deleteTicket = (ticketId) => {
-        axios.delete("http://localhost:8000/api/ticket/delete/" + ticketId)
+        api.delete("/ticket/delete/" + ticketId)
             .then(() => {
                 console.log("Successfully delete ticket from DB")
-                navigate('/admin/dashboard')
+                navigate('/admin/listings')
             })
             .catch((err) => {
                 console.log(err);
@@ -99,7 +98,6 @@ const TicketForm = (props) => {
                                             <label className="ticket-form-label">State</label>
                                             <input type="text" name="state" className="form-control" value={state} readOnly />
                                         </div>
-
                                         <div className="col-12">
                                             <h6 className="text-center mb-2 mt-4" style={{ color: '#E04A34', fontWeight: '600' }}>Where are you sitting?</h6>
                                         </div>
@@ -128,7 +126,6 @@ const TicketForm = (props) => {
                                             <input type="number" className="form-control" value={price} onChange={(e) => setPrice(e.target.value)} />
                                             {errors.price && <small className="text-danger">{errors.price}</small>}
                                         </div>
-
                                         <div className="mb-5 col-md-6 d-flex align-items-end">
                                             <div className="form-check">
                                                 <input
@@ -141,7 +138,6 @@ const TicketForm = (props) => {
                                                 <h6 className="form-check-label" htmlFor="onSale" style={{ color: '#E04A34', fontWeight: '600' }}>Sell at a discounted price</h6>
                                             </div>
                                         </div>
-
                                         {onSale && (
                                             <div className="col-md-6">
                                                 <h6 className="ticket-form-label" style={{ color: '#E04A34', fontWeight: '600' }}>Discounted price:</h6>
@@ -155,7 +151,6 @@ const TicketForm = (props) => {
                                                 />
                                             </div>
                                         )}
-
                                         <div className="form-check d-flex align-items-start">
                                             <input
                                                 type="checkbox"
@@ -173,7 +168,6 @@ const TicketForm = (props) => {
                                                 I acknowledge that a valid payment method must be on file. I understand that if the tickets I list are sold and I am unable to produce them, or if they are determined to be fraudulent, my card may be charged to reimburse the buyer.
                                             </label>
                                         </div>
-
                                         <div className="col-12 d-flex mt-4">
                                             {postedBy && (
                                                 <button className="cancel-btn me-3" onClick={() => deleteTicket(id)}>

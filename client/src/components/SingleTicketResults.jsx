@@ -1,13 +1,10 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../css/SingleTicketResults.css'
 
 const SingleTicketResults = ({ticket}) => {
     const date = new Date(ticket.date)
     const month = date.toLocaleString('en-US', {month: 'long'})
     const day = date.toLocaleDateString('en-US', {day: '2-digit'})
-    const year = date.getFullYear();
-    const time = new Intl.DateTimeFormat('default', {hour: 'numeric', minute: 'numeric'}).format(new Date(ticket.date))
-    const navigate = useNavigate();
     const isLoggedIn = localStorage.getItem('token') !== null;
 
     const handleListClick = (e) => {

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import api from '../services/api';
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext'
 import FilterBar from './FilterBar';
@@ -79,7 +79,7 @@ const Shows = () => {
     }
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket/theater")
+        api.get("/ticket/theater")
         .then((res) => {
             setTickets(res.data)
             setFilterTickets(res.data)
@@ -89,7 +89,7 @@ const Shows = () => {
     },[])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/category")
+        api.get("/category")
         .then((res) => {
             setCategories(res.data.categories)
             console.log(res.data.categories)
@@ -98,7 +98,7 @@ const Shows = () => {
     },[])
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/state")
+        api.get("/state")
         .then((res) => {
             setStates(res.data.states)
             console.log(res.data.states)

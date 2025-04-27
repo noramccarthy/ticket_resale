@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import api from '../services/api';
 import { useNavigate, useParams} from 'react-router-dom';
 import TicketForm from './TicketForm';
 import '../css/TicketForm.css'
@@ -30,29 +31,18 @@ const CreateTicket = props => {
     useEffect(() => {
         axios.get("https://api.seatgeek.com/2/events/" + id + "?client_id=MjkzNzI3MDF8MTY4OTAyMjc0MC40MTAxMDc2")
         .then(res => {
-            console.log("Data:", res.data)
             setCategory(res.data.taxonomies[0].name)
             setArtist(res.data.title)
-            
             const date = new Date(res.data.datetime_local);
             const dateString = date.toLocaleString();
-            console.log(dateString)
             setDate(dateString)
-
             setLocation(res.data.venue.name)
             setState(res.data.venue.state)
             setImage(res.data.performers[0].image)
-
             setLon(res.data.venue.location.lon)
-            console.log("Lon:", res.data.venue.location.lon)
-
             setLat(res.data.venue.location.lat)
-            console.log("Lat:", res.data.venue.location.lat)
-
             setAddress(res.data.venue.address)
-
             setCity(res.data.venue.city)
-            
         })
         .catch(err => {
             console.log("Error:", err)
@@ -60,11 +50,11 @@ const CreateTicket = props => {
     }, [id])
 
     const createTicket = ticketForm => {
-        axios.post("http://localhost:8000/api/ticket", ticketForm, {withCredentials: true})
+        api.post("/ticket", ticketForm, {withCredentials: true})
         .then(res => {
             console.log(res.data)
             setTicketForm(res.data);
-            navigate('/admin/dashboard')
+            navigate('/admin/listings')
         })
         .catch(err => {
             console.log(err.response.data.errors);
@@ -73,7 +63,6 @@ const CreateTicket = props => {
     }
 
     return (
-        <>
         <div className='ticket-form-container'>
             <div>
                 <TicketForm
@@ -99,8 +88,6 @@ const CreateTicket = props => {
                 />
             </div>
         </div>
-
-        </>
     )
 }
 export default CreateTicket;

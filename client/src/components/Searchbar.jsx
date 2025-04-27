@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import api from '../services/api';
 import '../css/SearchBar.css';
 
 const SearchBar = () => {
@@ -14,7 +14,7 @@ const SearchBar = () => {
 
         try {
             setLoading(true);
-            const response = await axios.get(`http://localhost:8000/api/ticket/search?query=${query}`);
+            const response = await api.get(`/ticket/search?query=${query}`);
             const data = response.data;
 
             if (data.length === 0) {

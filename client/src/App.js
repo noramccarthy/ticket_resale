@@ -1,6 +1,5 @@
 import LandingPage from './components/LandingPage'
 import UserAuth from './components/UserAuth'
-import AdminDashboard from './components/AdminDashboard'
 import CreateTicket from  './components/CreateTicket'
 import TicketDetail from './components/TicketDetail'
 import About from './components/About'
@@ -16,13 +15,11 @@ import Sports from './components/Sports'
 import Music from './components/Music'
 import Shows from './components/Shows'
 import SearchResults from './components/SearchResults'
-
 import { LoadScript } from '@react-google-maps/api';
 import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext'
 import './App.css';
-
 
 function App() {
   const [cartDetails, setCartDetails] = useState("");
@@ -46,7 +43,6 @@ function App() {
                 <Route path="/ticket/:id" element={<TicketDetail/>}/>
                 <Route path="/admin/login" element={<UserAuth/>}/>
                 <Route path="/admin/register" element={<UserAuth/>}/>
-                <Route path="/admin/dashboard" element={<AdminDashboard/>}/>
                 <Route path="/admin/profile" element={<ProfileManagement/>}/>
                 <Route path="/admin/events" element={<SearchEvent/>}/>
                 <Route path="/admin/tickets" element={<UserTickets/>}/>

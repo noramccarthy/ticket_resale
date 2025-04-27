@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate, useParams} from 'react-router-dom';
 import TicketForm from './TicketForm';
 import Layout from './Layout';
@@ -14,17 +14,12 @@ const UpdateTicket = props => {
     const [error, setError] = useState({});
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/admin/ticket/" + id, {withCredentials: true})
+        api.get("/admin/ticket/" + id, {withCredentials: true})
         .then(res => {
-
-            console.log("Data:", res.data)
             setTicket(res.data)
-
             const date = new Date(res.data.date);
             const dateString = date.toLocaleString();
-            console.log(dateString)
             setDate(dateString)
-
         })
         .catch(err => {
             props.setAuthorized("Please Login First")
@@ -34,11 +29,10 @@ const UpdateTicket = props => {
     }, [id])
 
     const updateTicket = ticketForm => {
-        axios.put("http://localhost:8000/api/admin/ticket/" + id, ticketForm, {withCredentials: true})
+        api.put("/admin/ticket/" + id, ticketForm, {withCredentials: true})
         .then(res => {
-            console.log(res.data)
             setTicketForm(res.data);
-            navigate('/admin/dashboard')
+            navigate('/admin/listings')
         })
         .catch(err => {
             console.log(err.response.data.error.errors);

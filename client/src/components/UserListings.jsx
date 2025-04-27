@@ -1,8 +1,7 @@
-import axios from 'axios';
+import api from '../services/api';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import SingleTicket from './SingleTicket';
-import '../css/AdminDashboard.css';
 import Layout from './Layout';
 import '../css/UserTickets.css';
 
@@ -11,7 +10,7 @@ const UserListings = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/admin/yourtickets", {withCredentials:true})
+        api.get("/admin/yourtickets", {withCredentials:true})
         .then(res => {
             setAdminTickets(res.data);
             console.log(res.data)

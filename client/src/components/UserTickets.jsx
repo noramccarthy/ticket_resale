@@ -1,5 +1,4 @@
 import React from 'react';
-import '../css/AdminDashboard.css';
 import Layout from './Layout';
 import '../css/UserTickets.css';
 

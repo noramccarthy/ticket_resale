@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import '../css/ProfileManagement.css';
 import Layout from './Layout';
@@ -15,7 +15,7 @@ const ProfileManagement = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/user", { withCredentials: true })
+        api.get("/user", { withCredentials: true })
             .then(res => {
                 setUser(res.data);
             })
@@ -32,7 +32,7 @@ const ProfileManagement = () => {
 
     const handleToggleEdit = () => {
         if (isEditing) {
-            axios.put("http://localhost:8000/api/user/update", user, { withCredentials: true })
+            api.put("/user/update", user, { withCredentials: true })
                 .then(() => {
                     alert("Profile updated successfully!");
                     setIsEditing(false);

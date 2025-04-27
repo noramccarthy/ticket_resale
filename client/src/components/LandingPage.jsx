@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { CartContext } from '../context/CartContext';
-import axios from 'axios';
+import api from '../services/api';
 import Slider from 'react-slick'
 import Carousel from './Carousel';
 import SlideShow from './SlideShow';
@@ -14,13 +14,8 @@ const LandingPage = () => {
     const [concerts, setConcerts] = useState([]);
     const [sports, setSports] = useState([]);
     const [theater, setTheater] = useState([]);
-
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
-
-    const toggle = () => {
-        setIsOpen((isOpen) => !isOpen)
-    }
 
     const settings = { 
         dots: true, 
@@ -39,7 +34,7 @@ const LandingPage = () => {
     };
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket/concerts")
+        api.get("/ticket/concerts")
         .then((res) => {
             setConcerts(res.data)
             // console.log("Concerts:", concerts)
@@ -48,7 +43,7 @@ const LandingPage = () => {
     }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket/sports")
+        api.get("/ticket/sports")
         .then((res) => {
             setSports(res.data)
             // console.log("Sports:", sports)
@@ -57,7 +52,7 @@ const LandingPage = () => {
     }, []);
 
     useEffect(() => {
-        axios.get("http://localhost:8000/api/ticket/theater")
+        api.get("/ticket/theater")
         .then((res) => {
             setTheater(res.data)
             // console.log("Theater:", theater)
@@ -119,8 +114,6 @@ const LandingPage = () => {
             </div>
             <div className='chatbot-toggle'>
                 {isOpen && <Chatbot/>}
-                {/* <button className='chatbot-toggle-button' onClick={toggle}>X</button> */}
-                
             </div>
         </Layout>
     )

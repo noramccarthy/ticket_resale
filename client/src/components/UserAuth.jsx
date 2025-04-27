@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { useNavigate } from 'react-router-dom';
 import '../css/UserAuth.css';
 import tfLogo from '../assets/images/tfLogo.png';
@@ -20,7 +20,6 @@ const UserAuth = () => {
     const { login } = useContext(AuthContext);
 
     useEffect(() => {
-        // Check if the user is already logged in by checking the token
         if (localStorage.getItem("token")) {
             navigate('/');
         }
@@ -39,10 +38,10 @@ const UserAuth = () => {
         e.preventDefault();
 
         const url = isLogin 
-            ? "http://localhost:8000/api/login"
-            : "http://localhost:8000/api/register";
+            ? "/login"
+            : "/register";
 
-        axios.post(url, formData, { withCredentials: true })
+        api.post(url, formData, { withCredentials: true })
             .then(res => {
                 // update global auth state
                 login(res.data.token); // store token and update the state

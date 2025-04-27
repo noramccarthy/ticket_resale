@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import axios from 'axios';
+import api from '../services/api';
 import { MessageList, Message, ConversationHeader, MessageSeparator, MessageInput, TypingIndicator, MainContainer, ChatContainer } from '@chatscope/chat-ui-kit-react';
 import '@chatscope/chat-ui-kit-styles/dist/default/styles.min.css';
 import '../css/Chatbot.css'
@@ -40,11 +40,7 @@ const Chatbot = () => {
         const userMessage = chatMessages[chatMessages.length - 1].message; // send last msg
 
         try {
-            const response = await axios.post(
-                "http://localhost:8000/api/chat",
-                // process.env.REACT_APP_API_URL || "http://localhost:8000/api/chat"
-                { message: userMessage }
-            );
+            const response = await api.post("/chat",{ message: userMessage });
 
             const assistantMessage = response.data.response;
             console.log("assistantMessage:", response)
@@ -63,14 +59,12 @@ const Chatbot = () => {
     
     return (
         <div className="chatbot-wrapper">
-            {/* Toggle button when collapsed */}
             {!isOpen && (
                 <button className="chatbot-toggle-button-closed" onClick={toggle}>
                 💬
                 </button>
             )}
         
-            {/* Chat UI when open */}
             {isOpen && (
                 <MainContainer responsive className="chatbot-window">
                     <ChatContainer>
@@ -85,7 +79,6 @@ const Chatbot = () => {
                                     />
                                 </ConversationHeader.Actions>
                         </ConversationHeader>
-            
                         <MessageList
                             scrollBehavior="smooth"
                             typingIndicator={isTyping ? <TypingIndicator /> : null}
