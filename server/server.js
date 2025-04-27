@@ -32,10 +32,10 @@ require("./routes/state.routes")(app);
 require("./routes/ticket.routes")(app);
 require("./routes/user.routes")(app);
 
-app.use(express.static(path.join(__dirname, '../client/dist')));
+app.use(express.static(path.join(__dirname, '../client/build')));
 
 app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+    res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
 app.listen(8000, ()=>console.log("Listening on Port 8000"))
