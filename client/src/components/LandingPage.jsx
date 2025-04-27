@@ -14,8 +14,6 @@ const LandingPage = () => {
     const [concerts, setConcerts] = useState([]);
     const [sports, setSports] = useState([]);
     const [theater, setTheater] = useState([]);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [confirmedSearchTerm, setConfirmedSearchTerm] = useState('');
 
     const { addToCart, cartItems } = useContext(CartContext);
     const [animate, setAnimate] = useState(false);
