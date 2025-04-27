@@ -25,8 +25,6 @@ const Chatbot = () => {
             direction: 'outgoing',
             sender: "user"
         };
-        console.log("New Message Received:", newMessage)
-
         // update the message state with the new user message
         setMessages((prevMessages) => [...prevMessages, newMessage]);
         setIsTyping(true);

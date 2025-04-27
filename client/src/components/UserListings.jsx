@@ -13,7 +13,6 @@ const UserListings = () => {
         api.get("/admin/yourtickets", {withCredentials:true})
         .then(res => {
             setAdminTickets(res.data);
-            console.log(res.data)
         })
         .catch((err) => {
             navigate("/")

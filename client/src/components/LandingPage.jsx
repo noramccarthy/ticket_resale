@@ -37,7 +37,6 @@ const LandingPage = () => {
         api.get("/ticket/concerts")
         .then((res) => {
             setConcerts(res.data)
-            // console.log("Concerts:", concerts)
         })
         .catch((err) => console.log(err))
     }, []);
@@ -46,7 +45,6 @@ const LandingPage = () => {
         api.get("/ticket/sports")
         .then((res) => {
             setSports(res.data)
-            // console.log("Sports:", sports)
         })
         .catch((err) => console.log(err))
     }, []);
@@ -55,7 +53,6 @@ const LandingPage = () => {
         api.get("/ticket/theater")
         .then((res) => {
             setTheater(res.data)
-            // console.log("Theater:", theater)
         })
         .catch((err) => console.log(err))
     }, []);

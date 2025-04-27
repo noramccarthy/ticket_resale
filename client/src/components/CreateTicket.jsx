@@ -52,7 +52,6 @@ const CreateTicket = props => {
     const createTicket = ticketForm => {
         api.post("/ticket", ticketForm, {withCredentials: true})
         .then(res => {
-            console.log(res.data)
             setTicketForm(res.data);
             navigate('/admin/listings')
         })

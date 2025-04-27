@@ -88,7 +88,6 @@ const Deals = () => {
         .then((res) => {
             setTickets(res.data)
             setFilterTickets(res.data)
-            // console.log(res.data)
         })
         .catch((err) => console.log(err))
     },[])

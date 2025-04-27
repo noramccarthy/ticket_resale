@@ -83,7 +83,6 @@ const Sports = () => {
         .then((res) => {
             setTickets(res.data)
             setFilterTickets(res.data)
-            console.log(res.data)
         })
         .catch((err) => console.log(err))
     },[])
@@ -92,7 +91,6 @@ const Sports = () => {
         api.get("/category")
         .then((res) => {
             setCategories(res.data.categories)
-            console.log(res.data.categories)
         })
         .catch((err) => console.log(err))
     },[])
@@ -101,7 +99,6 @@ const Sports = () => {
         api.get("/state")
         .then((res) => {
             setStates(res.data.states)
-            console.log(res.data.states)
         })
         .catch((err) => console.log(err))
     },[])
