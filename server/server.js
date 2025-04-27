@@ -5,6 +5,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const path = require('path');
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -31,5 +32,10 @@ require("./routes/state.routes")(app);
 require("./routes/ticket.routes")(app);
 require("./routes/user.routes")(app);
 
-// invoke the listen method on the express server
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
+
 app.listen(8000, ()=>console.log("Listening on Port 8000"))
