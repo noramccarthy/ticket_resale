@@ -1,16 +1,12 @@
-// ES5 syntax
+const dotenv = require('dotenv');
+dotenv.config();
+
 const useLoadScript = require('@react-google-maps/api')
 const express = require("express");
 const app = express();
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const port = 8000;
-
-// require .env and invoke its config function
-const dotenv = require('dotenv');
-dotenv.config();
-// require('dotenv').config({path:'.env'});
-
 
 // middleware to properly read incoming data from the client's request object
 // parse PUT and POST params sent in body in json format

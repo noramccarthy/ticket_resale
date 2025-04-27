@@ -1,14 +1,13 @@
 const { OpenAI }  = require('openai')
-require('dotenv').config()
 
-// Initialize the OpenAI client
-const openai = new OpenAI({
-    apiKey: process.env.REACT_APP_OPENAI_API_KEY,
-});
 
 module.exports = {
     create: async (req, res) => {
         try {
+            const openai = new OpenAI({
+                apiKey: process.env.OPENAI_API_KEY,
+            });
+            
             // get user's message from the request body
             const userMessage = req.body.message;
             console.log("User message:", userMessage)
