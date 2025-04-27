@@ -21,7 +21,7 @@ const Map = ({ longitude, latitude, location }) => {
     );
 
     if (!hasValidCoords) {
-        return null; // Or a loading indicator
+        return null;
     }
 
     return (

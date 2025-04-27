@@ -51,7 +51,7 @@ const SearchEvent = (props) => {
                     q: query
                 }
             });
-            const data = await response.json();
+            const data = response.data;
             setEvents(data.events);
             setCurrentPage(0);
         } catch (error) {
