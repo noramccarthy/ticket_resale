@@ -34,6 +34,10 @@ const UserAuth = () => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
+    console.dir('Axios instance:', api);
+    console.log('Base URL:', api.defaults.baseURL);
+
+
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
