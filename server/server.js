@@ -38,4 +38,4 @@ app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
-app.listen(8000, ()=>console.log("Listening on Port 8000"))
+app.listen(8000, '0.0.0.0', ()=>console.log("Listening on Port 8000"))
