@@ -7,8 +7,8 @@ const UserTickets = () => {
         <Layout>
             <div class="listing-container">
                 <div className='empty-listings'>
-                    <h4>You do not have any tickets listed for sale.</h4>
-                    <p>Once you create a ticket listing, your details will be available here.</p>
+                    <h4>No tickets yet!</h4>
+                    <p>Once you purchase tickets, they’ll show up here for easy access.</p>
                 </div>
             </div>
         </Layout>

@@ -1,7 +1,5 @@
 const mongoose = require("mongoose");
 
-const User = require('./user.model');
-
 const TicketSchema = new mongoose.Schema({
     // reference
     postedBy: {
@@ -51,8 +49,6 @@ const TicketSchema = new mongoose.Schema({
         type: Number,
         required: [true, "Price is required."],
         min:[1.00, "Price must be greater than $1.00"],
-        // get: v => Math.floor(v * 100)/100,
-        // set: v => Math.floor(parseFloat(v)*100)/100
     },
     stock: {
         type: Number,
@@ -90,8 +86,5 @@ const TicketSchema = new mongoose.Schema({
     }
 }, {timestamps: true});
 
-// create a Ticket variable whose value will take on the shape of our model
-// Takes in the collection name (Ticket) and the schema
-// It will act as the interface through which we communicate with our DB
 const Ticket = mongoose.model("Ticket", TicketSchema);
 module.exports = Ticket;
