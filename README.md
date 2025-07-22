@@ -1,60 +1,77 @@
-🎟️ Ticket Forum
-Ticket Forum is a full-stack web application that allows users to list and purchase event tickets at face value or below. Built as a single-page application with a focus on usability and secure transactions, it features admin capabilities, third-party integrations, and an AI-powered chatbot.
+## 🎟️ Ticket Forum
 
-⚠️ Note: This is a demo/portfolio project. No real tickets are exchanged or sold.
+Ticket Forum is a full-stack web application for browsing, listing, and purchasing event tickets at face value or below. Designed as a responsive single-page app, it prioritizes usability, secure transactions, and real-time interactivity. Key features include admin tools, third-party integrations, and an AI-powered support chatbot.
 
-🚀 Live Demo
-🌐 http://3.148.106.111 — Deployed on AWS EC2
+> ⚠️ **Note:** This is a demo/portfolio project. No actual tickets are exchanged or sold.
 
-📸 Features Overview
-🧾 Browse & List Tickets: Search, filter, and paginate through event tickets.
+---
 
-🧑‍💼 Admin Login & Auth: JWT-secured registration and login.
-🎤 SeatGeek Integration: Pulls real-time event data via API.
-💳 Mock Payments with PayPal: Simulates purchase workflow.
-🗺️ Google Maps Integration: Displays event locations visually.
-🤖 AI Chatbot: Powered by OpenAI’s ChatGPT for personalized support.
-📱 Responsive UI: Built with React for clean, single-page interactivity.
+## 🌐 Live Demo  
+**[http://3.148.106.111](http://3.148.106.111)** — Hosted on AWS EC2
 
-🛠️ Tech Stack
-🔷 Frontend
-React.js — SPA structure
-React Router — Navigation
-Axios — HTTP requests
-CSS + Custom UI — Styled layout
-React Slick — Carousel/slideshow
+---
 
-🔶 Backend
-Node.js + Express — RESTful API
-MongoDB (Mongoose) — NoSQL database
-JWT + Bcrypt — Authentication & password hashing
-dotenv — Environment management
+## 📸 Key Features
 
-🌐 Integrations
-SeatGeek API — Real-time event listings
-PayPal API — Payment processing simulation
-Google Maps API — Event map visualization
-OpenAI API — ChatGPT integration for real-time help
+- **Ticket Marketplace** – Search, filter, and browse event tickets with pagination.  
+- **Admin & User Authentication** – Secure login and registration using JWT.  
+- **SeatGeek API Integration** – Real-time event data synced from SeatGeek.  
+- **Mock Payments** – Simulated PayPal-based checkout flow.  
+- **Google Maps Integration** – Visual display of event locations.  
+- **AI Chatbot Support** – ChatGPT-powered assistant for user inquiries.  
+- **Mobile-Responsive UI** – Seamless experience built with React SPA.
 
-🚀 Deployment & DevOps
-AWS EC2 — App hosting
-MongoDB Atlas — Cloud DB
-Nginx — Reverse proxy for production React app
-PM2 — Node process manager
+---
 
-💡 How It Works
-Users can:
-Register/login securely
-Browse and filter events
-Post and manage their own ticket listings
+## 🛠️ Tech Stack
 
-Admins can:
-Access all listings
-Moderate users or content if expanded
+### Frontend
+- **React.js** – Single-page application structure  
+- **React Router** – Client-side routing  
+- **Axios** – API communication  
+- **Custom CSS & UI** – Clean and styled layout  
+- **React Slick** – Carousel component  
 
-Chatbot Support:
-OpenAI ChatGPT integration responds to user questions in real-time
+### Backend
+- **Node.js & Express** – RESTful API server  
+- **MongoDB (Mongoose)** – NoSQL database with schema modeling  
+- **JWT + Bcrypt** – Authentication and password hashing  
+- **dotenv** – Environment configuration  
 
-Event Enhancements:
-Google Maps displays event locations
-SeatGeek provides real-world event data
+---
+
+## 🌐 Third-Party Integrations
+
+- **SeatGeek API** – Event data and ticket info  
+- **PayPal API** – Mock checkout/payment workflow  
+- **Google Maps API** – Event location visualization  
+- **OpenAI API** – ChatGPT for real-time chatbot support  
+
+---
+
+## 🚀 Deployment & DevOps
+
+- **AWS EC2** – App hosting and deployment  
+- **MongoDB Atlas** – Cloud-hosted database  
+- **Nginx** – Reverse proxy for React frontend  
+- **PM2** – Node.js process management  
+
+---
+
+## 💡 How It Works
+
+### Users can:
+- Register and log in securely  
+- Browse, filter, and search for events  
+- List and manage their own tickets  
+
+### Admins can:
+- Access and manage all listings  
+- Moderate users and content (optional future expansion)  
+
+### AI Chatbot:
+- ChatGPT answers user questions in real time  
+
+### Event Enhancements:
+- Google Maps shows interactive event locations  
+- SeatGeek pulls in real-world event listings  
