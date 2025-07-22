@@ -65,7 +65,7 @@ const Navbar = () => {
                                     badgeContent={cartCount}
                                     sx={{
                                         '& .MuiBadge-badge': {
-                                        backgroundColor: '#FF5841', // your site's orange
+                                        backgroundColor: '#FF5841',
                                         color: 'white',
                                         },
                                     }}

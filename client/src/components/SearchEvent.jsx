@@ -9,7 +9,6 @@ const PAGE_SIZE = 20;
 
 const SearchEvent = (props) => {
     const [searchInput, setSearchInput] = useState("");
-    const [select, setSelect] = useState("");
     const [events, setEvents] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [showButton, setShowButton] = useState(false);
@@ -21,6 +20,7 @@ const SearchEvent = (props) => {
         window.scrollTo(0, 0);
     }, []);
 
+    // track scroll position to show/hide button
     useEffect(() => {
         const handleScroll = () => {
             setShowButton(window.scrollY > window.innerHeight / 2);
@@ -29,8 +29,13 @@ const SearchEvent = (props) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    useEffect(() => {
+        if (!loading && events.length > 0 && topOfResultsRef.current) {
+            topOfResultsRef.current.scrollIntoView({ behavior: 'smooth'});
+        }
+    }, [loading, events]);
+
     const totalPages = Math.ceil(events.length / PAGE_SIZE);
-    const pages = Array.from(Array(totalPages).keys());
     const paginatedEvents = events.slice(currentPage * PAGE_SIZE, (currentPage + 1) * PAGE_SIZE);
 
     const changePage = (pageNumber) => {
@@ -41,6 +46,7 @@ const SearchEvent = (props) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+
         const query = searchInput.trim().replace(/\s+/g, '+');
 
         try {
@@ -58,11 +64,6 @@ const SearchEvent = (props) => {
             console.error('Failed to fetch events:', error);
         } finally {
             setLoading(false);
-            setTimeout(() => {
-                if (topOfResultsRef.current) {
-                    topOfResultsRef.current.scrollIntoView({ behavior: 'smooth' });
-                }
-            }, 100);
         }
     };
 
@@ -73,7 +74,7 @@ const SearchEvent = (props) => {
                 <Link to="/admin/login">Login</Link>
             </p>
         );
-}
+    }
     return (
         <Layout>
             <div className="search-wrapper">
@@ -100,7 +101,7 @@ const SearchEvent = (props) => {
                 </div>
             </div>
 
-            <section className="section-2" ref={topOfResultsRef}>
+            <section className="section-2">
                 {loading && (
                     <div className="text-center my-4">
                         <p>Loading results...</p>
@@ -110,61 +111,50 @@ const SearchEvent = (props) => {
                 {!loading && paginatedEvents.length > 0 && (
                     <div>
                         <section className="events-container" id="results">
-                            <div className="row">
-                                <div className="col-lg-12">
-                                    <div className="tab-content" id="myTabContent">
-                                        <div className="table-responsive">
-                                            <table className="table">
-                                                <thead>
-                                                    <tr>
-                                                        <th className="text-center" scope="col">Date</th>
-                                                        <th className="text-center" scope="col">Artist</th>
-                                                        <th className="text-center" scope="col">Venue</th>
-                                                        <th className="text-center" scope="col">List</th>
-                                                    </tr>
-                                                </thead>
-                                                <tbody>
-                                                    {paginatedEvents.map((event) => (
-                                                        <tr key={event.id}>
-                                                            {/* Date and Time */}
-                                                            <td className="text-center">
-                                                                <span>
-                                                                    {new Date(event.datetime_local).toLocaleDateString('en-US', { day: '2-digit' })}{' '}
-                                                                    {new Date(event.datetime_local).toLocaleDateString('en-US', { month: 'short' })}{' '}
-                                                                    {new Date(event.datetime_local).getFullYear()}
-                                                                </span>
-                                                                <br />
-                                                                <span>
-                                                                    {new Intl.DateTimeFormat('default', {
-                                                                        hour: 'numeric',
-                                                                        minute: 'numeric',
-                                                                    }).format(new Date(event.datetime_local))}
-                                                                </span>
-                                                            </td>
-
-                                                            {/* Artist */}
-                                                            <td className="text-center">{event.short_title}</td>
-
-                                                            {/* Venue and Location */}
-                                                            <td className="text-center">{event.venue.name}, {event.venue.display_location}</td>
-
-                                                            {/* List Link */}
-                                                            <td className="text-center">
-                                                                <Link to={`/admin/create/${event.id}`} className="event-list-btn">
-                                                                    List
-                                                                </Link>
-                                                            </td>
+                            <div ref={topOfResultsRef} style={{ height: '1px', marginTop: '-100px', paddingTop: '100px' }}/>
+                                <div className="row">
+                                    <div className="col-lg-12">
+                                        <div className="tab-content">
+                                            <div className="table-responsive">
+                                                <table className="table">
+                                                    <thead>
+                                                        <tr>
+                                                            <th className="text-center" scope="col">Date</th>
+                                                            <th className="text-center" scope="col">Artist</th>
+                                                            <th className="text-center" scope="col">Venue</th>
+                                                            <th className="text-center" scope="col"></th>
                                                         </tr>
-                                                    ))}
-                                                </tbody>
-                                            </table>
+                                                    </thead>
+                                                    <tbody>
+                                                        {paginatedEvents.map((event) => (
+                                                            <tr key={event.id}>
+                                                                <td className="text-center">
+                                                                    <span>
+                                                                        {new Date(event.datetime_local).toLocaleDateString('en-US', { day: '2-digit' })}{' '}
+                                                                        {new Date(event.datetime_local).toLocaleDateString('en-US', { month: 'short' })}{' '}
+                                                                        {new Date(event.datetime_local).getFullYear()}
+                                                                    </span>
+                                                                    <br />
+                                                                    <span>
+                                                                        {new Intl.DateTimeFormat('default', {
+                                                                            hour: 'numeric',
+                                                                            minute: 'numeric',
+                                                                        }).format(new Date(event.datetime_local))}
+                                                                    </span>
+                                                                </td>
+                                                                <td className="text-center">{event.short_title}</td>
+                                                                <td className="text-center">{event.venue.name}, {event.venue.display_location}</td>
+                                                                <td className="text-center"><Link to={`/admin/create/${event.id}`} className="event-list-btn"> List </Link></td>
+                                                            </tr>
+                                                        ))}
+                                                    </tbody>
+                                                </table>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
                         </section>
 
-                        {/* Pagination Controls - Numbered Buttons Only */}
                         <div className="pagination">
                             {Array.from({ length: totalPages }, (_, index) => (
                                 <button
@@ -179,10 +169,8 @@ const SearchEvent = (props) => {
                     </div>
                 )}
 
-                {!loading && events.length === 0 && (
-                    <div className="text-center my-5">
-                        <p>No events found. Try another search.</p>
-                    </div>
+                {loading && events.length === 0 && (
+                    <div className="text-center my-5"><p>No events found. Try another search.</p></div>
                 )}
             </section>
         </Layout>
